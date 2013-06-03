@@ -10,6 +10,7 @@ Here are some ideas for our package.
 - Generalizability Theory
 - IRT(?)
 - Replicate Thorndike
-- 
+
+
 
 Mostly we are learning.
