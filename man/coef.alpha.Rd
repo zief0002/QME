@@ -1,5 +1,5 @@
-\name{coef.alpha}
-\alias{coef.alpha}
+\name{coef_alpha}
+\alias{coef_alpha}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Coefficient Alpha
@@ -8,7 +8,7 @@ Coefficient Alpha
 This function computes coefficient alpha from the formula in Thorndike's measurement book
 }
 \usage{
-coef.alpha(x,k,...)
+coef_alpha(x,k,...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -38,7 +38,7 @@ University of Minnesota Quantitative Methods in Education
 
 
 library(ltm)
-coef.alpha(LSAT)
+coef_alpha(LSAT)
 
 
 }
