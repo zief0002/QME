@@ -1,4 +1,3 @@
-
 function(x, k=NA , ...){
   
   k<-ifelse(is.na(k),length(x), k)  
