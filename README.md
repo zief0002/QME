@@ -14,3 +14,17 @@ Here are some ideas for our package.
 
 
 Mostly we are learning.
+
+
+Installing the QME package
+======
+
+In theory the following should work
+
+```r
+library(devtools)
+install_github("QME", "zief0002")
+```
+
+
+So far we have a single function \texttt{coef_alpha()}.
