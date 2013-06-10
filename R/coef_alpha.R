@@ -1,4 +1,4 @@
-function(x, k=NA , ...){
+coef_alpha <- function(x, k=NA , ...){
   
   k<-ifelse(is.na(k),length(x), k)  
   var.x <- var(apply(x,1,sum))
