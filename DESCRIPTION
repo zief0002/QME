@@ -15,3 +15,4 @@ Description: Ability to compute many different reliabilities
 License: GPL (>= 2)
 URL: https://github.com/zief0002/QME
 Repository: github
+LazyLoad: yes
