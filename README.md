@@ -27,4 +27,4 @@ install_github("QME", "zief0002")
 ```
 
 
-So far we have a single function `r coef_alpha()`.
+So far we have a single function `coef_alpha()`.
