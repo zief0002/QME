@@ -1,5 +1,3 @@
-library(sem)
-library(stringr)
 funk.congeneric <- function(data.congeneric) {
   data.congeneric <- as.data.frame(data.congeneric)
   names(data.congeneric) <- make.names(names(data.congeneric))
@@ -13,5 +11,5 @@ funk.congeneric <- function(data.congeneric) {
   names.errors <- str_detect(names(cfa.out$coeff), fixed("V["))
   r.congeneric <- sum(cfa.out$coeff[names.loadings]) ^ 2 / 
     (sum(cfa.out$coeff[names.loadings]) ^ 2 + sum(cfa.out$coeff[names.errors]))
-  round(c("Congeneric" = r.congeneric, "Alpha" = alpha(cfa.out$S)$total$raw_alpha), 2)
+  c("Congeneric" = r.congeneric)
 }
