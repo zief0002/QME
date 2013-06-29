@@ -6,7 +6,7 @@ Authors@R: c(person("Kory Vue", "Developer", role = c("aut", "cre"), email = "vu
              person("Andrew Zieffler", "Developer", role = "aut", email=),
              person("Luke Stanke", "Developer", role = "aut",  email = ""), 
              person("Yufeng Chang", "Developer", role = "aut",email = ""), 
-             person("Chris Moore", "User", role = "ctb",email = ""))
+             person("Chris Moore", "User", role = "ctb",email = "moor0554@umn.edu"))
 Author: Kory Vue,Andy Zieffler, Luke Stanke, Yufeng Chang, with contributions from Chris Moore.
 Maintainer: Kory Vue <vuexx199@umn.edu>
 Depends: R (>= 2.15.0), ltm, sem, stringr
