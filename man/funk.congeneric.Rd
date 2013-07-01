@@ -5,23 +5,20 @@
 Congeneric Reliability
 }
 \description{
-This function computes the congeneric reliability coefficient, which is especially useful when items are stratified or lack a common scale.  As discussed by Graham (2006), it's not widely known in applied educational research that Cronbach's alpha assumes essential tau-equivalence and underestimates reliability when the assumption is not met.  This function uses Fox's \code{\link{sem}} package to conduct a confirmatory factor analysis with minimal constraints (variance of common true score fixed at 1 for identifiability). The estimated loadings and error variances are then summed to calculate reliability (i.e., the ratio of true score variance to observed score variance).
+This function computes the congeneric reliability coefficient, which is appropriate when items are stratified or lack a common scale.  As discussed by Graham (2006), it is not widely known in applied educational research that Cronbach's alpha assumes essential tau-equivalence and underestimates reliability when the assumption is not met.  This function uses Fox's \code{\link{sem}} package to conduct a confirmatory factor analysis with minimal constraints (variance of common true score fixed at 1 for identifiability). The estimated loadings and error variances are then summed to calculate reliability (i.e., the ratio of true score variance to observed score variance).
 }
 \usage{
-funk.congeneric(x, N)
+funk.congeneric(x, N = NULL, vcov = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
-x is a variance-covariance matrix calculated from item responses to be passed to \code{\link{sem}}.
-}
-  \item{N}{
-N is the number of objects of measurement (e.g., persons, respondents, rows) underlying the variance-covariance matrix.
-}
+  \item{x}{a variance-covariance matrix calculated from item responses to be passed to \code{\link{sem}}; alternatively, an item response matrix or data frame containing one object of measurement (e.g., person) per row and one item per column.  If the latter, then \code{vcov} must be \code{TRUE}}
+  \item{N}{the number of objects of measurement (e.g., persons, respondents, rows) underlying the variance-covariance matrix; defaults to the number of rows if \code{vcov} is \code{TRUE}.}
+  \{item}{vcov}{if \code{FALSE}, then \code{x} must be a variance-covariance matrix and \code{N} must be specified; if \code{TRUE}, then \code{x} is an item response matrix}
 }
 
 \value{
-This function returns the congeneric reliability coefficient.
+Returns the congeneric reliability coefficient.
 }
 \references{
 Graham, J. M. (2006). Congeneric and (essentially) tau-equivalent estimates of score reliability: What they are and how to use them. Educational and Psychological Measurement, 66, 6, 930-944. 

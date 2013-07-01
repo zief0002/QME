@@ -28,7 +28,7 @@
   estimates/predictions of universe scores for any
   potential object of measurement not nested in another
   facet (Brennan, 2001; i.e., the random main effects) and
-  plotting them on an facet-object map (e.g., an
+  plotting them on a facet-object map (e.g., an
   item-person map).
 }
 \details{

@@ -15,7 +15,7 @@
   items and raters).  The set only applies univariate G theory
   at this time.
 }
-\author{
+\seealso{
   \url{http://www.cehd.umn.edu/EdPsych/programs/QME/}
 }
 \keyword{package}
