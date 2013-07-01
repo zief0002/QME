@@ -1,36 +1,28 @@
 \name{funk.congeneric}
 \alias{funk.congeneric}
-%- Also NEED an '\alias' for EACH other topic documented here.
-\title{
-Congeneric Reliability
-}
-\description{
-This function computes the congeneric reliability coefficient, which is appropriate when items are stratified or lack a common scale.  As discussed by Graham (2006), it is not widely known in applied educational research that Cronbach's alpha assumes essential tau-equivalence and underestimates reliability when the assumption is not met.  This function uses Fox's \code{\link{sem}} package to conduct a confirmatory factor analysis with minimal constraints (variance of common true score fixed at 1 for identifiability). The estimated loadings and error variances are then summed to calculate reliability (i.e., the ratio of true score variance to observed score variance).
-}
+\title{Estimate congeneric reliability.}
 \usage{
-funk.congeneric(x, N = NULL, vcov = FALSE)
+  funk.congeneric(x, N = NULL, vcov = FALSE)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{a variance-covariance matrix calculated from item responses to be passed to \code{\link{sem}}; alternatively, an item response matrix or data frame containing one object of measurement (e.g., person) per row and one item per column.  If the latter, then \code{vcov} must be \code{TRUE}}
+  \item{x}{a variance-covariance matrix calculated from item responses to be passed to \code{\link{sem}}; alternatively, an item response matrix or data frame containing one object of measurement (e.g., person) per row and one item per column.  If the latter, then \code{vcov} must be \code{TRUE}.}
+  
   \item{N}{the number of objects of measurement (e.g., persons, respondents, rows) underlying the variance-covariance matrix; defaults to the number of rows if \code{vcov} is \code{TRUE}.}
+  
   \item{vcov}{if \code{FALSE}, then \code{x} must be a variance-covariance matrix and \code{N} must be specified; if \code{TRUE}, then \code{x} is an item response matrix}
 }
-
-\value{
-Returns the congeneric reliability coefficient.
-}
-\references{
-Graham, J. M. (2006). Congeneric and (essentially) tau-equivalent estimates of score reliability: What they are and how to use them. Educational and Psychological Measurement, 66, 6, 930-944. 
+\description{
+  This function estimates the congeneric reliability of observed scores.  Estimating congeneric reliability is appropriate when items are stratified or lack a common scale (e.g., when a test contains both dichotomously and polytomously scored items).  As discussed by Graham (2006), it is not widely known in applied educational research that Cronbach's alpha assumes essential tau-equivalence and underestimates reliability when the assumption is not met.  This function uses Fox's \code{\link{sem}} package to conduct a confirmatory factor analysis with minimal constraints (variance of common true score fixed at 1 for identifiability). The estimated loadings and error variances are then summed to calculate reliability as the ratio of true- to observed-score variance.
 }
 \author{
   Christopher T. Moore \email{moor0554@umn.edu}
 }
+\value{Returns the congeneric reliability coefficient.}
+\references{
+Graham, J. M. (2006). Congeneric and (essentially) tau-equivalent estimates of score reliability: What they are and how to use them. \emph{Educational and Psychological Measurement, 66}, 6, 930-944. 
 
-%%\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-%%}
-
+Raykov, T. (2001). \emph{Scale reliability evaluation with LISREL 8.50}. Retrieved from http://www.ssicentral.com/lisrel/techdocs/reliabil.pdf
+}
 \examples{
 S.Graham <- readMoments(diag = T, names = paste("x", 1:7, sep = ""))
 4.98
@@ -45,14 +37,14 @@ S.Graham <- readMoments(diag = T, names = paste("x", 1:7, sep = ""))
 congeneric.out <- funk.congeneric(x = S.Graham[1:5, 1:5], N = 60)
 congeneric.out
 library(psych)
-alpha(attr(congeneric.out, "cfa")$S)$total$raw_alpha
+if(require(psych)) psych::alpha(attr(congeneric.out, "cfa")$S)$total$raw_alpha
 
 #Tau-inequivalent
 congeneric.out <- funk.congeneric(x = S.Graham[c(1:4, 7), c(1:4, 7)], N = 60)
 congeneric.out
-alpha(attr(congeneric.out, "cfa")$S)$total$raw_alpha
+if(require(psych)) psych::alpha(attr(congeneric.out, "cfa")$S)$total$raw_alpha
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{ measurement }
-\keyword{ reliability }% __ONLY ONE__ keyword per line
+\keyword{ reliability }
