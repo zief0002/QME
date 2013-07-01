@@ -21,7 +21,7 @@
 \references{
 Graham, J. M. (2006). Congeneric and (essentially) tau-equivalent estimates of score reliability: What they are and how to use them. \emph{Educational and Psychological Measurement, 66}, 6, 930-944. 
 
-Raykov, T. (2001). \emph{Scale reliability evaluation with LISREL 8.50}. Retrieved from http://www.ssicentral.com/lisrel/techdocs/reliabil.pdf
+Raykov, T. (2001). \emph{Scale reliability evaluation with LISREL 8.50}. Retrieved from \url{http://www.ssicentral.com/lisrel/techdocs/reliabil.pdf}
 }
 \examples{
 S.Graham <- readMoments(diag = T, names = paste("x", 1:7, sep = ""))
@@ -43,6 +43,13 @@ if(require(psych)) psych::alpha(attr(congeneric.out, "cfa")$S)$total$raw_alpha
 congeneric.out <- funk.congeneric(x = S.Graham[c(1:4, 7), c(1:4, 7)], N = 60)
 congeneric.out
 if(require(psych)) psych::alpha(attr(congeneric.out, "cfa")$S)$total$raw_alpha
+
+#LSAT data
+library(ltm)
+congeneric.out <- funk.congeneric(x = LSAT, vcov = F)
+congeneric.out
+coef_alpha(LSAT)
+split_half(LSAT)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
