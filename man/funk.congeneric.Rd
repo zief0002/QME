@@ -14,7 +14,7 @@ funk.congeneric(x, N = NULL, vcov = FALSE)
 \arguments{
   \item{x}{a variance-covariance matrix calculated from item responses to be passed to \code{\link{sem}}; alternatively, an item response matrix or data frame containing one object of measurement (e.g., person) per row and one item per column.  If the latter, then \code{vcov} must be \code{TRUE}}
   \item{N}{the number of objects of measurement (e.g., persons, respondents, rows) underlying the variance-covariance matrix; defaults to the number of rows if \code{vcov} is \code{TRUE}.}
-  \{item}{vcov}{if \code{FALSE}, then \code{x} must be a variance-covariance matrix and \code{N} must be specified; if \code{TRUE}, then \code{x} is an item response matrix}
+  \item{vcov}{if \code{FALSE}, then \code{x} must be a variance-covariance matrix and \code{N} must be specified; if \code{TRUE}, then \code{x} is an item response matrix}
 }
 
 \value{
