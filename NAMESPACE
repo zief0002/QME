@@ -1,1 +1,1 @@
-export(coef_alpha, split_half)
+export(coef_alpha)
