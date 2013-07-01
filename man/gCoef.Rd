@@ -9,7 +9,7 @@
 \arguments{
   \item{gVar.out}{data frame consisting of a column named "Source" containing named sources of variation, a column named "Variance" containing estimated variance components, and a column named "N" containing the number of conditions by which variance components will be divided.}
   \item{object}{a character string specifying which named source of variation is the object of measurement.}
-  \item{type} a character string taking the value of "both" (default), "relative", or "absolute".
+  \item{type}{a character string taking the value of "both" (default), "relative", or "absolute".}
 }
 
 \references{
