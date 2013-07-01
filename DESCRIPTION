@@ -6,10 +6,10 @@ Authors@R: c(person("Kory Vue", "Developer", role = c("aut", "cre"), email = "vu
              person("Andrew Zieffler", "Developer", role = "aut", email=),
              person("Luke Stanke", "Developer", role = "aut",  email = ""), 
              person("Yufeng Chang", "Developer", role = "aut",email = ""), 
-             person("Chris Moore", "User", role = "ctb",email = ""))
-Author: Kory Vue,Andy Zieffler, Luke Stanke, Yufeng Chang, with contributions from Chris Moore.
+             person("Christopher Moore", "User", role = "ctb",email = ""))
+Author: Kory Vue, Andy Zieffler, Luke Stanke, Yufeng Chang, with contributions from Christopher Moore.
 Maintainer: Kory Vue <vuexx199@umn.edu>
-Depends: R (>= 2.15.0), ltm
+Depends: R (>= 2.15.0), ltm, sem, stringr, arm, ggplot2, lme4, plyr, reshape
 Suggests: ggplot2
 Description: Ability to compute many different reliabilities
 License: GPL (>= 2)
