@@ -16,9 +16,6 @@
   at this time.
 }
 \author{
-  Christopher T. Moore \email{moor0554@umn.edu}
-}
-\seealso{
   \url{http://www.cehd.umn.edu/EdPsych/programs/QME/}
 }
 \keyword{package}
