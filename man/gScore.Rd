@@ -48,6 +48,9 @@
   common practice in multilevel modeling (Snijders &
   Bosker, 1999).
 }
+\author{
+  Christopher T. Moore \email{moor0554@umn.edu}
+}
 \examples{
 #Load Brennan's (2001) synthetic data set number 4.
 data(Brennan.4)

@@ -27,7 +27,7 @@ This function returns the congeneric reliability coefficient.
 Graham, J. M. (2006). Congeneric and (essentially) tau-equivalent estimates of score reliability: What they are and how to use them. Educational and Psychological Measurement, 66, 6, 930-944. 
 }
 \author{
-University of Minnesota Quantitative Methods in Education
+  Christopher T. Moore \email{moor0554@umn.edu}
 }
 
 %%\seealso{

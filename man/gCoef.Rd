@@ -34,6 +34,9 @@
   conducting a decision (D) study, N can be a vector of
   sample sizes from a proposed design.
 }
+\author{
+  Christopher T. Moore \email{moor0554@umn.edu}
+}
 \examples{
 ########################################
 #An example in which all facets are considered random.
