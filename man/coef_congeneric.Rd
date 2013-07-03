@@ -1,8 +1,8 @@
-\name{funk.congeneric}
-\alias{funk.congeneric}
+\name{coef_congeneric}
+\alias{coef_congeneric}
 \title{Estimate congeneric reliability.}
 \usage{
-  funk.congeneric(x, N = NULL, vcov = FALSE)
+  coef_congeneric(x, N = NULL, vcov = FALSE)
 }
 \arguments{
   \item{x}{a variance-covariance matrix calculated from item responses to be passed to \code{\link{sem}}; alternatively, an item response matrix or data frame containing one object of measurement (e.g., person) per row and one item per column.  If the latter, then \code{vcov} must be \code{TRUE}.}
@@ -28,19 +28,19 @@ data(Graham)
 Graham
 
 #Tau-equivalent
-congeneric.out <- funk.congeneric(x = Graham[1:5, 1:5], N = 60)
+congeneric.out <- coef_congeneric(x = Graham[1:5, 1:5], N = 60)
 congeneric.out
 library(psych)
 if(require(psych)) psych::alpha(attr(congeneric.out, "cfa")$S)$total$raw_alpha
 
 #Tau-inequivalent
-congeneric.out <- funk.congeneric(x = Graham[c(1:4, 7), c(1:4, 7)], N = 60)
+congeneric.out <- coef_congeneric(x = Graham[c(1:4, 7), c(1:4, 7)], N = 60)
 congeneric.out
 if(require(psych)) psych::alpha(attr(congeneric.out, "cfa")$S)$total$raw_alpha
 
 #LSAT data
 library(ltm)
-congeneric.out <- funk.congeneric(x = LSAT, vcov = F)
+congeneric.out <- coef_congeneric(x = LSAT, vcov = F)
 congeneric.out
 coef_alpha(LSAT)
 split_half(LSAT)
