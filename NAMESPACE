@@ -1,1 +1,1 @@
-export(coef_alpha, guttman_l1, split_half, funk.congeneric, gVar, gCoef, gScore)
+export(coef_alpha, guttman_l1, split_half, coef_congeneric, gVar, gCoef, gScore)
