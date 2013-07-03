@@ -1,4 +1,4 @@
-funk.congeneric <- function(x, N = NULL, vcov = TRUE) {
+coef_congeneric <- function(x, N = NULL, vcov = TRUE) {
   if(vcov == FALSE) {
     colnames(x) <- make.names(colnames(x))
 	if(is.null(N)) N <- nrow(x)

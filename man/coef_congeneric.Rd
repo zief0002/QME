@@ -24,23 +24,17 @@ Graham, J. M. (2006). Congeneric and (essentially) tau-equivalent estimates of s
 Raykov, T. (2001). \emph{Scale reliability evaluation with LISREL 8.50}. Retrieved from \url{http://www.ssicentral.com/lisrel/techdocs/reliabil.pdf}
 }
 \examples{
-S.Graham <- readMoments(diag = T, names = paste("x", 1:7, sep = ""))
-4.98
-4.60  5.59
-4.45  4.42  6.30
-3.84  3.81  3.66  6.44
-5.71  5.67  5.52  4.91 11.86
-23.85 23.68 22.92 19.87 34.28 127.65 
-46.53 46.20 44.67 38.57 62.30 244.36 471.95
+data(Graham)
+Graham
 
 #Tau-equivalent
-congeneric.out <- funk.congeneric(x = S.Graham[1:5, 1:5], N = 60)
+congeneric.out <- funk.congeneric(x = Graham[1:5, 1:5], N = 60)
 congeneric.out
 library(psych)
 if(require(psych)) psych::alpha(attr(congeneric.out, "cfa")$S)$total$raw_alpha
 
 #Tau-inequivalent
-congeneric.out <- funk.congeneric(x = S.Graham[c(1:4, 7), c(1:4, 7)], N = 60)
+congeneric.out <- funk.congeneric(x = Graham[c(1:4, 7), c(1:4, 7)], N = 60)
 congeneric.out
 if(require(psych)) psych::alpha(attr(congeneric.out, "cfa")$S)$total$raw_alpha
 

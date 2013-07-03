@@ -55,6 +55,9 @@ gVar.out
 gVar.out$N <- c(3, 12, 1, 3, 12)
 gCoef(gVar.out)
 
+#Compare to alpha.
+coef_alpha(recast(Brennan.4, measure.var = "Score", ... ~ variable + Item + Rater)[, -1])
+
 #Conduct a D study asking, "What is the effect of adding a task (item)?"
 gVar.out$N <- c(4, 12, 1, 4, 12)
 gCoef(gVar.out)
@@ -134,6 +137,9 @@ gVar.out
 #Complete G study.
 gVar.out$N <- c(1, 3, 3)
 gCoef(gVar.out)
+
+#Compare to alpha.
+coef_alpha(recast(Shavelson.Webb.5.1, measure.var = "Score", ... ~ variable + Subject + Rater)[, -1])
 
 #Conduct a D study asking, "What is the effect of adding a rater?"
 gVar.out$N <- c(1, 4, 4)
