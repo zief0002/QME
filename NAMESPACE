@@ -1,1 +1,1 @@
-export(coef_alpha, coef_congeneric, gCoef, gScore, guttman_l1, gVar, parallel_test_of_reliability, split_half)
+export(coef_alpha, coef_congeneric, gCoef, gScore, guttman_l1, gVar, split_half)
