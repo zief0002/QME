@@ -33,16 +33,16 @@ University of Minnesota Quantitative Methods in Education
 \examples{
 
 
-library(ltm)
+data(beer)
 # Odd-even split of the items
-split_half(LSAT)
+split_half(beer)
 
 # Random split of the items
-split_half(LSAT, oddEven = FALSE)
+split_half(beer, oddEven = FALSE)
 
 # For reproducability use \code{set.seed()} 
 set.seed(100)
-split_half(LSAT, oddEven = FALSE)
+split_half(beer, oddEven = FALSE)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
