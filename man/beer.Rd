@@ -1,5 +1,5 @@
 \docType{data}
-\name{beer
+\name{beer}
 \alias{beer}
 \title{Data from the 2011 Atlanta Beer Survey}
 \arguments{
