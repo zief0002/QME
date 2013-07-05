@@ -1,9 +1,9 @@
 \docType{data}
-\name{Shavelson.Webb.5.1}
-\alias{Shavelson.Webb.5.1}
+\name{Shavelson_Webb_5_1}
+\alias{Shavelson_Webb_5_1}
 \title{Shavelson and Webb's (1991) data set number 5.1}
 \arguments{
-  \item{Shavelson.Webb.5.1}{data frame in long format with
+  \item{Shavelson_Webb_5_1}{data frame in long format with
   a column for item scores and columns for sources of
   variance}
 }
@@ -16,9 +16,9 @@
   classified as such.
 }
 \examples{
-data(Shavelson.Webb.5.1)
-head(Shavelson.Webb.5.1)
-sapply(Shavelson.Webb.5.1, class)
+data(Shavelson_Webb_5_1)
+head(Shavelson_Webb_5_1)
+sapply(Shavelson_Webb_5_1, class)
 }
 \author{
   Christopher T. Moore \email{moor0554@umn.edu}
