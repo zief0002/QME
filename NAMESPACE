@@ -1,1 +1,1 @@
-export(beer, Brennan_4, coef_alpha, coef_congeneric, gCoef, gScore, guttman_l1, gVar, parallel_test_of_reliability, Shavelson_Webb_5_1, split_half)
+export(beer, Brennan_4, coef_alpha, coef_congeneric, gCoef, Graham, gScore, guttman_l1, gVar, parallel_test_of_reliability, Shavelson_Webb_5_1, split_half)
