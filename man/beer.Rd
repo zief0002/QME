@@ -3,10 +3,10 @@
 \alias{beer}
 \title{Data from the 2011 Atlanta Beer Survey}
 \description{
-  These six items were a subset of items asked on a larger beer survey. Each of these items were Likert-scaled from Very Unlikely to Very Likely (1 = Very Unlikely; 2 = Unlikely; 3 = Undecided; 4 = Likely; 5 = Very Likely).
+  The data come from the 2011 Atlanta beer survey. The six items included here are a subset of items asked on a larger beer survey. Each of these items were Likert-scaled from Very Unlikely to Very Likely (1 = Very Unlikely; 2 = Unlikely; 3 = Undecided; 4 = Likely; 5 = Very Likely). In order, the items asked
 }
 
-\arguments{
+\itemize{
   \item{subject}{Subject ID number}
   \item{massMarket}{How likely are you to consume American-style Mass Market beers (e.g., Budweiser, Coors, Miller, PBR)?}
   \item{lager}{How likely are you to consume Lagers and Pilsners (e.g., Heineken, Amstel, Stella Artois, Corona, Warsteiner)?}
