@@ -43,6 +43,11 @@ This section is meant as a helpful resource for our contributors. It lays out th
 	1. Place the `.rda` data in the  `data` directory.
 	2. Write documentation file for dataset and place in the `man` directory.
 
+Coding Style
+---
+We will eventually adopt a more consistent coding style. In the meantime, here is Hadley Wickham's online [Style Guide](https://github.com/hadley/devtools/wiki/Style).
+
+
 Using the GitHub GUI on your Computer
 ===
 The GitHub GUI allows you to push (upload) and pull (download) changes to the QME package via a point-and-click system. 
