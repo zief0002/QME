@@ -2,14 +2,14 @@
 \alias{coef_congeneric}
 \title{Estimate congeneric reliability.}
 \usage{
-  coef_congeneric(x, N = NULL, vcov = FALSE)
+  coef_congeneric(x, N = NULL, vcov = TRUE)
 }
 \arguments{
-  \item{x}{a variance-covariance matrix calculated from item responses to be passed to \code{\link{sem}}; alternatively, an item response matrix or data frame containing one object of measurement (e.g., person) per row and one item per column.  If the latter, then \code{vcov} must be \code{TRUE}.}
+  \item{x}{a variance-covariance matrix calculated from item responses to be passed to \code{\link{sem}}; alternatively, an item response matrix or data frame containing one object of measurement (e.g., person) per row and one item per column.  If the latter, then \code{vcov} must be \code{FALSE}.}
   
-  \item{N}{the number of objects of measurement (e.g., persons, respondents, rows) underlying the variance-covariance matrix; defaults to the number of rows if \code{vcov} is \code{TRUE}.}
+  \item{N}{the number of objects of measurement (e.g., persons, respondents, rows) underlying the variance-covariance matrix; defaults to the number of rows if \code{vcov} is \code{FALSE}.}
   
-  \item{vcov}{if \code{FALSE}, then \code{x} must be a variance-covariance matrix and \code{N} must be specified; if \code{TRUE}, then \code{x} is an item response matrix}
+  \item{vcov}{if \code{TRUE}, then \code{x} must be a variance-covariance matrix and \code{N} must be specified; if \code{FALSE}, then \code{x} is an item response matrix}
 }
 \description{
   This function estimates the congeneric reliability of observed scores.  Estimating congeneric reliability is appropriate when items are stratified or lack a common scale (e.g., when a test contains both dichotomously and polytomously scored items).  As discussed by Graham (2006), it is not widely known in applied educational research that Cronbach's alpha assumes essential tau-equivalence and underestimates reliability when the assumption is not met.  This function uses Fox's \code{\link{sem}} package to conduct a confirmatory factor analysis with minimal constraints (variance of common true score fixed at 1 for identifiability). The estimated loadings and error variances are then summed to calculate reliability as the ratio of true- to observed-score variance.
