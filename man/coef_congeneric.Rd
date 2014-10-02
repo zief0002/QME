@@ -40,7 +40,7 @@ if(require(psych)) psych::alpha(attr(congeneric.out, "cfa")$S)$total$raw_alpha
 
 #LSAT data
 library(ltm)
-congeneric.out <- coef_congeneric(x = LSAT, vcov = F)
+congeneric.out <- coef_congeneric(x = LSAT, vcov = FALSE)
 congeneric.out
 coef_alpha(LSAT)
 split_half(LSAT)

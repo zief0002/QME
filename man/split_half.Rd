@@ -4,15 +4,15 @@
 \title{Split-Half Reliability}
 \description{This function computes the split-half reliability from the formula in Thorndike's measurement book.}
 \usage{
-split_half(x, oddEven = TRUE, ...)
+split_half(x, method = "oddeven")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
 x is a data frame consisting of the student(row) by item response(columns) matrix.
 }
-\item{oddEven}{
-logical. Should the split-half reliability be computed based on an odd-even split of the items.
+\item{method}{
+"oddeven" splits the test on even and odd items (default). "random" selects items split at random  
 }
 }
 
@@ -35,14 +35,14 @@ University of Minnesota Quantitative Methods in Education
 
 data(beer)
 # Odd-even split of the items
-split_half(beer)
+split_half(beer[,4:14])
 
 # Random split of the items
-split_half(beer, oddEven = FALSE)
+split_half(beer[,4:14], method = "random")
 
-# For reproducability use \code{set.seed()} 
+# For reproducibility use \code{set.seed()} 
 set.seed(100)
-split_half(beer, oddEven = FALSE)
+split_half(beer[,4:14], method = "random")
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

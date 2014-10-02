@@ -5,18 +5,14 @@
 Coefficient Alpha
 }
 \description{
-This function computes coefficient alpha from the formula in Thorndike's measurement book
+This function computes coefficient alpha using the covariance matrix
 }
 \usage{
-coef_alpha(x,k,...)
+coef_alpha(x)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{
-x is a data frame consisting of the student(row) by item response(columns) matrix.
-}
-\item{k}{
-k is the number of items on the test.  If k is not entered, it will be computed based on the number of columns.
+x is a data frame or matrix consisting of cases (row) by item response(columns) matrix.
 }
 }
 
@@ -24,6 +20,7 @@ k is the number of items on the test.  If k is not entered, it will be computed 
 It returns the value of coefficient alpha.
 }
 \references{
+Cronbach, L. (1951). Coefficient alpha and the internal structure of tests. \emph{Psychometrika, 16(3), 297-334}
 Thorndike, R. M. \& Thorndike-Christ, T. (2010).\emph{ Measurement and evaluation in psychology and education. (8th ed.)} Boston: Pearson. 
 }
 \author{
