@@ -7,9 +7,9 @@ coef_congeneric <- function(x, N = NULL, vcov = TRUE) {
   name.tempfile <- tempfile()
   model.cfa <- paste("F:", paste(colnames(x), collapse = ", "))
   cat(model.cfa, file = name.tempfile)
-  model.cfa <- cfa(file = name.tempfile, reference.indicators = FALSE)
+  model.cfa <- sem::cfa(file = name.tempfile, reference.indicators = FALSE)
   unlink(name.tempfile)
-  cfa.out <- sem(model = model.cfa, S = x, N = N)
+  cfa.out <- sem::sem(model = model.cfa, S = x, N = N)
   names.loadings <- str_detect(names(cfa.out$coeff), fixed("lam["))
   names.errors <- str_detect(names(cfa.out$coeff), fixed("V["))
   r.congeneric <- sum(cfa.out$coeff[names.loadings]) ^ 2 / 

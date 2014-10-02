@@ -6,17 +6,17 @@ gScore <- function(gVar.out, plot.ruler = NULL, score.universe = TRUE, significa
       "Estimate" = x$"(Intercept)"
     )
   }
-  data.plot <- data.frame(ldply(ranef(lmer.out), funk), "se" = unlist(se.ranef(lmer.out)))
+  data.plot <- data.frame(plyr::ldply(lme4::ranef(lmer.out), funk), "se" = unlist(arm::se.ranef(lmer.out)))
   data.plot <- rename(data.plot, c(".id" = "Source"))
   if(significant == TRUE) {
-    data.plot <- subset(data.plot, fixef(lmer.out) - 2 * se > 0 | fixef(lmer.out) + 2 * se < 0)
+    data.plot <- subset(data.plot, lme4::fixef(lmer.out) - 2 * se > 0 | lme4::fixef(lmer.out) + 2 * se < 0)
 	if(nrow(data.plot) == 0) stop("Evidence is lacking that any universe score differs significantly from the mean.  Consider changing significant to TRUE to see all estimates.")
   }
-  if(score.universe == TRUE) data.plot$Estimate <- fixef(lmer.out) + data.plot$Estimate
+  if(score.universe == TRUE) data.plot$Estimate <- lme4::fixef(lmer.out) + data.plot$Estimate
   data.plot$Lower <- with(data.plot, Estimate - 2 * se)
   data.plot$Upper <- with(data.plot, Estimate + 2 * se)
-  data.plot$Name <- str_replace_all(paste(paste(str_split_fixed(data.plot$Source, ":", 2)[, 1], str_split_fixed(data.plot$ID, ":", 2)[, 1]), paste(str_split_fixed(data.plot$Source, ":", 2)[, 2], str_split_fixed(data.plot$ID, ":", 2)[, 2]), sep = ", "), ",  ", "")
-  data.plot <- subset(data.plot, str_detect(Source, ":") == FALSE)
+  data.plot$Name <- stringr::str_replace_all(paste(paste(stringr::str_split_fixed(data.plot$Source, ":", 2)[, 1], stringr::str_split_fixed(data.plot$ID, ":", 2)[, 1]), paste(stringr::str_split_fixed(data.plot$Source, ":", 2)[, 2], stringr::str_split_fixed(data.plot$ID, ":", 2)[, 2]), sep = ", "), ",  ", "")
+  data.plot <- subset(data.plot, stringr::str_detect(Source, ":") == FALSE)
   data.plot$ID <- factor(data.plot$ID, levels = unique(data.plot$ID), ordered = TRUE)
   if(is.null(plot.ruler)) {
     data.plot

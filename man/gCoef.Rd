@@ -69,14 +69,14 @@ tail(array.denominator)
 funk.N <- function(x) {
   Items <- x$Items
   Raters <- x$Raters
-  N <- ifelse(str_detect(gVar.out$Source, "Rater") | str_detect(gVar.out$Source, "Residual"), Raters, 1) *
-    ifelse(str_detect(gVar.out$Source, "Item") | str_detect(gVar.out$Source, "Residual"), Items, 1)
+  N <- ifelse(stringr::str_detect(gVar.out$Source, "Rater") | stringr::str_detect(gVar.out$Source, "Residual"), Raters, 1) *
+    ifelse(stringr::str_detect(gVar.out$Source, "Item") | stringr::str_detect(gVar.out$Source, "Residual"), Items, 1)
   gVar.out$N <- N
   gVar.out
 }
-list.gVar.out <- alply(array.denominator, 1, funk.N)
+list.gVar.out <- plyr::alply(array.denominator, 1, funk.N)
 list.gVar.out[1:2]
-d.out <- ldply(list.gVar.out, function(x) gCoef(gVar.out = x))
+d.out <- plyr::ldply(list.gVar.out, function(x) gCoef(gVar.out = x))
 head(d.out)
 tail(d.out)
 
@@ -151,13 +151,13 @@ head(array.denominator)
 tail(array.denominator)
 funk.N <- function(x) {
   Raters <- x$Raters
-  N <- ifelse(str_detect(gVar.out$Source, "Rater") | str_detect(gVar.out$Source, "Residual"), Raters, 1)
+  N <- ifelse(stringr::str_detect(gVar.out$Source, "Rater") | stringr::str_detect(gVar.out$Source, "Residual"), Raters, 1)
   gVar.out$N <- N
   gVar.out
 }
-list.gVar.out <- alply(array.denominator, 1, funk.N)
+list.gVar.out <- plyr::alply(array.denominator, 1, funk.N)
 list.gVar.out[1:2]
-d.out <- ldply(list.gVar.out, function(x) gCoef(gVar.out = x))
+d.out <- plyr::ldply(list.gVar.out, function(x) gCoef(gVar.out = x))
 head(d.out)
 tail(d.out)
 
@@ -183,7 +183,7 @@ funk.plot.d(y = "RelativeSEM", title = "Decision study: Relative standard error 
 funk.plot.d(y = "Generalizability", title = "Decision study: Generalizability of scores for relative decisions", ylab = expression(widehat(paste(symbol(E), rho ^ 2))))
 funk.plot.d(y = "AbsoluteErrorVariance", title = "Decision study: Absolute error variance", ylab = expression(paste(hat(sigma) ^ 2, "(", Delta, ")")))
 funk.plot.d(y = "AbsoluteSEM", title = "Decision study: Absolute standard error of measurement", ylab = expression(paste(hat(sigma), "(", Delta, ")")))
-funk.plot.d(y = "Dependability", title = "Decision study: Dependability of scores for relative decisions", ylab = expression(hat(phi)))
+funk.plot.d(y = "Dependability", title = "Decision study: Dependability of scores for relative decisions", ylab = expression(hat(phi))) 
 }
 \references{
   Brennan, R. L. (2001). \emph{Generalizability theory}.
