@@ -4,7 +4,7 @@ odin_zeus = function(test, key, id = TRUE, d = 2, plot = TRUE, group, focal_name
 	test_level = test_summary(test, key, id = TRUE, d = 2, plot = FALSE)
 	dif_out = dif(test_level$keyed_test, dif_type = "both", group, focal_name)
 	c_alpha = coef_alpha(test_level$keyed_test_no_id)
-	#prop_missing = miss(test_level$raw_test)
+	prop_missing = miss(test_level$keyed_test_no_id)
 	pb = point_biserial(test_level$keyed_test_no_id, use = "pairwise.complete.obs")
 
 	oz = list(
