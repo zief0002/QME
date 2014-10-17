@@ -1,4 +1,3 @@
-export(coef_alpha, coef_congeneric, gCoef, gScore, guttman_l1, gVar, split_half)
-importFrom(sem, sem,cfa)
-importFrom(plyr, ldply,alply)
-import(lme4,arm,stringr)
+exportPattern("^[^\.]")
+
+
