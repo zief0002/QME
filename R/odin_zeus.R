@@ -11,7 +11,7 @@ odin_zeus = function(test, key, id = TRUE, d = 2, plot = TRUE, group, focal_name
 		test_level = test_level,
 		dif_out = dif_out,
 		c_alpha = c_alpha,
-		#prop_missing = prop_missing,
+		prop_missing = prop_missing,
 		point_biserial = pb
 		)
 	return(oz)
