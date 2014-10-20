@@ -36,58 +36,69 @@ The main function for use is called `odin_zeus()`. This requires the following a
 
 An example of non-keyed response data is shown below.
 
-```r
-head(math)
-  id item1 item2 item3 item4 item5 item6 item7 item8 item9 item10
-1  1     A     A     B     C     C     C     B     C     A      C
-2  2     E     B     C     D     B     C     A     D     C      A
-3  3     D     A     C     E     B     C     C     B     C      A
-4  4     D     E     E     D     B     C     E     B     C      A
-5  5     A     B     B     C     B     C     E     E     B      B
-6  6     A     B     C     D     B     B     A     B     D      A
+```
+	> head(math)
+	
+	  id item1 item2 item3 item4 item5 item6 item7 item8 item9 item10
+	1  1     A     A     B     C     C     C     B     C     A      C
+	2  2     E     B     C     D     B     C     A     D     C      A
+	3  3     D     A     C     E     B     C     C     B     C      A
+	4  4     D     E     E     D     B     C     E     B     C      A
+	5  5     A     B     B     C     B     C     E     E     B      B
+	6  6     A     B     C     D     B     B     A     B     D      A
 ```
 
 The function assumes that there is an ID column, or respondent names, in the first column. If there is no ID column, use the argument `id = FALSE`.
 
 If the response data has not been keyed, the `key=` argument is also needed. This argument requirers a dataframe of the keyed responses (in a single row) or as a vector.
 
-```r
-math_key
-  item1 item2 item3 item4 item5 item6 item7 item8 item9 item10
-1     E     B     C     D     B     C     A     B     C      A
+```
+	> math_key
+	
+	  item1 item2 item3 item4 item5 item6 item7 item8 item9 item10
+	1     E     B     C     D     B     C     A     B     C      A
 ```
 
 To run the function without a DIF analysis we also need to set the arguments `group=` and `focal_name=` to `NULL`.
 
-```r
-oz = odin_zeus(math, key = math_key, group = NULL, focal_name = NULL)
-pretty_output(oz)
--------------------------------                          
-Number of Items:     10.00
-Number of Examinees: 30.00
-Minimum Score:        1.00
-Maximum Score:        9.00
-Mean Score:           5.70
-Median Score:         6.00
-Standard Deviation:   2.05
-IQR:                  2.75
-Skewness (G1):       -0.26
-Kurtosis (G2):       -0.31
--------------------------------
+```
+	> oz = odin_zeus(math, key = math_key, group = NULL, focal_name = NULL)
+	> pretty_output(oz)
+	
+	-------------------------------                          
+	Number of Items:     10.00
+	Number of Examinees: 30.00
+	Minimum Score:        1.00
+	Maximum Score:        9.00
+	Mean Score:           5.70
+	Median Score:         6.00
+	Standard Deviation:   2.05
+	IQR:                  2.75
+	Skewness (G1):       -0.26
+	Kurtosis (G2):       -0.31
+	-------------------------------
+```
+
+We can also compute Coefficient Alpha using
+
+```
+	> oz$c_alpha
+	
+	[1] 0.5729687
 ```
 
 
 If you want to do a DIF analysis, the `group=`  and `focal_name=` arguments are also required. The `group=` argument is a numeric or character vector indicating group membership for each student. (*Note: Currently this has to be a vector and not a column in the data frame of responses.*) The `focal_name=` argument is the name of the focal group, and must be one of the values included in the vector of group membership.
 
 ```r
-group = c("Male", "Female", "Male", "Female", "Female", "Female", "Female", "Male", "Male", "Male")
-oz = odin_zeus(math, key = math_key, group = group, focal_name = "Male")
+> group = c("Male", "Female", "Male", "Female", "Female", "Female", "Female", "Male", "Male", "Male")
+> oz = odin_zeus(math, key = math_key, group = group, focal_name = "Male")
 ```
 
 The function performs detection of Differential Item Functioning using (1) the Mantel-Haenszel method, and (2) using Logistic regression methods.
 
-```r
-oz$dif_out$mh
+```
+	> oz$dif_out$mh
 
 	Detection of Differential Item Functioning using Mantel-Haenszel method 
 	with continuity correction and without item purification
@@ -147,6 +158,62 @@ oz$dif_out$mh
 	Output was not captured! 
 ```
 
+To obtain the logistic regression output, 
+
+```
+	> oz$dif_out$logistic
+	
+	Detection of both types of Differential Item Functioning
+	using Logistic regression method, without item purification
+	and with LRT DIF statistic
+	
+	Logistic regression DIF statistic: 
+	 
+	       Stat.  P-value 
+	id     0.0000 1.0000  
+	item1  0.6052 0.7389  
+	item2  1.4405 0.4866  
+	item3  0.4558 0.7962  
+	item4  1.6704 0.4338  
+	item5  2.9275 0.2314  
+	item6  3.7649 0.1522  
+	item7  1.8196 0.4026  
+	item8  0.1928 0.9081  
+	item9  2.5875 0.2742  
+	item10 1.5509 0.4605  
+	
+	Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1  
+	
+	Detection threshold: 5.9915 (significance level: 0.05)
+	
+	Items detected as DIF items: No DIF item detected 
+	 
+	Effect size (Nagelkerke's R^2): 
+	 
+	Effect size code: 
+	 'A': negligible effect 
+	 'B': moderate effect 
+	 'C': large effect 
+	 
+	       R^2    ZT JG
+	id        NaN ?  ? 
+	item1  0.0370 A  B 
+	item2  0.0684 A  B 
+	item3  0.0208 A  A 
+	item4  0.0813 A  C 
+	item5  0.1544 B  C 
+	item6  0.2359 B  C 
+	item7  0.0655 A  B 
+	item8  0.0094 A  A 
+	item9  0.1148 A  C 
+	item10 0.0914 A  C 
+	
+	Effect size codes: 
+	 Zumbo & Thomas (ZT): 0 'A' 0.13 'B' 0.26 'C' 1 
+	 Jodoign & Gierl (JG): 0 'A' 0.035 'B' 0.07 'C' 1 
+	
+	 Output was not captured!
+```
 
 
 For Contributors
