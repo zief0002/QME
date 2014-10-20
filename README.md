@@ -30,6 +30,123 @@ install_github("QME", "zief0002")
 Using the QME package
 ======
 
+The main function for use is called `odin_zeus()`. This requires the following argument,
+
+- `test`: A data frame of raw or keyed responses. The responses can either be numeric or character (i.e., letters). The data frame should be formatted in the wide format, so that each row represents a student, and each column represents an item. 
+
+An example of non-keyed response data is shown below.
+
+```r
+head(math)
+  id item1 item2 item3 item4 item5 item6 item7 item8 item9 item10
+1  1     A     A     B     C     C     C     B     C     A      C
+2  2     E     B     C     D     B     C     A     D     C      A
+3  3     D     A     C     E     B     C     C     B     C      A
+4  4     D     E     E     D     B     C     E     B     C      A
+5  5     A     B     B     C     B     C     E     E     B      B
+6  6     A     B     C     D     B     B     A     B     D      A
+```
+
+The function assumes that there is an ID column, or respondent names, in the first column. If there is no ID column, use the argument `id = FALSE`.
+
+If the response data has not been keyed, the `key=` argument is also needed. This argument requirers a dataframe of the keyed responses (in a single row) or as a vector.
+
+```r
+math_key
+  item1 item2 item3 item4 item5 item6 item7 item8 item9 item10
+1     E     B     C     D     B     C     A     B     C      A
+```
+
+To run the function without a DIF analysis we also need to set the arguments `group=` and `focal_name=` to `NULL`.
+
+```r
+oz = odin_zeus(math, key = math_key, group = NULL, focal_name = NULL)
+pretty_output(oz)
+-------------------------------                          
+Number of Items:     10.00
+Number of Examinees: 30.00
+Minimum Score:        1.00
+Maximum Score:        9.00
+Mean Score:           5.70
+Median Score:         6.00
+Standard Deviation:   2.05
+IQR:                  2.75
+Skewness (G1):       -0.26
+Kurtosis (G2):       -0.31
+-------------------------------
+```
+
+
+If you want to do a DIF analysis, the `group=`  and `focal_name=` arguments are also required. The `group=` argument is a numeric or character vector indicating group membership for each student. (*Note: Currently this has to be a vector and not a column in the data frame of responses.*) The `focal_name=` argument is the name of the focal group, and must be one of the values included in the vector of group membership.
+
+```r
+group = c("Male", "Female", "Male", "Female", "Female", "Female", "Female", "Male", "Male", "Male")
+oz = odin_zeus(math, key = math_key, group = group, focal_name = "Male")
+```
+
+The function performs detection of Differential Item Functioning using (1) the Mantel-Haenszel method, and (2) using Logistic regression methods.
+
+```r
+oz$dif_out$mh
+
+	Detection of Differential Item Functioning using Mantel-Haenszel method 
+	with continuity correction and without item purification
+	
+	Results based on asymptotic inference 
+	 
+	Mantel-Haenszel Chi-square statistic: 
+	 
+	       Stat.  P-value    
+	id        Inf 0.0000  ***
+	item1  0.0000 1.0000     
+	item2  0.0000 1.0000     
+	item3     Inf 0.0000  ***
+	item4  0.0000 1.0000     
+	item5     Inf 0.0000  ***
+	item6  0.5000 0.4795     
+	item7  0.0000 1.0000     
+	item8  0.5000 0.4795     
+	item9  0.0000 1.0000     
+	item10    Inf 0.0000  ***
+	
+	Signif. codes: 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1  
+	
+	Detection threshold: 3.8415 (significance level: 0.05)
+	
+	Items detected as DIF items: 
+	       
+	 id    
+	 item3 
+	 item5 
+	 item10
+	
+	 
+	Effect size (ETS Delta scale): 
+	 
+	Effect size code: 
+	 'A': negligible effect 
+	 'B': moderate effect 
+	 'C': large effect 
+	 
+	       alphaMH deltaMH  
+	id     NaN     NaN     ?
+	item1    0     Inf     C
+	item2    0     Inf     C
+	item3  NaN     NaN     ?
+	item4    0     Inf     C
+	item5  NaN     NaN     ?
+	item6    0     Inf     C
+	item7    0     Inf     C
+	item8    0     Inf     C
+	item9    0     Inf     C
+	item10 NaN     NaN     ?
+	
+	Effect size codes: 0 'A' 1.0 'B' 1.5 'C' 
+	 (for absolute values of 'deltaMH') 
+	 
+	Output was not captured! 
+```
+
 
 
 For Contributors
