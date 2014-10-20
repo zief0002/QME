@@ -27,6 +27,11 @@ install_github("QME", "zief0002")
 ```
 
 
+Using the QME package
+======
+
+
+
 For Contributors
 ===
 
