@@ -4,6 +4,7 @@ Date: 2013-06-10
 Title: Reliability Functions
 Authors@R: c(person("Kory Vue", "Developer", role = c("aut", "cre"), email = "vuexx199@umn.edu"),
              person("Andrew Zieffler", "Developer", role = "aut", email=),
+	     person("Ethan Brown", "Developer", role = "aut", email=""),
              person("Luke Stanke", "Developer", role = "aut",  email = ""), 
              person("Yufeng Chang", "Developer", role = "aut",email = ""), 
              person("Chris Moore", "User", role = "ctb",email = ""))
