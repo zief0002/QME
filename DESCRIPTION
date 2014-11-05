@@ -3,16 +3,11 @@ Version: 0.2.0
 Date: 2013-06-10
 Title: Reliability Functions
 Authors@R: c(person("Kory Vue", "Developer", role = c("aut", "cre"), email = "vuexx199@umn.edu"),
-             person("Andrew Zieffler", "Developer", role = "aut", email=),
-<<<<<<< HEAD
-	     person("Ethan Brown", "Developer", role = "aut", email=""),
-=======
-             person("Ethan Brown", "Developer", role = "aut",  email = ""),
+             person("Andrew Zieffler", "Developer", role = "aut", email=""),
+  	         person("Ethan Brown", "Developer", role = "aut", email=""),
              person("Yufeng Chang", "Developer", role = "aut",email = ""),
->>>>>>> origin/master
              person("Luke Stanke", "Developer", role = "aut",  email = ""), 
              person("Christopher Moore", "User", role = "ctb",email = "moor0554@umn.edu"))
-Author: Kory Vue, Andy Zieffler, Ethan Brown, Yufeng Chang, Luke Stanke, with contributions from Christopher Moore.
 Maintainer: Kory Vue <vuexx199@umn.edu>
 Depends: R (>= 2.15.0), ggplot2, difR
 Imports: 
