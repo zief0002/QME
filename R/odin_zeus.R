@@ -1,12 +1,23 @@
 odin_zeus = function(test, key, id = TRUE, d = 2, plot = TRUE, group, focal_name, dif_type = "both", use = "pairwise.complete.obs"){
+  
+  # Preliminaries: score & get keyed test
+  q1 = QMEtest(test, key = key, id = id)
+  keyed_test = getKeyedTest(q1)
+  keyed_test_no_id = getKeyedTestNoID(q1)
 
+  # Get various basic descriptives
+	test_level = summary(q1, d = d)
+	c_alpha = coef_alpha(keyed_test_no_id)
+	prop_missing = miss(keyed_test_no_id)
+	pb = point_biserial(keyed_test_no_id, use = "pairwise.complete.obs")
 
-	test_level = test_summary(test, key, id = TRUE, d = 2, plot = FALSE)
-	dif_out = dif(test_level$keyed_test, dif_type = "both", group, focal_name)
-	c_alpha = coef_alpha(test_level$keyed_test_no_id)
-	prop_missing = miss(test_level$keyed_test_no_id)
-	pb = point_biserial(test_level$keyed_test_no_id, use = "pairwise.complete.obs")
-
+  # If group and focal are provided, do DIF
+  if(!missing(group) && !missing(focal_name))
+    dif_out = dif(keyed_test, dif_type = "both", group, focal_name)
+  else
+    dif_out = NULL
+  
+  # Gather it all up in a list
 	oz = list(
 		test_level = test_level,
 		dif_out = dif_out,
