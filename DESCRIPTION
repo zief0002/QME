@@ -1,7 +1,7 @@
 Package: QME
 Version: 0.2.0
 Date: 2013-06-10
-Title: Reliability Functions
+Title: Classic test theory item analysis
 Authors@R: c(person("Kory Vue", "Developer", role = c("aut", "cre"), email = "vuexx199@umn.edu"),
              person("Andrew Zieffler", "Developer", role = "aut", email=""),
   	         person("Ethan Brown", "Developer", role = "aut", email=""),
@@ -9,10 +9,10 @@ Authors@R: c(person("Kory Vue", "Developer", role = c("aut", "cre"), email = "vu
              person("Luke Stanke", "Developer", role = "aut",  email = ""), 
              person("Christopher Moore", "User", role = "ctb",email = "moor0554@umn.edu"))
 Maintainer: Kory Vue <vuexx199@umn.edu>
-Depends: R (>= 2.15.0), ggplot2, difR
+Depends: R (>= 2.15.0), ggplot2
 Imports: 
 Suggests: psych
-Description: Ability to compute many different reliabilities
+Description: Ability to key and score test file, and provide psychometric information
 License: GPL (>= 2)
 URL: https://github.com/zief0002/QME
 Repository: github
