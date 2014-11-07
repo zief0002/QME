@@ -2,7 +2,7 @@
 
 
 # have the ... so I need to call the split half function
-lam_4 <-function(x,oddEven=TRUE,...)
+lam_4 = function(x,oddEven=TRUE,...)
 {
   
   if(oddEven == TRUE){         #I had a 1 but verify this
