@@ -14,8 +14,8 @@ feldt_gilmer = function(x, ...){
   sum_of_row_covs = rowSums(cov_matrix) - variances
   
   # Compute the sums of the covariances and the variances
-  total_cov = sum(sum_of_row_covs)
-  total_var = sum(cov_matrix)
+  tot_cov = sum(sum_of_row_covs)
+  tot_var = sum(cov_matrix)
 
   # Which row has the highest sum of covariances?
   myRow = which.max(sum_of_row_covs)
@@ -28,7 +28,7 @@ feldt_gilmer = function(x, ...){
   Q = sum(D) ^ 2
   W = sum(D ^ 2)
 
-  fg = Q / (Q - W) * total_cov / total_var
+  fg = Q / (Q - W) * tot_cov / tot_var
 
   # Compute CI based on Feldt's (1965) method
   k = nrow(cov_matrix)
