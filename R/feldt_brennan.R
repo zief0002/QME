@@ -8,10 +8,10 @@ feldt_brennan = function(x, ...){
 	cov_matrix = cov(x, use = "pairwise.complete.obs")
   
 	# Get the variance for the scores
-	score_var = sum(cov_matrix)
+	tot_var = sum(cov_matrix)
 
 	# Get the item variances
-	item_var = sum(diag(cov_matrix))
+	obs_var = sum(diag(cov_matrix))
 
 	# Compute sum of the squared row sums
 	sq_row_sums = sum(rowSums(cov_matrix) ^ 2)
