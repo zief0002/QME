@@ -1,6 +1,5 @@
 QME
 ===
-ok
 Quantitative Methods in Education R package
 
 
