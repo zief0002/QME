@@ -1,0 +1,21 @@
+#' Calculate reliability for QMEtest object
+#' 
+#' Calculates reliability functions for QMEtest objects
+#' 
+#' @param x a \code{QMEtest} object
+#' @return A list with a bunch of tasty reliabilities
+
+reliability = function(x, ...) {
+  
+  keyed_test_no_id = getKeyedTestNoID(x)
+  
+  rel_funs = list(
+    coef_alpha = coef_alpha   # currently only returns estimate
+    # lam_4: Not currently included (does not work)
+  )
+  
+  out = lapply(rel_funs, function(f) f(keyed_test_no_id))
+  
+  return(out)
+  
+}
