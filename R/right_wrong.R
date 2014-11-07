@@ -6,12 +6,12 @@ right_wrong = function(test, key, id = TRUE, ...){
 
 	column_start = ifelse(id == TRUE, 2, 1)
   
-  # Convert NA's to blanks ("")
-  test[is.na(test)] = ""
-
 	# Coerce the item variables to characters
 	test[ , column_start:length(test)] = lapply(test[ , column_start:length(test)], as.character)
 	working_key = lapply(key, as.character)
+  
+	# Convert NA's to blanks ("")
+	test[is.na(test)] = ""
 
 	#Create an empty list
 	keyed_test = vector("list", nrow(test))
