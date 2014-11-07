@@ -32,16 +32,16 @@ lam_4 <-function(x,oddEven=TRUE,...)
 
   return(lam.4)
 }
-
-
-
-
-library(devtools)
-
-
-
-m2 <- cbind(1, 1:4)
-colnames(m2, do.NULL = FALSE)
-colnames(m2) <- c("x","Y")
-rownames(m2) <- rownames(m2, do.NULL = FALSE, prefix = "Obs.")
-m2
+# 
+# 
+# 
+# 
+# library(devtools)
+# 
+# 
+# 
+# m2 <- cbind(1, 1:4)
+# colnames(m2, do.NULL = FALSE)
+# colnames(m2) <- c("x","Y")
+# rownames(m2) <- rownames(m2, do.NULL = FALSE, prefix = "Obs.")
+# m2
