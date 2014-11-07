@@ -11,16 +11,9 @@ odin_zeus = function(test, key, id = TRUE, d = 2, plot = TRUE, group, focal_name
 	prop_missing = miss(keyed_test_no_id)
 	pb = point_biserial(keyed_test_no_id, use = "pairwise.complete.obs")
 
-  # If group and focal are provided, do DIF
-  if(!missing(group) && !missing(focal_name))
-    dif_out = dif(keyed_test, dif_type = "both", group, focal_name)
-  else
-    dif_out = NULL
-  
   # Gather it all up in a list
 	oz = list(
 		test_level = test_level,
-		dif_out = dif_out,
 		c_alpha = c_alpha,
 		prop_missing = prop_missing,
 		point_biserial = pb
