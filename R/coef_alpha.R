@@ -12,12 +12,29 @@ coef_alpha = function(x, ...){
   
   # collect the number of rows from the covariance matrix
   k = nrow(cov.matrix)
+
+  # collect the number of examinees
+  n = nrow(x)
   
-  # use the coefficient alpha equation
-  return( k / (k - 1) *(1 - (sum(diag(cov.matrix)) / sum(cov.matrix) )))
+  # Compute Coefficient alpha
+  alpha = k / (k - 1) *(1 - (sum(diag(cov.matrix)) / sum(cov.matrix) ))
+
+  # Compute CI based on Feldt's (1965) method
+  df_1 = n - 1
+  df_2 = (n - 1) * (k - 1)
+
+  lower_limit = 1 - ((1 - alpha) * qf(0.975, df_1, df_2))
+  upper_limit = 1 - ((1 - alpha) * qf(0.0255, df_1, df_2))
+
+  # Compute standard error measurement
+  sem = sqrt(tot_var * (1 - alpha))
+
+  return(list(alpha = alpha, ll = lower_limit, ul = upper_limit, sem = sem))
 }
 
-# example of 4 persons and 5 items
-#trial <- data.frame(matrix(c(1,0,1,1,0,0,1,0,0,1,1,1,1,1,1,1,1,0,1,0),ncol=5))
-#trial
-#coef_alpha(trial)
+# library(QME)
+# data(math)
+# data(math_key)
+# out = QMEtest(math, math_key)
+# x = getKeyedTestNoID(out)
+# coef_alpha(x)
