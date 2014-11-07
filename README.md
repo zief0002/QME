@@ -6,7 +6,7 @@ Here are some ideas for our package.
 
 - Reliabilities
 - Generalizability Theory
-- IRT(?)
+- IRT(coming later)
 - Replicate Thorndike
 
 
