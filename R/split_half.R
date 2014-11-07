@@ -3,7 +3,7 @@ split_half = function(x, method = "oddEven", ...){
   # Split test by even and odd items if method="oddeven" (default)
   # "random" makes test split randomly
   a_items = switch(method,
-                 oddeven = which(1:ncol(x) %% 2 == 0),
+                 oddEven = which(1:ncol(x) %% 2 == 0),
                  random = sample(1:ncol(x), floor(ncol(x) / 2), replace = FALSE)
     )
 
