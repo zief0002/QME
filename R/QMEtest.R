@@ -31,7 +31,7 @@ QMEtest = function(test, key, id = TRUE) {
   # Create empty output QMEtest object
   output = list(raw_test = NULL,
                 key = NULL,
-                right_wrong = NULL)
+                keyed_test = NULL)
 
   
   # If a key is included, call the right_wrong() function to score
