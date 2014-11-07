@@ -8,18 +8,18 @@ feldt_brennan = function(x, ...){
 	cov_matrix = cov(x, use = "pairwise.complete.obs")
   
 	# Get the variance for the scores
-	score_var = sum(cov.matrix)
+	score_var = sum(cov_matrix)
 
 	# Get the item variances
-	item_var = sum(diag(cov.matrix))
+	item_var = sum(diag(cov_matrix))
 
 	# Compute sum of the squared row sums
-	sq_row_sums = sum(rowSums(cov.matrix) ^ 2)
+	sq_row_sums = sum(rowSums(cov_matrix) ^ 2)
 
 	fb = (tot_var * (tot_var - obs_var)) / ((tot_var ^ 2 - sq_row_sums))
 
 	# Compute CI based on Feldt's (1965) method
-	k = nrow(cov.matrix)
+	k = nrow(cov_matrix)
 	n = nrow(x)
 
 	df_1 = n - 1

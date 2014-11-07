@@ -1,12 +1,12 @@
 guttman_l2 = function(x, ...){
   
   # create covariance matrix of the data frame
-  cov.matrix = cov(x, use = "pairwise.complete.obs")
+  cov_matrix = cov(x, use = "pairwise.complete.obs")
   
-  tot_var = sum(cov.matrix)
-  obs_var = sum(diag(cov.matrix))
-  err_var = sum(cov.matrix[row(cov.matrix) != col(cov.matrix)] ^ 2)
-  k = nrow(cov.matrix)
+  tot_var = sum(cov_matrix)
+  obs_var = sum(diag(cov_matrix))
+  err_var = sum(cov_matrix[row(cov_matrix) != col(cov_matrix)] ^ 2)
+  k = nrow(cov_matrix)
   n = nrow(x)
   
   # Compute Guttman's L2

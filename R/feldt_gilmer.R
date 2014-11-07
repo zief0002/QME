@@ -28,10 +28,10 @@ feldt_gilmer = function(x, ...){
   Q = sum(D) ^ 2
   W = sum(D ^ 2)
 
-  fg = Q / (Q - W) * total_cov/total_var
+  fg = Q / (Q - W) * total_cov / total_var
 
   # Compute CI based on Feldt's (1965) method
-  k = nrow(cov.matrix)
+  k = nrow(cov_matrix)
   n = nrow(x)
 
   df_1 = n - 1
