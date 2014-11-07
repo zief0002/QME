@@ -8,11 +8,11 @@ guttman_l4 = function(x, oddEven = TRUE, ...){
     cov_matrix = cov(x, use = "pairwise.complete.obs")
 
     #Split test
-    s = split_half(x, oddEven = TRUE, ...)
+    s = split_half(x, oddEven = TRUE)
 
     # Compute variances for each form
-    a_var = sum(var(s$form_a))
-    b_var = sum(var(s$form_b))
+    a_var = sum(var(s$form_a, na.rm = TRUE))
+    b_var = sum(var(s$form_b, na.rm = TRUE))
 
     # Compute Guttman's Lambda4
     l4 = 2 * (1 - (a_var + b_var) / sum(cov_matrix))
@@ -20,6 +20,7 @@ guttman_l4 = function(x, oddEven = TRUE, ...){
     # Compute CI based on Feldt's (1965) method
     k = nrow(cov_matrix)
     n = nrow(x)
+    tot_var = sum(cov_matrix)
 
     df_1 = n - 1
     df_2 = (n - 1) * (k - 1)
