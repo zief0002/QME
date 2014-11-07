@@ -1,23 +1,29 @@
-odin_zeus = function(test, key, id = TRUE, d = 2, plot = TRUE, group, focal_name, dif_type = "both", use = "pairwise.complete.obs"){
+odin_zeus = function(test, key, id = TRUE, d = 2, plot = TRUE, use = "pairwise.complete.obs"){
   
   # Preliminaries: score & get keyed test
   q1 = QMEtest(test, key = key, id = id)
   keyed_test = getKeyedTest(q1)
   keyed_test_no_id = getKeyedTestNoID(q1)
 
-  # Get various basic descriptives
-	test_level = summary(q1, d = d)
-	c_alpha = coef_alpha(keyed_test_no_id)
-	prop_missing = miss(keyed_test_no_id)
-	pb = point_biserial(keyed_test_no_id, use = "pairwise.complete.obs")
+  # Get output of middle manager functions
+	test_level = list(
+    descriptives = summary(q1, d = d),
+    reliability = reliability(q1)
+	)
+  item_level = list(
+    distractor_analysis = distractor_analysis(q1),
+    item_stats = item_level(q1)
+  )
+    
+	# prop_missing = miss(keyed_test_no_id): this should probably be in summary()
 
   # Gather it all up in a list
 	oz = list(
 		test_level = test_level,
-		c_alpha = c_alpha,
-		prop_missing = prop_missing,
-		point_biserial = pb
+		item_level = item_level
 		)
+  class(oz) = "oz"
+  
 	return(oz)
 }
 
