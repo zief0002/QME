@@ -18,7 +18,7 @@ guttman_l4 = function(x, oddEven = TRUE, ...){
     l4 = 2 * (1 - (a_var + b_var) / sum(cov_matrix))
 
     # Compute CI based on Feldt's (1965) method
-    k = nrow(cov.matrix)
+    k = nrow(cov_matrix)
     n = nrow(x)
 
     df_1 = n - 1
