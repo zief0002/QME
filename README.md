@@ -10,7 +10,6 @@ Here are some ideas for our package.
 - Replicate Thorndike
 
 
-
 Mostly we are learning. We are learning about function writing and R programming. We are learning about Github. We are learning about documentation. We are learning about coding style. And most of all, we are learning about how to do this as a collaborative group.
 
 
@@ -56,9 +55,9 @@ If the response data has not been keyed, the `key=` argument is also needed. Thi
 	  item1 item2 item3 item4 item5 item6 item7 item8 item9 item10
 	1     E     B     C     D     B     C     A     B     C      A
 ```
-
+<!--
 To run the function without a DIF analysis we also need to set the arguments `group=` and `focal_name=` to `NULL`.
-
+-->
 ```
 	> oz = odin_zeus(math, key = math_key, group = NULL, focal_name = NULL)
 	> pretty_output(oz)
@@ -85,7 +84,7 @@ We can also compute Coefficient Alpha using
 	[1] 0.5729687
 ```
 
-
+<!--
 If you want to do a DIF analysis, the `group=`  and `focal_name=` arguments are also required. The `group=` argument is a numeric or character vector indicating group membership for each student. (*Note: Currently this has to be a vector and not a column in the data frame of responses.*) The `focal_name=` argument is the name of the focal group, and must be one of the values included in the vector of group membership.
 
 ```r
@@ -212,7 +211,7 @@ To obtain the logistic regression output,
 	
 	 Output was not captured!
 ```
-
+-->
 
 For Contributors
 ===
