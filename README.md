@@ -2,7 +2,7 @@ QME
 ===
 Quantitative Methods in Education R package
 
-
+ch;anging things
 Here are some ideas for our package. 
 
 - Reliabilities
