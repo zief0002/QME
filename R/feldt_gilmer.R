@@ -43,7 +43,7 @@ feldt_gilmer = function(x, ...){
   # Compute standard error measurement
   sem = sqrt(tot_var * (1 - fg))
 
-  return(list(alpha = fg, ll = lower_limit, ul = upper_limit, sem = sem))
+  return(list(fg = fg, ll = lower_limit, ul = upper_limit, sem = sem))
 }
 
 # library(QME)
