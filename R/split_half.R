@@ -1,4 +1,4 @@
-split_half = function(x, method = "oddeven", ...){
+split_half = function(x, method = "oddEven", ...){
   
   # Split test by even and odd items if method="oddeven" (default)
   # "random" makes test split randomly
@@ -16,18 +16,18 @@ split_half = function(x, method = "oddeven", ...){
 }
 
 
-  form.a.score = rowSums(x[ , a.items])
-  form.b.score = rowSums(x[ , -a.items])
-  r = cor(form.a.score, form.b.score)
+#   form.a.score = rowSums(x[ , a.items])
+#   form.b.score = rowSums(x[ , -a.items])
+#   r = cor(form.a.score, form.b.score)
   
-  # Correct the correlation
-  SBr = (2 * r) / (r + 1)
+#   # Correct the correlation
+#   SBr = (2 * r) / (r + 1)
   
-  # Format output
-  nice.output = data.frame(Estimate = c(r, SBr), row.names = c("r", "SBr"))
-  return(nice.output)
+#   # Format output
+#   nice.output = data.frame(Estimate = c(r, SBr), row.names = c("r", "SBr"))
+#   return(nice.output)
   
-}
+# }
 
 #split_half(LSAT)
 #split_half(LSAT, oddEven = FALSE)

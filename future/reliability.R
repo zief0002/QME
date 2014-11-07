@@ -10,7 +10,9 @@ reliability = function(x, ...) {
   keyed_test_no_id = getKeyedTestNoID(x)
   
   rel_funs = list(
-    coef_alpha = coef_alpha   # currently only returns estimate
+    coef_alpha = coef_alpha,   # returns estimate, CI limits, and SEM
+    guttman_l2 = guttman_l2,   # returns estimate, CI limits, and SEM
+    feldt_gilmer = feldt_gilmer   # returns estimate, CI limits, and SEM
     # lam_4: Not currently included (does not work)
   )
   
@@ -19,3 +21,5 @@ reliability = function(x, ...) {
   return(out)
   
 }
+
+# reliability(out)
