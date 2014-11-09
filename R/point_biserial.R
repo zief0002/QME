@@ -13,8 +13,8 @@ point_biserial = function(x, ...) {
     corrected_pbis[k] = cor(total_score - x[ , k], x[ , k], ...)
   }
     
-  pbis_report = data.frame(colnames(x), point_biserial, corrected_pbis)
-  colnames(pbis_report)[1] = "Item"
+  pbis_report = data.frame(colnames(x[ ,2:ncol(x)]), point_biserial[2:length(point_biserial)], corrected_pbis[2:length(corrected_pbis)])
+  colnames(pbis_report)[1:3] = c("Item", "point_biserial", "corrected_pbis")
     
   return(pbis_report)
 }
