@@ -6,11 +6,14 @@
 #' @return A list with various aspects of the distractor analysis
 
 distractor_analysis = function(testQME, ...) {
-  test = getKeyedTestNoID(testQME)
-  distractors_difficulty = vector("list", length = ncol(test))
-    for(i in 1:(ncol(test))){
-      distractors_difficulty[[i]] = prop.table(table(test[i]))
-    }
-  names(distractors_difficulty)<-sprintf("Dist_diff of Item%i",1:(ncol(test)))
+  raw_test = getRawTestNoID(testQME)
+  num_items = ncol(raw_test)
+  
+  distractors_difficulty = vector("list", length = num_items)
+  for(i in 1:num_items){
+    distractors_difficulty[[i]] = prop.table(table(raw_test[i]))
+  }
+  names(distractors_difficulty)<-sprintf("Dist_diff of Item%i",1:num_items)
+  
   return(distractors_difficulty)
 }

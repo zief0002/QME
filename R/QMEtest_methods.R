@@ -11,6 +11,9 @@ getRawTest = function(QMEtest)
 
 getKeyedTestNoID = function(QMEtest)
   QMEtest$keyed_test[, -1]
+
+getRawTestNoID = function(QMEtest)
+  QMEtest$raw_test[, -1]
   
   
 getTotalScores = function(QMEtest) 
