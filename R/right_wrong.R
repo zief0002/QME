@@ -30,7 +30,7 @@ right_wrong = function(test, key, id = TRUE, ...){
 	
 	# Bind the IDs and the 1/0s together
 	if(id == TRUE){
-		keyed_test = cbind(data.frame(id = id_col, keyed_test)
+		keyed_test = cbind(data.frame(id = id_col, keyed_test))
 	}	
 		
 
