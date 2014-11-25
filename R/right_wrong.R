@@ -30,12 +30,15 @@ right_wrong = function(test, key, id = TRUE, ...){
 	
 	# Bind the IDs and the 1/0s together
 	if(id == TRUE){
-		keyed_test = cbind(data.frame(id = id_col, keyed_test))
+		raw_test = test
+    names(raw_test)[1] = "id"   # change raw test first column to "id" for clarity
+    keyed_test = data.frame(id = id_col, keyed_test)
+    
 	}	
 		
 
 	test_data = list(
-		raw_test = test,
+		raw_test = raw_test,
 		key = key,
 		keyed_test = keyed_test
 		)
