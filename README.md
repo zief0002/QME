@@ -20,8 +20,12 @@ In theory the following should work
 
 ```r
 library(devtools)
-install_github("QME", "zief0002")
+install_github("zief0002/QME") 
+
+# (older versions of devtools should use install_github("QME", "zief0002"))
 ```
+
+
 
 
 Using the QME package
