@@ -5,7 +5,8 @@
 #' @param x a \code{QMEtest} object
 #' @return A list with various aspects of the item level analysis
 
-item_level = function(keyed_test, ...) {
+item_level = function(testQME, ...) {
+  keyed_test = getKeyedTestNoID(testQME)
   difficulty = colSums(keyed_test[ , 2:ncol(keyed_test)])/nrow(keyed_test)
   point_bi = point_biserial(keyed_test)
   il = cbind(point_bi, difficulty)
