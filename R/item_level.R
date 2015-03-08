@@ -7,7 +7,7 @@
 
 item_level = function(testQME, ...) {
   keyed_test = getKeyedTestNoID(testQME)
-  difficulty = colSums(keyed_test[ , 2:ncol(keyed_test)])/nrow(keyed_test)
+  difficulty = colMeans(keyed_test)
   point_bi = point_biserial(keyed_test)
   il = cbind(point_bi, difficulty)
   il = il[ ,c(4,2,3)]
