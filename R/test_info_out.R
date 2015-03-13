@@ -28,13 +28,13 @@ test_info_out = function(x) {
                                       "kurtosis_score")]
   tinfo2 = data.frame(as.numeric(tinfo))
   rownames(tinfo2) = c("Minimum Score","Maximum Score", "Mean Score","Median Score",
-                       "Standard Deviation","IQR", "Skewness(G1)",
+                       "Standard Deviation","IQR", "Skewness (G1)",
                        "Kurtosis (G2)")
   colnames(tinfo2) = "Value"
   tinfo2 = as.matrix(tinfo2)
   
-  print(scoreplot)
   return(knitr::kable(tinfo2, digits = 2, align = "c"))
+  print(scoreplot)
 }
 
 
