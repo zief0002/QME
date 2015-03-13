@@ -23,20 +23,18 @@ test_info_out = function(x) {
   
   ## Test level descriptives are extracted from oz, row and column names are added, then
   ## then converted to a matrix
-  tinfo = x$test_level$descriptives[c("number_items", "number_examinees", "min_score",
-                                      "max_score", "mean_score","median_score",
+  tinfo = x$test_level$descriptives[c("min_score","max_score", "mean_score","median_score",
                                       "sd_score","iqr_score", "skew_score",
                                       "kurtosis_score")]
   tinfo2 = data.frame(as.numeric(tinfo))
-  rownames(tinfo2) = c("Number of Items", "Number of Examinees", "Minimum Score",
-                       "Maximum Score", "Mean Score","Median Score",
+  rownames(tinfo2) = c("Minimum Score","Maximum Score", "Mean Score","Median Score",
                        "Standard Deviation","IQR", "Skewness(G1)",
                        "Kurtosis (G2)")
   colnames(tinfo2) = "Value"
   tinfo2 = as.matrix(tinfo2)
   
   ## Outputs the distribution plot and table of test level descriptives
-  scoreplot
+  return(scoreplot)
   knitr::kable(tinfo2, digits = 2, align = "c")
 }
 
