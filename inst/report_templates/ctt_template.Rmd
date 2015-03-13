@@ -28,7 +28,7 @@ test_info_out(x)
 
 ```{r reliability, echo = FALSE,results='asis'}
 rels = data.frame(x$test_level$reliability)
-names(rels) = c("Estimate", "95%LL", "95%UL", "SEM")
+names(rels) = c("", "Estimate", "95%LL", "95%UL", "SEM")
 knitr::kable(rels, digits = 2)
 
 
