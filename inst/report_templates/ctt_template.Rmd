@@ -9,99 +9,24 @@ output:
 date: "Generated `r date()`"
 ---
 
-```{r echo = FALSE, message=FALSE, warning=FALSE}
-
-library(QME)
-library(dplyr)
-library(magrittr)
-library(ggplot2)
-library(reshape2)
 
 
+**Number of items:** `r x$test_level$descriptives$number_items`
 
-```
-
-```{r functions_def, echo = FALSE}
-
-## All these functions take the output of odin_zeus as an input
-item_names = function(x) {
-  # Get the item names.  This should really be preserved & consistently applied in the 
-  # item-level methods
-  names(getRawTestNoID(x$test))
-}  
-
-basic_level_out = function(x) {
-  ## Basic test info for first section
-  x$test_level$descriptives[c("number_items", "number_examinees")]
-} 
-
-reliability_out = function(x) {
-  ## Outputs for basic reliability
-   
-  rels = x$test_level$reliability
-  
-  ## This comes out clumsily as a list and should really be some 
-  ## kind of table object in the original structure!
-  ## Otherwise wouldn't need this code.
-    
-  rels2 = matrix(simplify2array(rels),
-                 nrow = nrow(rels),
-                 ncol = ncol(rels))
-  attributes(rels2) = attributes (rels)  
-  
-  rels2
-}
-
-item_basics_out = function(x) {
-  ## Outputs for BASIC item stats: deleted rel, discrimination, missing
-  
-  basics = x$item_level$item_stats[, c("difficulty", "corrected_pbis")]
-  basics$deleted_alpha = x$item_level$del_alphas
-  basics$Number_missing = x$item_level$missing$numMiss
-  
-  basics    
-}
-
-
-
-```
-
-```{r basic_level, echo = FALSE}
-
-basics = basic_level_out(thistest)
-
-```
-
-**Number of items:** `r basics$number_items`, `r basics$Number_missing` with missing data
-
-**Number of examinees:** `r basics$number_examinees`, `XX` with missing data
+**Number of examinees:** `r x$test_level$descriptives$number_examinees`
 
 
 ## Total score information
 
 ```{r totalscores, echo = FALSE, message=FALSE}
-
-# scores = data.frame(scores = thistest$test_level$descriptives$scores)
-# 
-# ggplot(scores, aes(scores)) +
-#   geom_histogram() + 
-#   ggtitle("Histogram of total scores")
-# 
-# print(thistest)
-
 test_info_out(x)
-
-
 ```
+
 
 ## Reliability
 
 ```{r reliability, echo = FALSE, results = 'asis'}
-
-myrels = reliability_out(thistest)
-
-knitr::kable(myrels, digits = 2)
-
+knitr::kable(x$test_level$reliability, digits = 2)
 ```
 
 *Brief notes about reliability assumptions here.*
@@ -113,7 +38,6 @@ knitr::kable(myrels, digits = 2)
 mybasics = item_basics_out(thistest)
 
 knitr::kable(mybasics, digits = 2)
-
 
 ```
 
