@@ -16,17 +16,17 @@ distractor_analysis = function(testQME, ...) {
     distractors_difficulty[[i]] = prop.table(table(raw_test[i]))
 
     ## data frame of responses to item i, ttem-deleted total score, tercile
-		new = data.frame(resp[ , i], delscores[ , i], terciles[ , i])
-		names(new) = c("response", "corrected_score", "tercile")
+		new = data.frame(resp[ , i], delscores[ , i])
+		names(new) = c("response", "corrected_score")
 
 		## Loop through to create variables holding the 0/1 for each response
 		j = length(levels(new$response))
 		myCorrs = rep(NA, j)
 	
 		for(k in 1:j){
-			new[ , (3+k)] = ifelse(new$response == levels(new$response)[k], 1, 0)
-			names(new)[3+k] = levels(new$response)[k] 
-			myCorrs[k] = cor(new$corrected_score, new[ ,(3+k)])
+			new[ , (2+k)] = ifelse(new$response == levels(new$response)[k], 1, 0)
+			names(new)[2+k] = levels(new$response)[k] 
+			myCorrs[k] = cor(new$corrected_score, new[ ,(2+k)])
 		}
 	distractors_discrim[[i]] = myCorrs 	
 
