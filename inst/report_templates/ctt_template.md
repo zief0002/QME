@@ -6,7 +6,7 @@ output:
   pdf_document:
     toc: yes
   word_document: default
-date: "Generated Fri Mar 13 16:14:13 2015"
+date: "Generated Fri Mar 13 16:21:00 2015"
 ---
 
 
@@ -18,6 +18,7 @@ date: "Generated Fri Mar 13 16:14:13 2015"
 
 ## Total score information
 
+![plot of chunk totalscores](figure/totalscores-1.png) 
 
 |                   | Value |
 |:------------------|:-----:|
@@ -34,13 +35,13 @@ date: "Generated Fri Mar 13 16:14:13 2015"
 ## Reliability
 
 
-```
-## Error in names(rels) = c("", "Estimate", "95%LL", "95%UL", "SEM"): 'names' attribute [5] must be the same length as the vector [4]
-```
-
-```
-## Error in `colnames<-`(`*tmp*`, value = c(" ", "Estimate", "X95..LL", "X95..UL", : attempt to set 'colnames' on an object with less than two dimensions
-```
+|                  | Estimate| 95% LL| 95% UL|  SEM|
+|:-----------------|--------:|------:|------:|----:|
+|Coefficient Alpha |     0.57|   0.30|   0.77| 1.34|
+|Guttman's L2      |     0.61|   0.36|   0.79| 1.28|
+|Guttman's L4      |     0.54|   0.24|   0.75| 1.40|
+|Feldt-Gilmer      |     0.59|   0.33|   0.78| 1.31|
+|Feldt-Brennan     |     0.58|   0.31|   0.77| 1.33|
 
 
 
