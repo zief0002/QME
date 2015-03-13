@@ -25,7 +25,7 @@ test_info_out(x)
 
 ## Reliability
 
-```{r reliability, echo = FALSE, results = 'asis'}
+```{r reliability, echo = FALSE}
 x$test_level$reliability
 ```
 
