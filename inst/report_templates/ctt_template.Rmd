@@ -27,7 +27,7 @@ test_info_out(x)
 ## Reliability
 
 ```{r reliability, echo = FALSE,results='asis'}
-rels = x$test_level$reliability
+rels = data.frame(x$test_level$reliability)
 knitr::kable(rels, digits = 2)
 
 

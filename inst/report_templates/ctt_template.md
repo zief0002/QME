@@ -6,7 +6,7 @@ output:
   pdf_document:
     toc: yes
   word_document: default
-date: "Generated Fri Mar 13 15:58:28 2015"
+date: "Generated Fri Mar 13 16:06:44 2015"
 ---
 
 
@@ -20,43 +20,39 @@ date: "Generated Fri Mar 13 15:58:28 2015"
 
 ![plot of chunk totalscores](figure/totalscores-1.png) 
 
-```
-##                         Value
-## Minimum Score       1.0000000
-## Maximum Score       9.0000000
-## Mean Score          5.7000000
-## Median Score        6.0000000
-## Standard Deviation  2.0535923
-## IQR                 2.7500000
-## Skewness(G1)       -0.2564729
-## Kurtosis (G2)      -0.3068652
-```
-
-```
-## Error in is.data.frame(x): object 'tinfo2' not found
-```
+|                   | Value |
+|:------------------|:-----:|
+|Minimum Score      | 1.00  |
+|Maximum Score      | 9.00  |
+|Mean Score         | 5.70  |
+|Median Score       | 6.00  |
+|Standard Deviation | 2.05  |
+|IQR                | 2.75  |
+|Skewness(G1)       | -0.26 |
+|Kurtosis (G2)      | -0.31 |
 
 
 ## Reliability
 
 
 ```
-##                   Estimate  95% LL    95% UL    SEM     
-## Coefficient Alpha 0.5729687 0.3025713 0.7678174 1.341974
-## Guttman's L2      0.6085092 0.3606162 0.7871412 1.284917
-## Guttman's L4      0.5363859 0.2428242 0.7479268 1.398275
-## Feldt-Gilmer      0.5910053 0.3320287 0.7776241 1.313328
-## Feldt-Brennan     0.5784015 0.3114441 0.7707713 1.33341
+## Error in `colnames<-`(`*tmp*`, value = c(" ", "Estimate", "95% LL", "95% UL", : attempt to set 'colnames' on an object with less than two dimensions
 ```
 
-```
-##     item1     item2     item3     item4     item5     item6     item7 
-## 0.5393041 0.5760439 0.5317487 0.4985795 0.5718157 0.5510778 0.5012496 
-##     item8     item9    item10 
-## 0.5936747 0.5734223 0.5144547
-```
 
-*Brief notes about reliability assumptions here.*
+
+|       | Alpha (if Item Deleted)|
+|:------|-----------------------:|
+|item1  |                    0.54|
+|item2  |                    0.58|
+|item3  |                    0.53|
+|item4  |                    0.50|
+|item5  |                    0.57|
+|item6  |                    0.55|
+|item7  |                    0.50|
+|item8  |                    0.59|
+|item9  |                    0.57|
+|item10 |                    0.51|
 
 ## Item overview
 
@@ -74,39 +70,7 @@ date: "Generated Fri Mar 13 15:58:28 2015"
 |item9  |       0.77| 0.35|           0.15|           0|        0.00|
 |item10 |       0.83| 0.55|           0.41|           0|        0.00|
 
-```
-## stat_bindot: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
-```
-
 ![plot of chunk item_overview](figure/item_overview-1.png) 
-
-
-
-
-```r
-basicdf$difficultybin = findInterval(basicdf$difficulty, (0:10)/10)/10 - 0.05
-```
-
-```
-## Error in findInterval(basicdf$difficulty, (0:10)/10): object 'basicdf' not found
-```
-
-```r
-ggplot(basicdf, aes(difficultybin,
-                    y = 1,
-                    label = item)) + 
-  geom_text(position = "stack") + 
-  scale_y_continuous("Number of items") +
-  scale_x_continuous("Difficulty") +
-  coord_cartesian(xlim = c(0, 1)) +
-  coord_flip() +
-  ggtitle("Item Difficulties")
-```
-
-```
-## Error in ggplot(basicdf, aes(difficultybin, y = 1, label = item)): object 'basicdf' not found
-```
-
 
 
 ## Item details
