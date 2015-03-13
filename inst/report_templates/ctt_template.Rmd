@@ -34,11 +34,11 @@ x$item_level$del_alphas
 
 ## Item overview
 
-```{r item_overview, echo = FALSE}
+```{r item_overview, echo = FALSE, results='asis'}
 overview = data.frame(x$item_level$item_stats, x$item_level$missing)
 names(overview) = c("Difficulty", "PBiS", "Corrected PBiS", "Missing (N)", "Missing (p)")
 
-overview
+knitr::kable(overview, digits = 2)
 
 ```
 
