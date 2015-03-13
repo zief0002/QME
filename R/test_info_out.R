@@ -34,8 +34,9 @@ test_info_out = function(x) {
   tinfo2 = as.matrix(tinfo2)
   
   ## Outputs the distribution plot and table of test level descriptives
+  testtable = (knitr::kable(tinfo2, digits = 2, align = "c"))
   return(scoreplot)
-  knitr::kable(tinfo2, digits = 2, align = "c")
+  return(testtable)
 }
 
 
