@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Total score information</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p><strong>Number of items:</strong> 10</p>
+
+<p><strong>Number of examinees:</strong> 30</p>
+
+<h2>Total score information</h2>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk totalscores"/> </p>
+
+<h2>Reliability</h2>
+
+<pre><code>##                   Estimate  95% LL    95% UL    SEM     
+## Coefficient Alpha 0.5729687 0.3025713 0.7678174 1.341974
+## Guttman&#39;s L2      0.6085092 0.3606162 0.7871412 1.284917
+## Guttman&#39;s L4      0.5363859 0.2428242 0.7479268 1.398275
+## Feldt-Gilmer      0.5910053 0.3320287 0.7776241 1.313328
+## Feldt-Brennan     0.5784015 0.3114441 0.7707713 1.33341
+</code></pre>
+
+<p><em>Brief notes about reliability assumptions here.</em></p>
+
+<h2>Item overview</h2>
+
+<pre><code>##        difficulty point_biserial corrected_pbis
+## item1   0.2333333      0.4723021     0.28574430
+## item2   0.2666667      0.3509287     0.13949107
+## item3   0.5333333      0.5228541     0.30780336
+## item4   0.6333333      0.6063837     0.41972651
+## item5   0.8000000      0.3384387     0.14749744
+## item6   0.8000000      0.4209847     0.23861126
+## item7   0.4666667      0.6022749     0.40651381
+## item8   0.3666667      0.3186084     0.08403416
+## item9   0.7666667      0.3473957     0.14551217
+## item10  0.8333333      0.5537355     0.40528700
+</code></pre>
+
+<pre><code>##     item1     item2     item3     item4     item5     item6     item7 
+## 0.5393041 0.5760439 0.5317487 0.4985795 0.5718157 0.5510778 0.5012496 
+##     item8     item9    item10 
+## 0.5936747 0.5734223 0.5144547
+</code></pre>
+
+<pre><code>##        numMiss   propMiss
+## item1        0 0.00000000
+## item2        0 0.00000000
+## item3        2 0.06666667
+## item4        0 0.00000000
+## item5        1 0.03333333
+## item6        0 0.00000000
+## item7        2 0.06666667
+## item8        1 0.03333333
+## item9        0 0.00000000
+## item10       0 0.00000000
+</code></pre>
+
+<pre><code>## Error in as.data.frame(mybasics): object &#39;mybasics&#39; not found
+</code></pre>
+
+<pre><code>## Error in rownames(basicdf): object &#39;basicdf&#39; not found
+</code></pre>
+
+<pre><code>## Error in findInterval(basicdf$difficulty, (0:10)/10): object &#39;basicdf&#39; not found
+</code></pre>
+
+<pre><code>## Error in ggplot(basicdf, aes(difficultybin, y = 1, label = item)): object &#39;basicdf&#39; not found
+</code></pre>
+
+<h2>Item details</h2>
+
+<h3>Item 1</h3>
+
+<p>Domain: <code>XX</code></p>
+
+<pre><code>## Error in getTerciles(x): object &#39;scores&#39; not found
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;item_names&quot;
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;tercsummary&#39; not found
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;%&gt;%&quot;
+</code></pre>
+
+<pre><code>## Error in rbind(this, fillzeros %&gt;% anti_join(this, by = c(&quot;item&quot;, &quot;tercile&quot;, : object &#39;this&#39; not found
+</code></pre>
+
+<pre><code>## Error in ggplot(thisfull, aes(x = tercile, y = prop, group = response, : object &#39;thisfull&#39; not found
+</code></pre>
+
+<p><em>(these numbers are made up, the package does not yet easily provide the correlation with corrected total or more sophisticated keys)</em></p>
+
+<table><thead>
+<tr>
+<th align="right">Choice</th>
+<th align="right">Key</th>
+<th align="right">Proportion</th>
+<th align="right">Cor w/ Corrected Total</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="right">A</td>
+<td align="right">0</td>
+<td align="right">0.3</td>
+<td align="right">-.2</td>
+</tr>
+<tr>
+<td align="right">D</td>
+<td align="right">0</td>
+<td align="right">0.47</td>
+<td align="right">.02</td>
+</tr>
+<tr>
+<td align="right">E</td>
+<td align="right">1</td>
+<td align="right">0.3</td>
+<td align="right">.3</td>
+</tr>
+</tbody></table>
+
+<p><code>XX</code> missing values out of <code>XX</code> examinees (<code>XX</code> %).</p>
+
+<h3>Item 2</h3>
+
+<p>&hellip; and so on</p>
+
+</body>
+
+</html>

@@ -19,4 +19,11 @@ As a side effect, creates the html report
 \description{
 This function creates a report with the basic psychometrics
 }
+\details{
+This reports contains number of items, number of examinees, a distribution of
+the total scores, reliability estimates (Coefficient Alpha, Guttman's L2,
+Guttman's L4, Feldt-Gilmer, and Feldt-Brennan), Item overview (difficulty,
+point biserial correlation, corrected point biserial correlation, number of
+missing responses, and probability of missing responses), and item details
+}
 
