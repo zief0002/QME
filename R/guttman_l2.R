@@ -1,3 +1,35 @@
+#' Guttman's Lambda_2 (L2) Reliability Coefficient
+#' 
+#' This function estimates the reliability coeffcient based on Guttman's
+#' Lambda_2.
+#' 
+#' This computation is based on Guttman's second lower bound for reliability
+#' (Guttman, 1945).
+#' 
+#' @param x is a data frame or matrix of the keyed items (0/1)
+#' @return Returns a list with the estimate (\code{l2}), lower (\code{ll}) and
+#'   upper (\code{ul}) confidence limits, and standard error of measurment (\code{sem})
+#'   
+#' @references Guttman, L. (1945). A basis for analyzing test-retest
+#'   reliability. \emph{Psychometrika, 10} (4), 255--282.
+#'   
+#'@author University of Minnesota, Educational Psychology Computing Club
+#'
+#'@examples
+#'#Load the test responses and the answer key
+#'data(math)
+#'data(math_key)
+#'
+#'#Put test and key into a QMEtest object
+#'myTest = QMEtest(math, math_key)
+#'
+#'#Key the test and output as a data frame without IDs
+#'keyedTest = getKeyedTestNoID(myTest)
+#'
+#'#Compute Guttman's L2
+#'guttman_l2(keyedTest)
+
+
 guttman_l2 = function(x, ...){
   
   # create covariance matrix of the data frame
