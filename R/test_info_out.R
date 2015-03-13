@@ -34,7 +34,7 @@ test_info_out = function(x) {
   tinfo2 = as.matrix(tinfo2)
   
   print(scoreplot)
-  return(tinfo2)
+  return(knitr::kable(tinfo2, digits = 2, align = "c"))
 }
 
 
