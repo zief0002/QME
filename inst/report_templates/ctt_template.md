@@ -6,7 +6,7 @@ output:
   pdf_document:
     toc: yes
   word_document: default
-date: "Generated Fri Mar 13 16:06:44 2015"
+date: "Generated Fri Mar 13 16:08:07 2015"
 ---
 
 
@@ -36,7 +36,7 @@ date: "Generated Fri Mar 13 16:06:44 2015"
 
 
 ```
-## Error in `colnames<-`(`*tmp*`, value = c(" ", "Estimate", "95% LL", "95% UL", : attempt to set 'colnames' on an object with less than two dimensions
+## Error in `colnames<-`(`*tmp*`, value = c(" ", "Estimate", "X95..LL", "X95..UL", : attempt to set 'colnames' on an object with less than two dimensions
 ```
 
 
