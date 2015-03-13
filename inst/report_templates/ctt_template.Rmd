@@ -35,6 +35,9 @@ x$test_level$reliability
 
 ```{r item_overview, echo = FALSE}
 x$item_level$item_stats
+x$item_level$del_alphas
+x$item_level$missing$numMiss
+x$item_level$missing$propMiss
 
 
 ```

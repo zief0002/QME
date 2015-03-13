@@ -6,7 +6,7 @@ output:
   pdf_document:
     toc: yes
   word_document: default
-date: "Generated Fri Mar 13 15:37:31 2015"
+date: "Generated Fri Mar 13 15:41:49 2015"
 ---
 
 
@@ -39,11 +39,17 @@ date: "Generated Fri Mar 13 15:37:31 2015"
 
 
 ```
-## Error in eval(expr, envir, enclos): could not find function "item_basics_out"
-```
-
-```
-## Error in is.data.frame(x): object 'mybasics' not found
+##        difficulty point_biserial corrected_pbis
+## item1   0.2333333      0.4723021     0.28574430
+## item2   0.2666667      0.3509287     0.13949107
+## item3   0.5333333      0.5228541     0.30780336
+## item4   0.6333333      0.6063837     0.41972651
+## item5   0.8000000      0.3384387     0.14749744
+## item6   0.8000000      0.4209847     0.23861126
+## item7   0.4666667      0.6022749     0.40651381
+## item8   0.3666667      0.3186084     0.08403416
+## item9   0.7666667      0.3473957     0.14551217
+## item10  0.8333333      0.5537355     0.40528700
 ```
 
 
