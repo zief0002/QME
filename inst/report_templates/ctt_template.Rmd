@@ -73,8 +73,33 @@ ggplot(overview, aes(x = Difficulty)) +
 
 ## Item details
 
-```{r itemloop_prep, echo = FALSE, message = FALSE}
-x$item_level$distractor_analysis
+```{r itemloop_prep, echo = FALSE, message = FALSE, results='asis'}
+
+for(i in 1:length(item_names(x))) {
+  cat("### Details for `", item_names(x)[i])
+  cat("`\n\n")
+
+  
+   cat("\n\n\n")
+
+ 
+  print(itemreport_loop(x, i))
+ 
+ 
+   cat("\n\n")
+
+      choices = rownames(x$item_level$distractor_analysis[[1]][[i]])
+  keys = as.numeric(choices %in% as.character(x$test$key[,i]))
+  
+  tbOut = data.frame(Choice = rownames(x$item_level$distractor_analysis[[1]][[i]]),
+             Key = keys,
+             Proportions = as.numeric(x$item_level$distractor_analysis[[1]][[i]]),
+             `Response Discrimination` = as.numeric(x$item_level$distractor_analysis[[2]][[i]]),
+             check.names = FALSE
+            )
+     print(knitr::kable(tbOut, digits = 2))
+}
+
 ```
 
 
