@@ -1,6 +1,20 @@
-##############################################################
-## Function to produce coefficient alpha from test data
-##############################################################
+#' Coefficient Alpha
+#' 
+#' This function computes coefficient alpha using the covariance matrix.
+#' 
+#' 
+#' @param x is a data frame or matrix consisting of keyed item responses (0s and 1s).
+#' @return This function returns the value of coefficient alpha, the 
+#' lower and upper limits of Feldt's (1965) method, and standard error of
+#' measurement for coefficient alpha.
+#' 
+#' @examples
+#' library(QME)
+#' data(math,math_key)
+#' out = QMEtest(math, math_key)
+#' x = getKeyedTestNoID(out)
+#' coef_alpha(x)
+
 
 coef_alpha = function(x, ...){
   
@@ -31,9 +45,4 @@ coef_alpha = function(x, ...){
   return(list(alpha = alpha, ll = lower_limit, ul = upper_limit, sem = sem))
 }
 
-# library(QME)
-# data(math)
-# data(math_key)
-# out = QMEtest(math, math_key)
-# x = getKeyedTestNoID(out)
-# coef_alpha(x)
+

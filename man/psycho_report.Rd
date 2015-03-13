@@ -9,15 +9,15 @@ psycho_report(x, output = "output.html", open = TRUE)
 \arguments{
 \item{x}{An \code{odin_zeus} object}
 
-\item{output}{The file name of the html report}
+\item{output}{The file name of the HTML report}
 
-\item{open}{Whether to open the html report}
+\item{open}{Whether to open the HTML report}
 }
 \value{
-As a side effect, creates the html report
+As a side effect, creates the HTML report
 }
 \description{
-This function creates a report with the basic psychometrics
+This function creates an HTML report that provides some basic psychometric information
 }
 \details{
 This reports contains number of items, number of examinees, a distribution of
@@ -25,5 +25,7 @@ the total scores, reliability estimates (Coefficient Alpha, Guttman's L2,
 Guttman's L4, Feldt-Gilmer, and Feldt-Brennan), Item overview (difficulty,
 point biserial correlation, corrected point biserial correlation, number of
 missing responses, and probability of missing responses), and item details
+
+Checking
 }
 
