@@ -26,7 +26,7 @@ test_info_out(x)
 ## Reliability
 
 ```{r reliability, echo = FALSE, results = 'asis'}
-knitr::kable(x$test_level$reliability, digits = 2)
+x$test_level$reliability
 ```
 
 *Brief notes about reliability assumptions here.*
