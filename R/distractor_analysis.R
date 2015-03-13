@@ -8,6 +8,13 @@
 distractor_analysis = function(testQME, ...) {
   raw_test = getRawTestNoID(testQME)
   num_items = ncol(raw_test)
+
+  keyed = getKeyedTestNoID(testQME)
+	#raw = getRawTestNoID(x$test)
+
+	## persons by items matrix of corrected scores
+  scores = rowSums(getKeyedTestNoID(x))
+  delscores = scores - keyed
   
   distractors_difficulty = vector("list", length = num_items)
   distractors_discrim = vector("list", length = num_items)
