@@ -16,7 +16,7 @@ distractor_analysis = function(testQME, ...) {
     distractors_difficulty[[i]] = prop.table(table(raw_test[i]))
 
     ## data frame of responses to item i, ttem-deleted total score, tercile
-		new = data.frame(resp[ , i], delscores[ , i])
+		new = data.frame(raw_test[ , i], delscores[ , i])
 		names(new) = c("response", "corrected_score")
 
 		## Loop through to create variables holding the 0/1 for each response
