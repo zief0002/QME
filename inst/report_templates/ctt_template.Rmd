@@ -18,26 +18,27 @@ date: "Generated `r date()`"
 
 ## Total score information
 
-```{r totalscores, echo = FALSE, message=FALSE}
+```{r totalscores, echo = FALSE, message=FALSE,results='asis'}
 test_info_out(x)
-
-knitr::kable(tinfo2, digits = 2)
 
 ```
 
 
 ## Reliability
 
-```{r reliability, echo = FALSE}
-x$test_level$reliability
-x$item_level$del_alphas
-```
+```{r reliability, echo = FALSE,results='asis'}
+rels = x$test_level$reliability
+knitr::kable(rels, digits = 2)
 
-*Brief notes about reliability assumptions here.*
+
+dalph = data.frame(x$item_level$del_alphas)
+names(dalph) = "Alpha (if Item Deleted)"
+knitr::kable(dalph, digits = 2)
+```
 
 ## Item overview
 
-```{r item_overview, echo = FALSE, results='asis'}
+```{r item_overview, echo = FALSE, results='asis', message=FALSE}
 overview = data.frame(x$item_level$item_stats, x$item_level$missing)
 names(overview) = c("Difficulty", "PBiS", "Corrected PBiS", "Missing (N)", "Missing (p)")
 
@@ -52,26 +53,6 @@ ggplot(overview, aes(x = Difficulty)) +
   ggtitle("Item Difficulties")
 
 ```
-
-
-
-```{r terciles}
-
-basicdf$difficultybin = findInterval(basicdf$difficulty, (0:10)/10)/10 - 0.05
-
-ggplot(basicdf, aes(difficultybin,
-                    y = 1,
-                    label = item)) + 
-  geom_text(position = "stack") + 
-  scale_y_continuous("Number of items") +
-  scale_x_continuous("Difficulty") +
-  coord_cartesian(xlim = c(0, 1)) +
-  coord_flip() +
-  ggtitle("Item Difficulties")
-
-
-```
-
 
 
 ## Item details
