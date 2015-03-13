@@ -12,13 +12,13 @@ test_info_out = function(x) {
     scoreplot = ggplot(scores, aes(scores)) + 
                 geom_histogram(binwidth = 1) + 
                 xlab("Total score") + ylab("# of students") +
-                theme_bw()
+                theme_bw() + ggtitle("Distribution of total scores")
   } else {
     
     scoreplot = ggplot(scores, aes(scores)) +
                 geom_dotplot() + 
                 xlab("Total score") + ylab("Proportion of students") +
-                theme_bw()
+                theme_bw() + ggtitle("Distribution of total scores")
   }
   
   ## Test level descriptives are extracted from oz, row and column names are added, then
@@ -33,8 +33,8 @@ test_info_out = function(x) {
   colnames(tinfo2) = "Value"
   tinfo2 = as.matrix(tinfo2)
   
-  return(knitr::kable(tinfo2, digits = 2, align = "c"))
   print(scoreplot)
+  return(knitr::kable(tinfo2, digits = 2, align = "c"))
 }
 
 
