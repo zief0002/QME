@@ -27,10 +27,25 @@ test_info_out(x)
 ## Reliability
 
 ```{r reliability, echo = FALSE,results='asis'}
-rels = data.frame(x$test_level$reliability)
-names(rels) = c("", "Estimate", "95%LL", "95%UL", "SEM")
-knitr::kable(rels, digits = 2)
+reliability_out = function(x) {
+  ## Outputs for basic reliability
+   
+  rels = x$test_level$reliability
+  
+  ## This comes out clumsily as a list and should really be some 
+  ## kind of table object in the original structure!
+  ## Otherwise wouldn't need this code.
+    
+  rels2 = matrix(simplify2array(rels),
+                 nrow = nrow(rels),
+                 ncol = ncol(rels))
+  attributes(rels2) = attributes (rels)  
+  
+  rels2
+}
 
+myrels = reliability_out(x)
+knitr::kable(myrels, digits = 2)
 
 dalph = data.frame(x$item_level$del_alphas)
 names(dalph) = "Alpha (if Item Deleted)"
