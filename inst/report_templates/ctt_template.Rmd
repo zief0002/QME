@@ -72,10 +72,27 @@ basics = basic_level_out(thistest)
 
 ```
 
-**Number of items:** `r basics$number_items`, `XX` with missing data
+**Number of items:** `r basics$number_items`, `r basics$Number_missing` with missing data
 
 **Number of examinees:** `r basics$number_examinees`, `XX` with missing data
 
+
+## Total score information
+
+```{r totalscores, echo = FALSE, message=FALSE}
+
+# scores = data.frame(scores = thistest$test_level$descriptives$scores)
+# 
+# ggplot(scores, aes(scores)) +
+#   geom_histogram() + 
+#   ggtitle("Histogram of total scores")
+# 
+# print(thistest)
+
+test_info_out(x)
+
+
+```
 
 ## Reliability
 
@@ -120,19 +137,7 @@ ggplot(basicdf, aes(difficultybin,
 
 ```
 
-## Total score information
 
-```{r totalscores, echo = FALSE, message=FALSE}
-
-scores = data.frame(scores = thistest$test_level$descriptives$scores)
-
-ggplot(scores, aes(scores)) +
-  geom_histogram() + 
-  ggtitle("Histogram of total scores")
-
-print(thistest)
-
-```
 
 ## Item details
 
