@@ -108,18 +108,26 @@ knitr::kable(mybasics, digits = 2)
 ```{r item_participant_plot, message=FALSE, echo=FALSE}
 
 basicdf = as.data.frame(mybasics)
-basicdf$item = rownames(basicdf)
-
+#basicdf$item = rownames(basicdf)
+basicdf$item = gsub("item", "", rownames(basicdf))
+     
 basicdf$difficultybin = findInterval(basicdf$difficulty, (0:10)/10)/10 - 0.05
 
-ggplot(basicdf, aes(difficultybin,
-                    y = 1,
-                    label = item)) + 
-  geom_text(position = "stack") + 
-  scale_y_continuous("Number of items") +
-  scale_x_continuous("Difficulty") +
-  coord_cartesian(xlim = c(0, 1)) +
-  coord_flip() +
+# ggplot(basicdf, aes(difficultybin,
+#                     y = 1,
+#                     label = item)) + 
+#   geom_text(position = "stack") + 
+#   scale_y_continuous("Number of items") +
+#   scale_x_continuous("Difficulty") +
+#   coord_cartesian(xlim = c(0, 1)) +
+#   coord_flip() +
+#   ggtitle("Item Difficulties")
+
+ggplot(basicdf, aes(x = difficulty)) + 
+  geom_dotplot() + 
+  scale_y_continuous(name = "", breaks = NULL) +
+  scale_x_continuous("Difficulty", lim = c(0,1)) +
+  theme_bw() +
   ggtitle("Item Difficulties")
 
 
