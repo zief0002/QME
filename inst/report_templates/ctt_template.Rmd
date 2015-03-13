@@ -33,11 +33,9 @@ x$test_level$reliability
 
 ## Item overview
 
-```{r item_overview, echo = FALSE, results = 'asis'}
+```{r item_overview, echo = FALSE}
+x$item_level$item_stats
 
-mybasics = item_basics_out(thistest)
-
-knitr::kable(mybasics, digits = 2)
 
 ```
 

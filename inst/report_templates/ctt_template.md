@@ -6,7 +6,7 @@ output:
   pdf_document:
     toc: yes
   word_document: default
-date: "Generated Fri Mar 13 15:35:04 2015"
+date: "Generated Fri Mar 13 15:37:31 2015"
 ---
 
 
@@ -23,12 +23,15 @@ date: "Generated Fri Mar 13 15:35:04 2015"
 
 ## Reliability
 
-                  Estimate  95% LL    95% UL    SEM     
-Coefficient Alpha 0.5729687 0.3025713 0.7678174 1.341974
-Guttman's L2      0.6085092 0.3606162 0.7871412 1.284917
-Guttman's L4      0.5363859 0.2428242 0.7479268 1.398275
-Feldt-Gilmer      0.5910053 0.3320287 0.7776241 1.313328
-Feldt-Brennan     0.5784015 0.3114441 0.7707713 1.33341 
+
+```
+##                   Estimate  95% LL    95% UL    SEM     
+## Coefficient Alpha 0.5729687 0.3025713 0.7678174 1.341974
+## Guttman's L2      0.6085092 0.3606162 0.7871412 1.284917
+## Guttman's L4      0.5363859 0.2428242 0.7479268 1.398275
+## Feldt-Gilmer      0.5910053 0.3320287 0.7776241 1.313328
+## Feldt-Brennan     0.5784015 0.3114441 0.7707713 1.33341
+```
 
 *Brief notes about reliability assumptions here.*
 
