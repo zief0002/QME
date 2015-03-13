@@ -6,7 +6,7 @@ output:
   pdf_document:
     toc: yes
   word_document: default
-date: "Generated Fri Mar 13 15:41:49 2015"
+date: "Generated Fri Mar 13 15:43:58 2015"
 ---
 
 
@@ -50,6 +50,27 @@ date: "Generated Fri Mar 13 15:41:49 2015"
 ## item8   0.3666667      0.3186084     0.08403416
 ## item9   0.7666667      0.3473957     0.14551217
 ## item10  0.8333333      0.5537355     0.40528700
+```
+
+```
+##     item1     item2     item3     item4     item5     item6     item7 
+## 0.5393041 0.5760439 0.5317487 0.4985795 0.5718157 0.5510778 0.5012496 
+##     item8     item9    item10 
+## 0.5936747 0.5734223 0.5144547
+```
+
+```
+##        numMiss   propMiss
+## item1        0 0.00000000
+## item2        0 0.00000000
+## item3        2 0.06666667
+## item4        0 0.00000000
+## item5        1 0.03333333
+## item6        0 0.00000000
+## item7        2 0.06666667
+## item8        1 0.03333333
+## item9        0 0.00000000
+## item10       0 0.00000000
 ```
 
 
