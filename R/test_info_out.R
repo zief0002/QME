@@ -33,8 +33,8 @@ test_info_out = function(x) {
   colnames(tinfo2) = "Value"
   tinfo2 = as.matrix(tinfo2)
   
-  ## Outputs the distribution plot and table of test level descriptives
-  return(scoreplot)
-  tinfo2
+  print(scoreplot)
+  return(tinfo2)
 }
+
 
