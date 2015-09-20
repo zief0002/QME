@@ -76,6 +76,7 @@ ggplot(overview, aes(x = Difficulty)) +
 ```{r itemloop_prep, echo = FALSE, message = FALSE, results='asis'}
 
 for(i in 1:length(item_names(x))) {
+
   cat("### Details for `", item_names(x)[i])
   cat("`\n\n")
 
@@ -98,6 +99,9 @@ for(i in 1:length(item_names(x))) {
              check.names = FALSE
             )
      print(knitr::kable(tbOut, digits = 2))
+  
+    cat("\n\n")
+  
 }
 
 ```
