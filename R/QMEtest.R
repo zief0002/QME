@@ -17,7 +17,7 @@
 #'  \item{\code{key}}{The key}
 #'  \item{\code{keyed_test}}{The keyed/scored test, using the \code{right_wrong} function}
 #'  }
-QMEtest = function(test, key, id = TRUE) {
+QMEtest = function(test, key = NULL, id = TRUE) {
   
   # If no id column, add one.  
   if(id) {
@@ -35,15 +35,15 @@ QMEtest = function(test, key, id = TRUE) {
 
   
   # If a key is included, call the right_wrong() function to score
-  if(!missing(key)){
+  if(!is.null(key)){
     output = right_wrong(test_with_id, key = key, id = TRUE) # returns list with the elements we want
   } else {
     # If first column of data are not numeric and there is no key, output an error message
     if(is.numeric(test_with_id[ , 1]) == FALSE){
       stop("Your data have not been keyed. Please input an answer key using the key= argument.")
     } else{
-      # If numeric, then the "keyed test" is simply the test and other two items are blank
-      output = list(raw_test = NULL,
+      # If numeric, then the "keyed test" is simply the test and there is no key
+      output = list(raw_test = test_with_id,
                 key = NULL,
                 keyed_test = test_with_id)
     }

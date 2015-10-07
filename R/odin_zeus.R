@@ -1,4 +1,4 @@
-odin_zeus = function(test, key, id = TRUE, d = 2, plot = TRUE, use = "pairwise.complete.obs"){
+odin_zeus = function(test, key = NULL, id = TRUE, d = 2, plot = TRUE, use = "pairwise.complete.obs"){
   
   # Preliminaries: score & get keyed test
   q1 = QMEtest(test, key = key, id = id)
@@ -11,13 +11,17 @@ odin_zeus = function(test, key, id = TRUE, d = 2, plot = TRUE, use = "pairwise.c
     reliability = reliability(q1)
 	)
   item_level = list(
-    distractor_analysis = distractor_analysis(q1),
     item_stats = item_level(q1),
     missing = miss(getRawTestNoID(q1)),
     del_alphas = delete_alpha(keyed_test_no_id)
   )
-    
-
+  
+  ## Add distractor analysis only if test is unkeyed
+  
+  if(is.null(key))
+    item_level$distractor_analysis = NULL
+  else
+    item_level$distractor_analysis = distractor_analysis(q1)
 
   # Gather it all up in a list
 	oz = list(
