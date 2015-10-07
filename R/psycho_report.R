@@ -34,7 +34,7 @@ psycho_report = function(x, report_filename = "psycho_report", output_format = "
                          package = "QME")
   input_file = paste0(report_filename, ".Rmd")
   
-  file.copy(from = template, to = input_file)
+  file.copy(from = template, to = input_file, overwrite = TRUE)
   
   output = render(input_file, output_format = output_format, output_dir = output_dir, ...)
   
