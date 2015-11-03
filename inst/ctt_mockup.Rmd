@@ -22,13 +22,13 @@ library(directlabels)
 
 data(math, math_key)
 
-oz = odin_zeus(math, math_key) # NOTE: should include test name in data structure for reporting
+oz = analyze(math, math_key) # NOTE: should include test name in data structure for reporting
 
 ```
 
 ```{r functions_def, echo = FALSE}
 
-## All these functions take the output of odin_zeus as an input
+## All these functions take the output of analyze as an input
 item_names = function(x) {
   # Get the item names.  This should really be preserved & consistently applied in the 
   # item-level methods
@@ -152,7 +152,7 @@ print(oz)
 ```{r itemloop_prep, echo = FALSE, message = FALSE}
 
 getTerciles = function(x) {
-  ## Input odin_zeus, output long df with terciles & proportions
+  ## Input analyze, output long df with terciles & proportions
 
 keyed = getKeyedTestNoID(x$test)
 raw = getRawTestNoID(x$test)

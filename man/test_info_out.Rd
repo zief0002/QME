@@ -7,7 +7,7 @@
 test_info_out(x)
 }
 \arguments{
-\item{x}{An \code{odin_zeus} object}
+\item{x}{An \code{analyze} object}
 }
 \value{
 A ggplot2 histogram or dotplot of the test score distribution and a Markdown table
@@ -18,12 +18,12 @@ IQR, skewness, and kurtosis of the score distribution.
 Ouputs histogram or dotplot of test score distribution and test-level descriptives in a table.
 }
 \details{
-Person total scores from the \code{odin_zeus} object are extracted and the distribution
+Person total scores from the \code{analyze} object are extracted and the distribution
 of scores is plotted.  If the number of persons is >= 50, the frequency distribution
 of scores is presented with a histogram with binwidth = 1.  If the number of persons is
 < 50, a dotplot is produced.
 
-Test-level descriptives are extracted from the \code{odin_zeus} object and outputted in a markdown
+Test-level descriptives are extracted from the \code{analyze} object and outputted in a markdown
 table that can then be rendered with \code{psycho_report}.
 }
 

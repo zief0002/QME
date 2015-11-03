@@ -1,5 +1,5 @@
 getTerciles = function(x) {
-  ## Input odin_zeus, output long df with terciles & proportions
+  ## Input analyze, output long df with terciles & proportions
   
   keyed = getKeyedTestNoID(x$test)
   raw = getRawTestNoID(x$test)
@@ -41,7 +41,7 @@ item_names = function(x) {
 
 
 itemreport_loop = function(x, itemnum = 1) {
- # Loop over odin_zeus to generate item-level markdown
+ # Loop over analyze to generate item-level markdown
   tercsummary = getTerciles(x)
   
   thisitem = item_names(x)[itemnum]

@@ -32,7 +32,7 @@ pretty_output = function(x, ...){
 }
 
 
-# oz = odin_zeus(math, key = mathKey, group = NULL, focal_name = NULL)
+# oz = analyze(math, key = mathKey, group = NULL, focal_name = NULL)
 # pretty_output(oz)
 
 

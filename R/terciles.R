@@ -1,5 +1,5 @@
 terciles = function(x) {
-  ## Input odin_zeus, output long df with terciles & proportions
+  ## Input analyze, output long df with terciles & proportions
 
 	keyed = getKeyedTestNoID(x$test)
 	raw = getRawTestNoID(x$test)
