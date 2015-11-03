@@ -1,0 +1,21 @@
+---
+title: "QME Usage"
+author: "UMN EdPsych QME"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## General Usage
+
+```r
+data(math, package = 'QME')
+data(math_key, package = 'QME')
+
+assessment = QME::analyze(math, key = math_key)
+assessment
+```
+
