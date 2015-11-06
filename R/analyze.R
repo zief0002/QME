@@ -1,4 +1,4 @@
-odin_zeus = function(test, key = NULL, id = TRUE, d = 2, plot = TRUE, use = "pairwise.complete.obs"){
+analyze = function(test, key = NULL, id = TRUE, d = 2, plot = TRUE, use = "pairwise.complete.obs"){
   
   # Preliminaries: score & get keyed test
   q1 = QMEtest(test, key = key, id = id)

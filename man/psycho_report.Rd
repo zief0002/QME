@@ -8,7 +8,7 @@ psycho_report(x, report_filename = "psycho_report",
   output_format = "html_document", output_dir = NULL, ...)
 }
 \arguments{
-\item{x}{An \code{odin_zeus} object}
+\item{x}{An \code{analyze} object}
 
 \item{report_filename}{The file name of the report (not including file extension, which is determined automatically)}
 

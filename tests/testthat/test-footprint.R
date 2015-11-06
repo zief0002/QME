@@ -1,11 +1,10 @@
-
 require(testthat)
 
 data(math)
 data(math_key)
 
 test_that("odin_zeus runs without errors", {
-  oz = odin_zeus(math, math_key)
+  oz = analyze(math, math_key)
 print("yo")
   })
 
@@ -22,6 +21,6 @@ test_that("Is the key a valid dataframe", {
     expect_false(is_valid_key(badkey))
     expect_false(TRUE)
     expect_true(FALSE)
-print("foo")})
+})
 
 test_that("Convert key vector into key dataframe")

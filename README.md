@@ -31,7 +31,7 @@ install_github("zief0002/QME")
 Using the QME package
 ======
 
-The main function for use is called `odin_zeus()`. This requires the following argument,
+The main function for use is called `analyze()`. This requires the following argument,
 
 - `test`: A data frame of raw or keyed responses. The responses can either be numeric or character (i.e., letters). The data frame should be formatted in the wide format, so that each row represents a student, and each column represents an item. 
 
@@ -63,7 +63,7 @@ If the response data has not been keyed, the `key=` argument is also needed. Thi
 To run the function without a DIF analysis we also need to set the arguments `group=` and `focal_name=` to `NULL`.
 -->
 ```
-	> oz = odin_zeus(math, key = math_key, group = NULL, focal_name = NULL)
+	> oz = analyze(math, key = math_key, group = NULL, focal_name = NULL)
 	> pretty_output(oz)
 	
 	-------------------------------                          
@@ -93,7 +93,7 @@ If you want to do a DIF analysis, the `group=`  and `focal_name=` arguments are 
 
 ```r
 > group = c("Male", "Female", "Male", "Female", "Female", "Female", "Female", "Male", "Male", "Male")
-> oz = odin_zeus(math, key = math_key, group = group, focal_name = "Male")
+> oz = analyze(math, key = math_key, group = group, focal_name = "Male")
 ```
 
 The function performs detection of Differential Item Functioning using (1) the Mantel-Haenszel method, and (2) using Logistic regression methods.

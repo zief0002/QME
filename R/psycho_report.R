@@ -11,7 +11,7 @@
 #' Rendering is done by means of \code{\link{render}} from the \code{rmarkdown}
 #' package.  See that help page for more details on the rendering process.
 #' 
-#' @param x An \code{odin_zeus} object
+#' @param x An \code{analyze} object
 #' @param report_filename The file name of the report (not including file extension, which is determined automatically)
 #' @param output_format One of \code{'html_document'}, \code{'word_document'},
 #'   or \code{'pdf_document'}.  Note that \code{'pdf_document'} requires a
@@ -21,7 +21,7 @@
 #' @return As a side effect, creates the html report
 
 psycho_report = function(x, report_filename = "psycho_report", output_format = "html_document", output_dir = NULL, ...) {
-  ## Inputs an odin_zeus, creates report, returns filename
+  ## Inputs an analyze, creates report, returns filename
   thistest = x
   
   ## Set up filenames for render to work nicely
