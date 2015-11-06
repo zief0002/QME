@@ -2,7 +2,7 @@
 # Function to produce a data frame of correct/incorrect
 #########################################
 
-right_wrong = function(test, key, id = TRUE, ...){
+right_wrong = function(test, new_key, id = TRUE, ...){
 
 	column_start = ifelse(id == TRUE, 2, 1)
 	id_col = test[, 1]
