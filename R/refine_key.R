@@ -1,23 +1,23 @@
-refine_key = function(key, test_with_id){
+refine_key = function(row_key, test_with_id){
   ## Create data frame key structure from vector or single-row data frame
 
   ## If data frame, convert to vector first
-  if(is.data.frame(key)) {
+  if(is.data.frame(row_key)) {
     # drop unused factor levels
-    key = droplevels(key)
+    row_key = droplevels(row_key)
     
-    key = vapply(key, levels, "A")
+    row_key = vapply(row_key, levels, "A")
     
   }
     
   # Find the unique responses
-  response = unique(key)
+  response = unique(row_key)
   
   # Create an nresponse x nkey matrix with each column filled by the responses
-  temp_key = matrix(response,nrow=length(response),ncol=length(key))
+  temp_key = matrix(response,nrow=length(response),ncol=length(row_key))
   
   # Coerce each key element into a separate list
-  work_key = lapply(key, as.character)
+  work_key = lapply(row_key, as.character)
   
   #Create an empty list
   new_key = vector("list", nrow(temp_key))
@@ -43,4 +43,3 @@ refine_key = function(key, test_with_id){
 # key = c("E","B","C","D","B","C","A" ,"B", "C","A")
 # refine_key(math_key)
 # key = c("GB", "ND", "WI", "MN", "ND", "ND", "WI", "GB")
-  

@@ -27,7 +27,11 @@ QMEtest = function(test, key = NULL, id = TRUE) {
     test_with_id = data.frame(id = 1:nrow(test),
                               test)
   }
-      
+
+  # Check if key is in "old" form and put into new data frame format
+  if(!is.data.frame(key) || nrow(key) == 1)
+    key = refine_key(key, test_with_id)
+  
   # Create empty output QMEtest object
   output = list(raw_test = NULL,
                 key = NULL,
@@ -36,7 +40,9 @@ QMEtest = function(test, key = NULL, id = TRUE) {
   
   # If a key is included, call the right_wrong() function to score
   if(!is.null(key)){
-    output = right_wrong(test_with_id, key = key, id = TRUE) # returns list with the elements we want
+    output = list(raw_test = test_with_id,
+                  key = key,
+                  keyed_test = right_wrong(test_with_id, key = key)) 
   } else {
     # If first column of data are not numeric and there is no key, output an error message
     if(is.numeric(test_with_id[ , 1]) == FALSE){

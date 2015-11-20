@@ -18,7 +18,6 @@ Depends:
     reshape2,
     rmarkdown
 Imports:
-    
 Suggests:
     psych,
     knitr,
