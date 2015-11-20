@@ -1,4 +1,15 @@
-refine_key = function(key){
+refine_key = function(key, test_with_id){
+  ## Create data frame key structure from vector or single-row data frame
+
+  ## If data frame, convert to vector first
+  if(is.data.frame(key)) {
+    # drop unused factor levels
+    key = droplevels(key)
+    
+    key = vapply(key, levels, "A")
+    
+  }
+    
   # Find the unique responses
   response = unique(key)
   
@@ -18,17 +29,18 @@ refine_key = function(key){
   
   # Bind the results into a data frame and add responses as first column
   new_key = as.data.frame(do.call(rbind, new_key))
-  new_key = cbind(response, new_key)
   
-  key_data = list(
-    key = key,
-    new_key = new_key
-  )
-  return(key_data)
+  # Rename columns of key to match original test.
+  # Proposed check_keynames function will handle more complex cases
+  names(new_key) = names(test_with_id)[-1] 
+  
+  new_key = cbind(response, new_key)
+
+  return(new_key)
 }
 
 # # Test keys
-# key = c('A','B','C','D','B','C','A')
 # key = c("E","B","C","D","B","C","A" ,"B", "C","A")
+# refine_key(math_key)
 # key = c("GB", "ND", "WI", "MN", "ND", "ND", "WI", "GB")
   
