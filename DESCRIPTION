@@ -16,7 +16,8 @@ Depends:
     dplyr,
     magrittr,
     reshape2,
-    rmarkdown
+    rmarkdown,
+    readr
 Imports:
 Suggests:
     psych,

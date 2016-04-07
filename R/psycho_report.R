@@ -20,7 +20,7 @@
 #' @param ... passed to \code{\link{render}}
 #' @return As a side effect, creates the html report
 
-psycho_report = function(x, report_filename = "psycho_report", output_format = "html_document", output_dir = NULL, ...) {
+psycho_report = function(x, report_filename = "psycho_report", output_format = "html_document", output_dir = NULL, simple_html = TRUE, ...) {
   ## Inputs an analyze, creates report, returns filename
   thistest = x
   
@@ -36,7 +36,14 @@ psycho_report = function(x, report_filename = "psycho_report", output_format = "
   
   file.copy(from = template, to = input_file, overwrite = TRUE)
   
-  output = render(input_file, output_format = output_format, output_dir = output_dir, ...)
+  if(simple_html) {
+    html_output = knit2html(input_file, quiet = TRUE, force_v1 = TRUE)
+    output = read_file(html_output)
+  } else {
+    
+    output = render(input_file, output_format = output_format, output_dir = output_dir, ...)
+  }
+ 
   
 #   ## open it
 #   if(open) {
