@@ -31,9 +31,11 @@ distractor_analysis = function(testQME, ...) {
 		myCorrs = rep(NA, j)
 	
 		for(k in 1:j){
+		  ## Create indicator variables for 0/1 for each response
 			new[ , (2+k)] = ifelse(new$response == levels(new$response)[k], 1, 0)
 			names(new)[2+k] = levels(new$response)[k] 
-			myCorrs[k] = cor(new$corrected_score, new[ ,(2+k)])
+			## Correlate indicator variable with corrected score
+			myCorrs[k] = cor(new$corrected_score, new[ ,(2+k)], use = "complete.obs")
 		}
 	distractors_discrim[[i]] = myCorrs 	
 
