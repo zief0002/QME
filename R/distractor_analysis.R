@@ -22,22 +22,17 @@ distractor_analysis = function(testQME, ...) {
   for(i in 1:num_items){
     distractors_difficulty[[i]] = prop.table(table(raw_test[i]))
 
-    ## data frame of responses to item i, ttem-deleted total score, tercile
-		new = data.frame(raw_test[ , i], delscores[ , i])
-		names(new) = c("response", "corrected_score")
-
-		## Loop through to create variables holding the 0/1 for each response
-		j = length(levels(new$response))
-		myCorrs = rep(NA, j)
-	
-		for(k in 1:j){
-		  ## Create indicator variables for 0/1 for each response
-			new[ , (2+k)] = ifelse(new$response == levels(new$response)[k], 1, 0)
-			names(new)[2+k] = levels(new$response)[k] 
-			## Correlate indicator variable with corrected score
-			myCorrs[k] = cor(new$corrected_score, new[ ,(2+k)], use = "complete.obs")
-		}
-	distractors_discrim[[i]] = myCorrs 	
+    ## data frame of responses to item i, item-deleted total score
+		new = data.frame(response = raw_test[ , i], 
+		                 corrected_score = delscores[ , i])
+		new = na.omit(new)
+		
+		## Calculate 0-1 indicators for each distractor
+		indicators = model.matrix(corrected_score ~ 0 + response, data = new)
+		
+		## Calculate correlations of indicators with corrected score
+		distractors_discrim[[i]] = cor(new$corrected_score, 
+	                                 indicators)[1,]
 
 
   }
