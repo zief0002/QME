@@ -92,7 +92,7 @@ if(!hasKey(x$test)) {
      cat("\n\n")
   
         choices = rownames(x$item_level$distractor_analysis[[1]][[i]])
-    keys = x$test$key[x$test$key$response %in% choices, 1 + i]
+    keys = x$test$key[match(choices, x$test$key$response), 1 + i]
     
     tbOut = data.frame(Choice = choices,
                Key = keys,
