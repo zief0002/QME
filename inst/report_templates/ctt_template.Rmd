@@ -92,9 +92,9 @@ if(!hasKey(x$test)) {
      cat("\n\n")
   
         choices = rownames(x$item_level$distractor_analysis[[1]][[i]])
-    keys = as.numeric(choices %in% as.character(x$test$key[,i]))
+    keys = x$test$key[x$test$key$response %in% choices, 1 + i]
     
-    tbOut = data.frame(Choice = rownames(x$item_level$distractor_analysis[[1]][[i]]),
+    tbOut = data.frame(Choice = choices,
                Key = keys,
                Proportions = as.numeric(x$item_level$distractor_analysis[[1]][[i]]),
                `Response Discrimination` = as.numeric(x$item_level$distractor_analysis[[2]][[i]]),
