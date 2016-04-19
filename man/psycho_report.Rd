@@ -5,7 +5,8 @@
 \title{Create a test report}
 \usage{
 psycho_report(x, report_filename = "psycho_report",
-  output_format = "html_document", output_dir = NULL, ...)
+  output_format = "html_document", output_dir = NULL, simple_html = FALSE,
+  ...)
 }
 \arguments{
 \item{x}{An \code{analyze} object}
@@ -17,6 +18,8 @@ or \code{'pdf_document'}.  Note that \code{'pdf_document'} requires a
 working LaTeX implementation.}
 
 \item{output_dir}{The path to the directory that the report will be written to.  If NULL, written to current working directory.}
+
+\item{simple_html}{Output a simple (R Markdown v1) html report directly to the console.  If \code{TRUE} overrides \code{output_format}.}
 
 \item{...}{passed to \code{\link{render}}}
 }
