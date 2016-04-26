@@ -19,7 +19,7 @@ right_wrong = function(test_with_id, key) {
   
   keyed_test = data.frame(id = test_with_id$id, scored_matrix, check.names = FALSE)
 
-  if(names(keyed_test) != names(test_with_id))
+  if(all(names(keyed_test) != names(test_with_id)))
     stop("Column names of keyed test do not equal names of original test")
   
   keyed_test
