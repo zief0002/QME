@@ -19,8 +19,16 @@ test_that("Is the key a valid dataframe", {
                       Q3 = c(0, .5, 1))
     expect_true(is_valid_key(goodkey))
     expect_false(is_valid_key(badkey))
-    expect_false(TRUE)
-    expect_true(FALSE)
+
 })
 
-test_that("Convert key vector into key dataframe")
+test_that("QMEtest changes id name in dataset to 'id'", {
+  math2 = math
+  names(math2)[1] = "Custom.Id.Name"
+  
+  math2_QMEtest = QMEtest(math2, math_key)
+  
+})
+
+
+# test_that("Convert key vector into key dataframe")

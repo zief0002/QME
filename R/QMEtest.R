@@ -21,13 +21,15 @@ QMEtest = function(test, key = NULL, id = TRUE) {
   
   # If no id column, add one.  
   if(id) {
+    ## Rename id column to 'id'
     test_with_id = test
+    names(test_with_id)[1] = "id"
   } else {
     message("Adding id column.")
     test_with_id = data.frame(id = 1:nrow(test),
                               test)
   }
-
+  
   # Check if key is in "old" form and put into new data frame format
   if(!is.data.frame(key) || nrow(key) == 1)
     key = refine_key(key, test_with_id)
@@ -44,8 +46,8 @@ QMEtest = function(test, key = NULL, id = TRUE) {
                   key = key,
                   keyed_test = right_wrong(test_with_id, key = key)) 
   } else {
-    # If first column of data are not numeric and there is no key, output an error message
-    if(is.numeric(test_with_id[ , 1]) == FALSE){
+    # If first column of data (skipping id) are not numeric and there is no key, output an error message
+    if(is.numeric(test_with_id[ , 2]) == FALSE){
       stop("Your data have not been keyed. Please input an answer key using the key= argument.")
     } else{
       # If numeric, then the "keyed test" is simply the test and there is no key
