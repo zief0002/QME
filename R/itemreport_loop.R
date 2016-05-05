@@ -57,13 +57,17 @@ itemreport_loop = function(x, itemnum = 1) {
   
   thisfull = rbind(this, 
                    fillzeros %>% 
-                     anti_join(this, by = c("item", "tercile", "response")))
+                     anti_join(this, by = c("item", "tercile", "response"))) %>% 
+    mutate(response = addNA(response, ifany = TRUE))  # add NA as level for relabeling
   
+  ## Relabel missing values as "Missing" for plots
+  levels(thisfull$response)[is.na(levels(thisfull$response))] = "Missing"
   
   theplot = ggplot(thisfull, aes(x = tercile, y = prop, group = response,
                                  colour = response)) +
     geom_line() +
     geom_point() + 
+    ylim(c(0, 1)) + 
     ggtitle("Distractors by tercile")
   
   theplot
