@@ -3,10 +3,19 @@ require(testthat)
 data(math)
 data(math_key)
 
+math_qt = QMEtest(math, math_key)
+
 test_that("odin_zeus runs without errors", {
   oz = analyze(math, math_key)
 print("yo")
   })
+
+test_that("distractor analysis is corrected pearson with attali 2000 correction", {
+  expect_equal_to_reference(distractor_analysis(math_qt),
+                            "tests/testthat/distractor_attali.rds")
+  
+})
+
 
 test_that("Is the key a valid dataframe", {
   goodkey = data.frame(response = c("A","B","C"),

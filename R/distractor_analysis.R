@@ -10,7 +10,6 @@ distractor_analysis = function(testQME, ...) {
   num_items = ncol(raw_test)
 
   keyed = getKeyedTestNoID(testQME)
-	#raw = getRawTestNoID(x$test)
 
 	## persons by items matrix of corrected scores
   scores = rowSums(keyed)
@@ -20,19 +19,36 @@ distractor_analysis = function(testQME, ...) {
   distractors_discrim = vector("list", length = num_items)
 
   for(i in 1:num_items){
+    
     distractors_difficulty[[i]] = prop.table(table(raw_test[i]))
 
     ## data frame of responses to item i, item-deleted total score
 		new = data.frame(response = raw_test[ , i], 
-		                 corrected_score = delscores[ , i])
+		                 corrected_score = delscores[ , i],
+		                 keyed = keyed[, i])
 		new = na.omit(new)
-		
-		## Calculate 0-1 indicators for each distractor
+
+		## Calculate 0-1 indicators for each distractor Other distractors (e.g. key =
+		## 0) are considered MISSING and EXCLUDED (Attali, 2000)
 		indicators = model.matrix(corrected_score ~ 0 + response, data = new)
+		
+		to_exclude = apply(indicators, 2, function(x) {
+		  ## Check if column is distractor
+		  ## THIS IS INEFFICIENT, SHOULD CHECK KEY INSTEAD
+		  if(any(x[new$keyed == 0] == 1))
+		    ## return TRUE if not this distractor AND is incorrect
+		    x == 0 & new$keyed == 0
+		  else
+		    rep(FALSE, length(x))
+		})
+		
+		indicators[to_exclude] = NA
+
 		
 		## Calculate correlations of indicators with corrected score
 		distractors_discrim[[i]] = cor(new$corrected_score, 
-	                                 indicators)[1,]
+	                                 indicators,
+		                               use = "pairwise.complete.obs")[1,]
 
 
   }
