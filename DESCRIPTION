@@ -1,14 +1,14 @@
 Package: QME
-Version: 0.2.0
+Version: 0.3.0
 Date: 2013-06-10
 Title: Classic test theory item analysis
-Authors@R: c(person("Kory Vue", "Developer", role = c("aut", "cre"), email = "vuexx199@umn.edu"),
-             person("Andrew Zieffler", "Developer", role = "aut", email=""),
-  	         person("Ethan Brown", "Developer", role = "aut", email=""),
-             person("Yufeng Chang", "Developer", role = "aut",email = ""),
-             person("Luke Stanke", "Developer", role = "aut",  email = ""), 
-             person("Christopher Moore", "User", role = "ctb",email = "moor0554@umn.edu"))
-Maintainer: Kory Vue <vuexx199@umn.edu>
+Authors@R: c(person("Ethan", "Brown", role = c("aut", "cre"), email="brow3821@umn.edu"),
+             person("Andrew", "Zieffler", "Developer", role = c("aut"), email="zief0002@umn.edu"),
+              person("Kyle", "Nickodem", role = c("aut"), email = "nicko013@umn.edu"),
+              person("Kory", "Vue", role = c("aut"), email = "vuexx199@umn.edu"),
+              person("Erik", "Anderson", role = c("ctb"), email = "ande7564@umn.edu"),
+              person("Rita", "Sandidge", role = "ctb", email = "sandi018@umn.edu"))
+Maintainer: Ethan C. Brown <brow3821@umn.edu>
 Depends:
     R (>= 2.15.0),
     ggplot2,
