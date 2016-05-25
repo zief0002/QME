@@ -30,8 +30,14 @@ distractor_analysis = function(testQME, ...) {
 
 		## Calculate 0-1 indicators for each distractor Other distractors (e.g. key =
 		## 0) are considered MISSING and EXCLUDED (Attali, 2000)
-		indicators = model.matrix(corrected_score ~ 0 + response, data = new)
-		
+		unique_responses = unique(as.character(new$response))
+		if(length(unique_responses) > 1)
+		  indicators = model.matrix(corrected_score ~ 0 + response, data = new)
+		else {
+		  indicators = data.frame(rep(1, nrow(new)))
+		  names(indicators) = paste0("response", unique_responses)
+		}
+		  
 		to_exclude = apply(indicators, 2, function(x) {
 		  ## Check if column is distractor
 		  ## THIS IS INEFFICIENT, SHOULD CHECK KEY INSTEAD
