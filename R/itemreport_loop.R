@@ -1,8 +1,8 @@
 getTerciles = function(x) {
   ## Input analyze, output long df with terciles & proportions
   
-  keyed = getKeyedTestNoID(x$test)
-  raw = getRawTestNoID(x$test)
+  keyed = getKeyedTestNoID(x$test) %>% set_rownames(NULL)
+  raw = getRawTestNoID(x$test) %>% set_rownames(NULL)
   scores = data.frame(scores = x$test_level$descriptives$scores, check.names = FALSE)
   
   delscores = scores$scores - keyed
@@ -15,7 +15,7 @@ getTerciles = function(x) {
   )
   
   ## Calculate proportion choosing each distractor
-  
+  ## THIS MERGE IS DEPENDENT ON ROWNAMES! This is why I had to remove them, above
   tercsummary = melt(terciles) %>% 
     dplyr::rename(tercile = value) %>% 
     left_join(melt(as.matrix(raw)) %>%

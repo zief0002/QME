@@ -61,6 +61,13 @@ test_that("Integers (not factored) as response options work", {
   psycho_report(oz_intchar) # these should be the same
 })
 
-
+test_that("Dichotomous items tercile plots work", {
+  math_dich = math_qt$keyed_test
+  math_dich_key = math_dich[1, -1]
+  
+  x = analyze(math_dich, math_dich_key)
+  
+  psycho_report(x)
+}
 
 # test_that("Convert key vector into key dataframe")
