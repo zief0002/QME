@@ -68,7 +68,9 @@ itemreport_loop = function(x, itemnum = 1) {
     geom_line() +
     geom_point() + 
     ylim(c(0, 1)) + 
-    ggtitle("Distractors by tercile")
+    ggtitle("Distractors by tercile") +
+    labs(x = "Tercile",
+         y = "Proportion")
   
   theplot
     
