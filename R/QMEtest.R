@@ -19,6 +19,8 @@
 #'  }
 QMEtest = function(test, key = NULL, id = TRUE) {
   
+
+  
   # If no id column, add one.  
   if(id) {
     ## Rename id column to 'id'
@@ -33,6 +35,12 @@ QMEtest = function(test, key = NULL, id = TRUE) {
   # Check if key is in "old" form and put into new data frame format
   if(!is.data.frame(key) || nrow(key) == 1)
     key = refine_key(key, test_with_id)
+  
+  # Convert all columns of test to character (causes problems if is integer otherwise)
+  test_with_id[-1] = apply(test_with_id[-1], 2, as.character)
+  
+  # Convert key "response" column to character, also avoid problems
+  key$response = as.character(key$response)
   
   # Create empty output QMEtest object
   output = list(raw_test = NULL,

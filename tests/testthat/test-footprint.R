@@ -1,4 +1,5 @@
 require(testthat)
+require(QME)
 
 data(math)
 data(math_key)
@@ -38,6 +39,28 @@ test_that("QMEtest changes id name in dataset to 'id'", {
   math2_QMEtest = QMEtest(math2, math_key)
   
 })
+
+test_that("Integers (not factored) as response options work", {
+  ## Replace with integers
+  math_int = math
+  math_int[-1] = apply(math[-1], 2, function(x) match(as.character(x), LETTERS))
+  
+  math_key_int = math_key
+  math_key_int = apply(math_key, 2, function(x) match(as.character(x), LETTERS))
+  
+  oz_int = analyze(math_int, math_key_int)
+  psycho_report(oz_int)
+  
+  math_intchar = math
+  math_intchar[-1] = apply(math[-1], 2, function(x) as.character(match(as.character(x), LETTERS)))
+  
+  math_key_intchar = math_key
+  math_key_intchar = apply(math_key, 2, function(x) as.character(match(as.character(x), LETTERS)))
+  
+  oz_intchar = analyze(math_intchar, math_key_intchar)
+  psycho_report(oz_intchar) # these should be the same
+})
+
 
 
 # test_that("Convert key vector into key dataframe")
