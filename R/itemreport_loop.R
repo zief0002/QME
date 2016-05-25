@@ -17,12 +17,12 @@ getTerciles = function(x) {
   ## Calculate proportion choosing each distractor
   
   tercsummary = melt(terciles) %>% 
-    rename(tercile = value) %>% 
+    dplyr::rename(tercile = value) %>% 
     left_join(melt(as.matrix(raw)) %>%
-                rename(response = value)) %>%
-    rename(id = Var1, item = Var2) %>%
+                dplyr::rename(response = value)) %>%
+    dplyr::rename(id = Var1, item = Var2) %>%
     group_by(item, tercile, response) %>%
-    summarize(count = n()) %>%
+    dplyr::summarize(count = n()) %>%
     group_by(item, tercile) %>%
     mutate(total = sum(count),
            prop = count/total) %>%
