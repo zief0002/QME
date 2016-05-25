@@ -3,10 +3,10 @@ Version: 0.3.0
 Date: 2013-06-10
 Title: Classic test theory item analysis
 Authors@R: c(person("Ethan", "Brown", role = c("aut", "cre"), email="brow3821@umn.edu"),
-             person("Andrew", "Zieffler", "Developer", role = c("aut"), email="zief0002@umn.edu"),
+             person("Andrew", "Zieffler", role = c("aut"), email="zief0002@umn.edu"),
               person("Kyle", "Nickodem", role = c("aut"), email = "nicko013@umn.edu"),
               person("Kory", "Vue", role = c("aut"), email = "vuexx199@umn.edu"),
-              person("Erik", "Anderson", role = c("ctb"), email = "ande7564@umn.edu"),
+              person("Erik", "Anderson", role = c("aut"), email = "ande7564@umn.edu"),
               person("Rita", "Sandidge", role = "ctb", email = "sandi018@umn.edu"))
 Maintainer: Ethan C. Brown <brow3821@umn.edu>
 Depends:
