@@ -1,3 +1,4 @@
+##' @export
 analyze = function(test, key = NULL, id = TRUE, d = 2, plot = TRUE, use = "pairwise.complete.obs"){
   
   # Preliminaries: score & get keyed test

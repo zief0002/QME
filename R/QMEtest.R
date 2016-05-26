@@ -17,6 +17,9 @@
 #'  \item{\code{key}}{The key}
 #'  \item{\code{keyed_test}}{The keyed/scored test, using the \code{right_wrong} function}
 #'  }
+#'  
+#'@export
+#'  
 QMEtest = function(test, key = NULL, id = TRUE) {
   
 

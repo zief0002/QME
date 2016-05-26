@@ -39,6 +39,7 @@ item_names = function(x) {
   names(getRawTestNoID(x$test))
 }  
 
+##' @importFrom ggplot2 ggplot geom_line geom_point ylim ggtitle labs
 
 itemreport_loop = function(x, itemnum = 1) {
  # Loop over analyze to generate item-level markdown

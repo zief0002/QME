@@ -12,7 +12,7 @@ oz = analyze(math, math_key)
 context("reference")
 
 test_that("distractor analysis is corrected pearson with attali 2000 correction", {
-  expect_equal_to_reference(QME::distractor_analysis(math_qt),
+  expect_equal_to_reference(QME:::distractor_analysis(math_qt),
                             "tests/testthat/distractor_attali.rds")
   
 })
@@ -40,7 +40,7 @@ test_that("QMEtest changes id name in dataset to 'id'", {
   names(math2)[1] = "Custom.Id.Name"
   
   math2_QMEtest = QMEtest(math2, math_key)
-  expect_equal(names(getRawTest(math2_QMEtest))[1], "id")
+  expect_equal(names(QME:::getRawTest(math2_QMEtest))[1], "id")
   
 })
 

@@ -10,18 +10,15 @@ Authors@R: c(person("Ethan", "Brown", role = c("aut", "cre"), email="brow3821@um
               person("Rita", "Sandidge", role = "ctb", email = "sandi018@umn.edu"))
 Maintainer: Ethan C. Brown <brow3821@umn.edu>
 Depends:
-    R (>= 2.15.0),
-    ggplot2,
-    knitr,
+    R (>= 3.2.5),
     dplyr,
-    magrittr,
     reshape2,
     rmarkdown,
     readr
+Imports:
+    ggplot2
 Suggests:
-    psych,
-    knitr,
-    rmarkdown
+    psych
 Description: Ability to key and score test file and provide psychometric
     information
 License: GPL (>= 2)

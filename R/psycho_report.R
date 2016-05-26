@@ -20,6 +20,7 @@
 #' @param simple_html Output a simple (R Markdown v1) html report directly to the console.  If \code{TRUE} overrides \code{output_format}.
 #' @param ... passed to \code{\link{render}}
 #' @return As a side effect, creates the html report
+#' @export
 
 psycho_report = function(x, report_filename = "psycho_report", output_format = "html_document", output_dir = NULL, simple_html = FALSE, ...) {
   ## Inputs an analyze, creates report, returns filename
