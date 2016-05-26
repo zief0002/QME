@@ -9,7 +9,7 @@ oz = analyze(math, math_key)
 
 
 # Checks against reference dfs --------------------------------------------
-
+context("reference")
 
 test_that("distractor analysis is corrected pearson with attali 2000 correction", {
   expect_equal_to_reference(QME::distractor_analysis(math_qt),
@@ -33,6 +33,7 @@ test_that("psycho_report simple html is the same as reference", {
 
 
 # Checks in response to bugs ----------------------------------------------
+context("data import to QMEtest")
 
 test_that("QMEtest changes id name in dataset to 'id'", {
   math2 = math
