@@ -12,11 +12,11 @@ Maintainer: Ethan C. Brown <brow3821@umn.edu>
 Depends:
     R (>= 3.2.5),
     dplyr,
-    reshape2,
+    reshape2
+Imports:
+    ggplot2,
     rmarkdown,
     readr
-Imports:
-    ggplot2
 Suggests:
     psych
 Description: Ability to key and score test file and provide psychometric

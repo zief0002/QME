@@ -40,10 +40,10 @@ psycho_report = function(x, report_filename = "psycho_report", output_format = "
   
   if(simple_html) {
     html_output = knit2html(input_file, quiet = TRUE, force_v1 = TRUE)
-    output = read_file(html_output)
+    output = readr::read_file(html_output)
   } else {
     
-    output = render(input_file, output_format = output_format, output_dir = output_dir, ...)
+    output = rmarkdown::render(input_file, output_format = output_format, output_dir = output_dir, ...)
   }
  
   
