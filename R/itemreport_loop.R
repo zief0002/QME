@@ -8,29 +8,39 @@ getTerciles = function(x) {
   delscores = scores$scores - keyed
   
   ## Calculate deleted terciles
-  terciles = sapply(delscores, function(x)
+  terciles = vapply(delscores, function(x)
     findInterval(x, 
                  quantile(x, probs = c(0, 1/3, 2/3, 1)),
-                 all.inside = TRUE)
+                 all.inside = TRUE),
+    FUN.VALUE = rep(1, nrow(delscores))
   )
   
-  ## Calculate proportion choosing each distractor
-  ## THIS MERGE IS DEPENDENT ON ROWNAMES! This is why I had to remove them, above
-  tercsummary = melt(terciles) %>% 
-    dplyr::rename(tercile = value) %>% 
-    left_join(melt(as.matrix(raw)) %>%
-                dplyr::rename(response = value)) %>%
-    dplyr::rename(id = Var1, item = Var2) %>%
-    group_by(item, tercile, response) %>%
-    dplyr::summarize(count = n()) %>%
-    group_by(item, tercile) %>%
-    mutate(total = sum(count),
-           prop = count/total) %>%
-    ungroup() %>%
-    mutate(tercile = ordered(tercile, labels = 
-                               c("Low", "Medium", "High")))
+  terciles = as.data.frame(terciles)
   
-  tercsummary
+  ## Calculate proportion choosing each distractor by tercile
+  tercile_response = mapply(function(x, y) {
+    
+    df =  as.data.frame(table(x, y))
+    names(df) = c("tercile", "response", "count")
+    df$tercile = factor(df$tercile,
+                        labels = c("Low", "Medium", "High"))
+    
+    df_split = lapply(split(df, df$tercile),
+                      function(y) {
+                        y$prop = y$count/sum(y$count)
+                        y
+                      })
+    df_combined = do.call(rbind, df_split)
+    rownames(df_combined) = NULL
+    
+    df_combined
+    
+    },
+    terciles, 
+    raw,
+    SIMPLIFY = FALSE)
+  
+  tercile_response
 }
 
 item_names = function(x) {
@@ -47,24 +57,14 @@ itemreport_loop = function(x, itemnum = 1) {
   
   thisitem = item_names(x)[itemnum]
   
-  this = tercsummary[tercsummary$item %in% thisitem,]
+  this = tercsummary[[thisitem]]
   
-  fillzeros = with(this, 
-                   expand.grid(unique(item), unique(tercile), unique(response))) %>%
-    set_names(names(tercsummary)[1:3]) %>%
-    mutate(count = 0,
-           total = 0,
-           prop = 0)
-  
-  thisfull = rbind(this, 
-                   fillzeros %>% 
-                     anti_join(this, by = c("item", "tercile", "response"))) %>% 
-    mutate(response = addNA(response, ifany = TRUE))  # add NA as level for relabeling
-  
+  this$response = addNA(this$response, ifany = TRUE)
+    
   ## Relabel missing values as "Missing" for plots
-  levels(thisfull$response)[is.na(levels(thisfull$response))] = "Missing"
+  levels(this$response)[is.na(levels(this$response))] = "Missing"
   
-  theplot = ggplot(thisfull, aes(x = tercile, y = prop, group = response,
+  theplot = ggplot(this, aes(x = tercile, y = prop, group = response,
                                  colour = response)) +
     geom_line() +
     geom_point() + 

@@ -7,6 +7,7 @@ data(math_key)
 math_qt = QMEtest(math, math_key)
 oz = analyze(math, math_key)
 
+## lapply(dir("R", full.names = T), source)
 
 # Checks against reference dfs --------------------------------------------
 context("reference")

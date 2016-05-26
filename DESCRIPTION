@@ -10,11 +10,10 @@ Authors@R: c(person("Ethan", "Brown", role = c("aut", "cre"), email="brow3821@um
               person("Rita", "Sandidge", role = "ctb", email = "sandi018@umn.edu"))
 Maintainer: Ethan C. Brown <brow3821@umn.edu>
 Depends:
-    R (>= 3.2.5),
-    dplyr,
-    reshape2
+    R (>= 3.2.5)
 Imports:
     ggplot2,
+    knitr,
     rmarkdown,
     readr
 Suggests:
