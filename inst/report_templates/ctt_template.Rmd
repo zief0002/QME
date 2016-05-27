@@ -77,6 +77,9 @@ ggplot(overview, aes(x = Difficulty)) +
 if(!hasKey(x$test)) {
   cat("Raw test was not provided, so distractor analysis is not available.\n")
 } else {
+  
+  terciles = getTerciles(x)
+  
   for(i in 1:length(item_names(x))) {
   
     cat("### Details for `", item_names(x)[i])
@@ -86,7 +89,7 @@ if(!hasKey(x$test)) {
      cat("\n\n\n")
   
    
-    print(itemreport_loop(x, i))
+    print(tercile_plot(terciles[[i]]))
    
    
      cat("\n\n")

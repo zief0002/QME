@@ -30,6 +30,9 @@ getTerciles = function(x) {
     df$tercile = factor(df$tercile,
                         labels = c("Low", "Medium", "High"))
     
+    ## Relabel missing values as "Missing" for plots
+    df$response =  addNA(df$response, ifany = TRUE)
+    levels(df$response)[is.na(levels(df$response))] = "Missing"
     
     df
     
@@ -37,7 +40,7 @@ getTerciles = function(x) {
     terciles, 
     raw,
     SIMPLIFY = FALSE)
-  
+
   tercile_response
 }
 
@@ -49,20 +52,11 @@ item_names = function(x) {
 
 ##' @import ggplot2
 
-itemreport_loop = function(x, itemnum = 1) {
- # Loop over analyze to generate item-level markdown
-  tercsummary = getTerciles(x)
-  
-  thisitem = item_names(x)[itemnum]
-  
-  this = tercsummary[[thisitem]]
-  
-  this$response = addNA(this$response, ifany = TRUE)
-    
-  ## Relabel missing values as "Missing" for plots
-  levels(this$response)[is.na(levels(this$response))] = "Missing"
-  
-  theplot = ggplot(this, aes(x = tercile, y = prop, group = response,
+tercile_plot = function(terciles) {
+ # plot the tercile plot for a given item, given the summary component from
+ # getTerciles()
+
+  theplot = ggplot(terciles, aes(x = tercile, y = prop, group = response,
                                  colour = response)) +
     geom_line() +
     geom_point() + 
