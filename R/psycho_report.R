@@ -39,7 +39,7 @@ psycho_report = function(x, report_filename = "psycho_report", output_format = "
   file.copy(from = template, to = input_file, overwrite = TRUE)
   
   if(simple_html) {
-    html_output = knit2html(input_file, quiet = TRUE, force_v1 = TRUE)
+    html_output = knitr::knit2html(input_file, quiet = TRUE, force_v1 = TRUE)
     output = readr::read_file(html_output)
   } else {
     

@@ -1,8 +1,12 @@
 getTerciles = function(x) {
   ## Input analyze, output long df with terciles & proportions
   
-  keyed = getKeyedTestNoID(x$test) %>% set_rownames(NULL)
-  raw = getRawTestNoID(x$test) %>% set_rownames(NULL)
+  keyed = getKeyedTestNoID(x$test)
+  rownames(keyed) = NULL
+  
+  raw = getRawTestNoID(x$test)
+  rownames(raw) = NULL
+  
   scores = data.frame(scores = x$test_level$descriptives$scores, check.names = FALSE)
   
   delscores = scores$scores - keyed
@@ -20,20 +24,14 @@ getTerciles = function(x) {
   ## Calculate proportion choosing each distractor by tercile
   tercile_response = mapply(function(x, y) {
     
-    df =  as.data.frame(table(x, y))
-    names(df) = c("tercile", "response", "count")
+    df =  as.data.frame(prop.table(table(x, y, useNA = "ifany"), 
+                                   margin = 1))
+    names(df) = c("tercile", "response", "prop")
     df$tercile = factor(df$tercile,
                         labels = c("Low", "Medium", "High"))
     
-    df_split = lapply(split(df, df$tercile),
-                      function(y) {
-                        y$prop = y$count/sum(y$count)
-                        y
-                      })
-    df_combined = do.call(rbind, df_split)
-    rownames(df_combined) = NULL
     
-    df_combined
+    df
     
     },
     terciles, 
@@ -49,7 +47,7 @@ item_names = function(x) {
   names(getRawTestNoID(x$test))
 }  
 
-##' @importFrom ggplot2 ggplot geom_line geom_point ylim ggtitle labs
+##' @import ggplot2
 
 itemreport_loop = function(x, itemnum = 1) {
  # Loop over analyze to generate item-level markdown

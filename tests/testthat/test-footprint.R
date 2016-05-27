@@ -24,13 +24,17 @@ test_that("analyze output for 'math' dataset is the same as reference", {
   
 })
 
+test_that("tercile output same as reference", {
+  expect_equal_to_reference(QME:::getTerciles(oz),
+                            "tests/testthat/math-terciles.rds")
+})
+
 test_that("psycho_report simple html is the same as reference", {
   expect_equal_to_reference(psycho_report(oz, simple_html = TRUE),
                             "tests/testthat/math-psycho_report.rds")
   
   
 })
-
 
 
 # Checks in response to bugs ----------------------------------------------
