@@ -1,7 +1,7 @@
 # This will print the test-level output
-# The print function for class 'oz' is just pretty_output, basically.
+# The print function for class 'analyze' is just pretty_output, basically.
 
-print.oz = function(x, ...) {
+print.analyze = function(x, ...) {
   pretty_output(x, ...)
 }
 
@@ -30,9 +30,3 @@ pretty_output = function(x, ...){
 	cat("-------------------------------")
 	
 }
-
-
-# oz = analyze(math, key = mathKey, group = NULL, focal_name = NULL)
-# pretty_output(oz)
-
-
