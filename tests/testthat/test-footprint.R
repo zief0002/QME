@@ -29,9 +29,9 @@ test_that("tercile output same as reference", {
                             "tests/testthat/math-terciles.rds")
 })
 
-test_that("psycho_report simple html is the same as reference", {
-  expect_equal_to_reference(psycho_report(oz, simple_html = TRUE),
-                            "tests/testthat/math-psycho_report.rds")
+test_that("report simple html is the same as reference", {
+  expect_equal_to_reference(report(oz, simple_html = TRUE),
+                            "tests/testthat/math-report.rds")
   
   
 })
@@ -58,7 +58,7 @@ test_that("Integers (not factored) as response options work the same as characte
   math_key_int = apply(math_key, 2, function(x) match(as.character(x), LETTERS))
   
   oz_int = analyze(math_int, math_key_int)
-  pr_int = psycho_report(oz_int, simple_html = TRUE)
+  pr_int = report(oz_int, simple_html = TRUE)
   
   ## Integer-as-character input
   math_intchar = math
@@ -68,7 +68,7 @@ test_that("Integers (not factored) as response options work the same as characte
   math_key_intchar = apply(math_key, 2, function(x) as.character(match(as.character(x), LETTERS)))
   
   oz_intchar = analyze(math_intchar, math_key_intchar)
-  pr_intchar = psycho_report(oz_intchar, simple_html = TRUE)
+  pr_intchar = report(oz_intchar, simple_html = TRUE)
   
   expect_equal(pr_int, pr_intchar)
 })
@@ -99,7 +99,7 @@ test_that("Integers (not factored) as response options work the same as characte
 #   
 #   x = analyze(math_dich, math_dich_key)
 #   
-#   psycho_report(x)
+#   report(x)
 # })
 
 # test_that("Convert key vector into key dataframe")

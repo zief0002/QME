@@ -2,5 +2,5 @@
 
 export(QMEtest)
 export(analyze)
-export(psycho_report)
+export(report)
 import(ggplot2)

@@ -22,7 +22,7 @@
 #' @return As a side effect, creates the html report
 #' @export
 
-psycho_report = function(x, report_filename = "psycho_report", output_format = "html_document", output_dir = NULL, simple_html = FALSE, ...) {
+report = function(x, report_filename = "psycho_report", output_format = "html_document", output_dir = NULL, simple_html = FALSE, ...) {
   ## Inputs an analyze, creates report, returns filename
   thistest = x
   
@@ -46,14 +46,6 @@ psycho_report = function(x, report_filename = "psycho_report", output_format = "
     output = rmarkdown::render(input_file, output_format = output_format, output_dir = output_dir, ...)
   }
  
-  
-#   ## open it
-#   if(open) {
-#     print(output)
-#     browseURL(paste0('file://', file.path(getwd(), output)))
-#   } 
-#     
-  
   unlink(input_file)
   setwd(old_dir)
   
