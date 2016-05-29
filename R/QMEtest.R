@@ -43,13 +43,8 @@ QMEtest = function(test, key = NULL, id = TRUE) {
   test_with_id[-1] = apply(test_with_id[-1], 2, as.character)
   
   # Convert key "response" column to character, also avoid problems
+  names(key)[1] = "response"
   key$response = as.character(key$response)
-  
-  # Create empty output QMEtest object
-  output = list(raw_test = NULL,
-                key = NULL,
-                keyed_test = NULL)
-
   
   # If a key is included, call the right_wrong() function to score
   if(!is.null(key)){

@@ -49,6 +49,14 @@ test_that("QMEtest changes id name in dataset to 'id'", {
   
 })
 
+test_that("QMEtest detects that id is missing and throws error", {
+  math_no_id = math[-1]
+  
+  expect_error(QMEtest(math_no_id, math_key), regexp = "[Mm]issing")
+  
+  
+})
+
 test_that("Integers (not factored) as response options work the same as character input", {
   ## Integer input
   math_int = math
@@ -76,30 +84,36 @@ test_that("Integers (not factored) as response options work the same as characte
 
 # Not yet implemented -----------------------------------------------------
 
-# test_that("Is the key a valid dataframe", {
-#   goodkey = data.frame(response = c("A","B","C"),
-#                            Q1 = c(1,0,0),
-#                            Q2 = c(0,NA,1),
-#                            Q3 = c(0, .5, 1))
-#   badkey = data.frame(response = c("A","B","C"),
-#                       Q1 = c(1,0,"bum"),
-#                       Q2 = c(0,NA,1),
-#                       Q3 = c(0, .5, 1))
-#     expect_true(is_valid_key(goodkey))
-#     expect_false(is_valid_key(badkey))
-# 
-# })
+test_that("'full key' detected as valid", {
+  goodkey = data.frame(response = c("A","B","C"),
+                           Q1 = c(1,0,0),
+                           Q2 = c(0,NA,1),
+                           Q3 = c(0, .5, 1))
+  badkey = data.frame(response = c("A","B","C"),
+                      Q1 = c(1,0,"bum"),
+                      Q2 = c(0,NA,1),
+                      Q3 = c(0, .5, 1))
+    expect_true(is_valid_full_key(goodkey))
+    expect_false(is_valid_full_key(badkey))
+
+})
+
+test_that("'simple key' detected as valid", {
+  goodkey_vector = c(1:5)
+  goodkey_matrix = matrix(goodkey_vector, nrow = 1)
+  goodkey_df = data.frame(goodkey_matrix)
+
+  expect_true(is_valid_simple_key(goodkey_vector))
+  expect_true(is_valid_simple_key(goodkey_matrix))
+  expect_true(is_valid_simple_key(goodkey_df))
+    
+  badkey_vector = c()
+  badkey_df = rbind(goodkey_df, goodkey_df) 
+  badkey_matrix = as.matrix(badkey_df)
+  
+  expect_false(is_valid_simple_key(badkey_vector))
+  expect_false(is_valid_simple_key(badkey_df))
+  expect_false(is_valid_simple_key(badkey_matrix))
+})
 
 
-## Should test logical items as well
-
-# test_that("Dichotomous items tercile plots work", {
-#   math_dich = math_qt$keyed_test
-#   math_dich_key = math_dich[1, -1]
-#   
-#   x = analyze(math_dich, math_dich_key)
-#   
-#   report(x)
-# })
-
-# test_that("Convert key vector into key dataframe")

@@ -2,6 +2,8 @@
 
 export(QMEtest)
 export(analyze)
+export(is_valid_full_key)
+export(is_valid_simple_key)
 export(psycho_report)
 export(report)
 import(ggplot2)
