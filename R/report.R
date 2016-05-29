@@ -4,9 +4,9 @@
 #' 
 #' This reports contains number of items, number of examinees, a distribution of
 #' the total scores, reliability estimates (Coefficient Alpha, Guttman's L2, 
-#' Guttman's L4, Feldt-Gilmer, and Feldt-Brennan), Item overview (difficulty, 
+#' Guttman's L4, Feldt-Gilmer, and Feldt-Brennan), item overview (difficulty, 
 #' point-biserial correlation, corrected point-biserial correlation, number of 
-#' missing responses, and probability of missing responses), and item details.
+#' missing responses, and probability of missing responses), and distractor analysis.
 #' 
 #' Rendering is done by means of \code{\link{render}} from the \code{rmarkdown}
 #' package.  See that help page for more details on the rendering process.
@@ -17,12 +17,13 @@
 #'   or \code{'pdf_document'}.  Note that \code{'pdf_document'} requires a
 #'   working LaTeX implementation.
 #' @param output_dir The path to the directory that the report will be written to.  If NULL, written to current working directory.
-#' @param simple_html Output a simple (R Markdown v1) html report directly to the console.  If \code{TRUE} overrides \code{output_format}.
+#' @param simple_html If \code{TRUE}, overrides \code{output_format} and outputs a character object containing a simple (R Markdown v1) html report, useful for embedding in Shiny apps.
 #' @param ... passed to \code{\link{render}}
-#' @return As a side effect, creates the html report
+#' @return If \code{simple_html = FALSE}, the default, generates report file as a side effect.  If \code{simple_html = TRUE}, returns a string with the html of the report.
+#' @aliases psycho_report
 #' @export
 
-report = function(x, report_filename = "psycho_report", output_format = "html_document", output_dir = NULL, simple_html = FALSE, ...) {
+report = function(x, report_filename = "QME_report", output_format = "html_document", output_dir = NULL, simple_html = FALSE, ...) {
   ## Inputs an analyze, creates report, returns filename
   thistest = x
   
@@ -52,3 +53,6 @@ report = function(x, report_filename = "psycho_report", output_format = "html_do
   output
   
 }
+
+#' @export 
+psycho_report = report
