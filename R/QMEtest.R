@@ -22,7 +22,29 @@
 #'  
 QMEtest = function(test, key = NULL, id = TRUE) {
   
-
+  ## Check keys
+  if(is_valid_simple_key(key)) {
+    n_items_key = length(key)
+    key_simple = TRUE
+  } else if(is_valid_full_key(key)) {
+    n_items_key = ncol(key) - 1
+    key_simple = FALSE
+  } else 
+    stop("Key not valid.  See `vignette('scoring')`.")
+  
+  ## Check column length of test
+  
+  if(id) {
+    n_items_test = ncol(test) - 1
+  } else if(!id) 
+    n_items_test = ncol(test)
+  else
+    stop("`id` argument must be TRUE or FALSE")
+  
+  if(n_items_test != n_items_key)
+    stop("Number of items in test, ", n_items_test,
+         " must match number of items in key, ", n_items_key,
+         ".", ifelse(id, " If test is missing id column, use `id = FALSE`."))
   
   # If no id column, add one.  
   if(id) {
@@ -36,7 +58,7 @@ QMEtest = function(test, key = NULL, id = TRUE) {
   }
   
   # Check if key is in "old" form and put into new data frame format
-  if(!is.data.frame(key) || nrow(key) == 1)
+  if(key_simple)
     key = refine_key(key, test_with_id)
   
   # Convert all columns of test to character (causes problems if is integer otherwise)
