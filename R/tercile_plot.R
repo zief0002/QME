@@ -25,7 +25,8 @@ getTerciles = function(x) {
   tercile_response = mapply(function(x, y) {
     
     df =  as.data.frame(prop.table(table(x, y, useNA = "ifany"), 
-                                   margin = 1))
+                                   margin = 1),
+                        stringsAsFactors = TRUE)
     names(df) = c("tercile", "response", "prop")
     df$tercile = factor(df$tercile,
                         labels = c("Low", "Medium", "High"))

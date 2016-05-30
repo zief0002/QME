@@ -54,6 +54,16 @@ test_that("QMEtest detects that id is missing and throws error", {
   
   expect_error(QMEtest(math_no_id, math_key), regexp = "[Mm]issing")
   
+})
+
+test_that("Report works the same with stringsAsFactors = FALSE", {
+  
+  old = options(stringsAsFactors = FALSE)
+  
+  expect_equal_to_reference(report(analyze(math, math_key), simple_html = TRUE),
+                            "tests/testthat/math-report.rds")
+  
+  options(old)
   
 })
 
@@ -82,7 +92,7 @@ test_that("Integers (not factored) as response options work the same as characte
 })
 
 
-# Not yet implemented -----------------------------------------------------
+# Tests of keys -----------------------------------------------------
 
 test_that("'full key' detected as valid", {
   goodkey = data.frame(response = c("A","B","C"),
