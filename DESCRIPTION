@@ -1,6 +1,6 @@
 Package: QME
-Version: 0.3.2
-Date: 2016-05-27
+Version: 0.4.0
+Date: 2016-05-31
 Title: Classic test theory item analysis
 Authors@R: c(person("Ethan", "Brown", role = c("aut", "cre"), email="brow3821@umn.edu"),
              person("Andrew", "Zieffler", role = c("aut"), email="zief0002@umn.edu"),
