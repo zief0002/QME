@@ -127,3 +127,48 @@ test_that("'simple key' detected as valid", {
 })
 
 
+# Test terciles ----------------------------------------------------------
+
+## the following dfs will not produce 3 tercile values for item 7 if using the
+## default type 7 quantile algorithm
+
+mystery = 
+  data.frame(id = 1:15, item1 = c(1L, 1L, 1L, 1L, 1L, 4L, 2L, 
+  1L, 3L, 1L, 1L, 2L, 1L, 3L, 1L), item2 = c(1L, 1L, 1L, 1L, 1L, 
+  3L, 4L, 1L, 1L, 1L, 1L, 3L, 1L, 3L, 1L), item3 = c(2L, 2L, 3L, 
+  3L, 3L, 2L, 1L, 2L, 1L, 3L, 2L, 1L, 2L, 4L, 2L), item4 = c(4L, 
+  4L, 4L, 4L, 4L, 3L, 1L, 1L, 1L, 4L, 4L, 4L, 2L, 1L, 3L), item5 = c(4L, 
+  4L, 4L, 4L, 4L, 4L, 1L, 4L, 1L, 4L, 4L, 1L, 4L, 1L, 4L), item6 = c(1L, 
+  1L, 1L, 1L, 1L, 3L, 1L, 1L, 1L, 1L, 1L, 4L, 1L, 2L, 1L), item7 = c(2L, 
+  2L, 2L, 2L, 2L, 2L, 4L, 4L, 2L, 2L, 2L, 4L, 2L, 2L, 2L), item8 = c(3L, 
+  3L, 3L, 3L, 3L, 3L, 3L, 3L, 2L, 3L, 3L, 3L, 3L, 4L, 3L))
+mystery_key = c(1L, 1L, 2L, 4L, 4L, 1L, 2L, 3L)
+
+mystery_qt = QMEtest(mystery, mystery_key)
+summary(mystery_qt)
+an = analyze(mystery, mystery_key)
+## Tercile fn should NOT produce warning if all three levels are present
+test_that("tercile does not produce warning for not all 3 levels using type 1 algorithm", {
+  expect_silent(getTerciles(an))
+})
+
+
+tercile_test = data.frame(id = 1:3, item1 = c(TRUE, FALSE, FALSE),
+                          item2 = c(FALSE, TRUE, FALSE),
+                          item3 = TRUE)
+tercile_key = c(TRUE, TRUE, TRUE)
+
+tercile_oz = analyze(tercile_test, tercile_key)
+
+test_that("When not 3 terciles, produces warning", {
+  expect_warning(getTerciles(tercile_oz), "do not have values")
+})
+
+
+two_cols = data.frame(id = 1:3, item1 = c(TRUE, FALSE, FALSE),
+                      item2 = c(FALSE, TRUE, FALSE))
+two_cols_key = c(TRUE, TRUE)
+
+test_that("deleted alpha intelligently handles small datasets", {
+  expect_silent(analyze(two_cols, two_cols_key))
+})

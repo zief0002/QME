@@ -1,3 +1,4 @@
+#' @export
 getTerciles = function(x) {
   ## Input analyze, output long df with terciles & proportions
   
@@ -15,7 +16,7 @@ getTerciles = function(x) {
   terciles = vapply(delscores, function(x) {
     out = findInterval(x, 
                  quantile(x, probs = c(0, 1/3, 2/3, 1), type = 1),
-                 all.inside = TRUE),
+                 all.inside = TRUE)
     if(!all(1:3 %in% out))
       warning("Some columns do not have values for all 3 terciles.")
     

@@ -8,6 +8,7 @@ test_summary = function(test, key, id = TRUE, d = 2, plot = FALSE, ...){
   return(QMEtest1)
 }
 
+#' @export
 summary.QMEtest = function(QMEtest, d = 2, ...) {
 
   responses = getKeyedTestNoID(QMEtest)

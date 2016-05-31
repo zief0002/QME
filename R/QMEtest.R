@@ -44,7 +44,7 @@ QMEtest = function(test, key = NULL, id = TRUE) {
   if(n_items_test != n_items_key)
     stop("Number of items in test, ", n_items_test,
          " must match number of items in key, ", n_items_key,
-         ".", ifelse(id, " If test is missing id column, use `id = FALSE`."))
+         ".", ifelse(id, " If test is missing id column, use `id = FALSE`.", ""))
   
   # If no id column, add one.  
   if(id) {
