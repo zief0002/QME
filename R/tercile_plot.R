@@ -12,10 +12,15 @@ getTerciles = function(x) {
   delscores = scores$scores - keyed
   
   ## Calculate deleted terciles
-  terciles = vapply(delscores, function(x)
-    findInterval(x, 
-                 quantile(x, probs = c(0, 1/3, 2/3, 1)),
+  terciles = vapply(delscores, function(x) {
+    out = findInterval(x, 
+                 quantile(x, probs = c(0, 1/3, 2/3, 1), type = 1),
                  all.inside = TRUE),
+    if(!all(1:3 %in% out))
+      warning("Some columns do not have values for all 3 terciles.")
+    
+    out
+  },
     FUN.VALUE = rep(1, nrow(delscores))
   )
   
@@ -29,6 +34,7 @@ getTerciles = function(x) {
                         stringsAsFactors = TRUE)
     names(df) = c("tercile", "response", "prop")
     df$tercile = factor(df$tercile,
+                        levels = 1:3,
                         labels = c("Low", "Medium", "High"))
     
     ## Relabel missing values as "Missing" for plots
