@@ -82,6 +82,3 @@ plot.QMEtest = function(QMEtest, ...) {
   return(p1)
 	
 }
-
-#whee <- test_summary(math, key = mathKey, plot = TRUE)
-# To plot: whee$plot_score

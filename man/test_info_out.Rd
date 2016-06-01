@@ -4,10 +4,12 @@
 \alias{test_info_out}
 \title{Outputs basic test-level information}
 \usage{
-test_info_out(x)
+test_info_out(x, plot = TRUE)
 }
 \arguments{
 \item{x}{An \code{analyze} object}
+
+\item{plot}{Plot the test score distribution?}
 }
 \value{
 A ggplot2 histogram or dotplot of the test score distribution and a Markdown table
@@ -18,12 +20,12 @@ IQR, skewness, and kurtosis of the score distribution.
 Ouputs histogram or dotplot of test score distribution and test-level descriptives in a table.
 }
 \details{
-Person total scores from the \code{analyze} object are extracted and the distribution
-of scores is plotted.  If the number of persons is >= 50, the frequency distribution
+Person total scores from the \code{\link{analyze}} object are extracted and the distribution
+of scores is plotted as a side-effect.  If the number of persons is >= 50, the frequency distribution
 of scores is presented with a histogram with binwidth = 1.  If the number of persons is
 < 50, a dotplot is produced.
 
-Test-level descriptives are extracted from the \code{analyze} object and outputted in a markdown
-table that can then be rendered with \code{psycho_report}.
+Test-level descriptives are extracted from the \code{\link{analyze}} object and returned in a markdown
+table; this is currently used by the \code{\link{report}} function.
 }
 

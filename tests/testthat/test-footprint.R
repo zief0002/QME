@@ -31,6 +31,11 @@ test_that("report simple html is the same as reference", {
   
 })
 
+# Code for comparing
+
+# old = readRDS("tests/testthat/math-report.rds")
+# write(old, file = "old.html")
+# write(report(oz, simple_html = TRUE), file = "new.html")
 
 # QMEtest import ----------------------------------------------
 context("data import to QMEtest")

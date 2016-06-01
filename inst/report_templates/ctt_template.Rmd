@@ -9,6 +9,10 @@ output:
 date: "Generated `r date()`"
 ---
 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, results = "asis")
+
+```
 
 
 **Number of items:** `r x$test_level$descriptives$number_items`
@@ -18,7 +22,7 @@ date: "Generated `r date()`"
 
 ## Total score information
 
-```{r totalscores, echo = FALSE, message=FALSE,results='asis'}
+```{r totalscores}
 test_info_out(x)
 
 ```
@@ -26,7 +30,7 @@ test_info_out(x)
 
 ## Reliability
 
-```{r reliability, echo = FALSE,results='asis'}
+```{r reliability}
 reliability_out = function(x) {
   ## Outputs for basic reliability
    
@@ -54,7 +58,7 @@ knitr::kable(dalph, digits = 2)
 
 ## Item overview
 
-```{r item_overview, echo = FALSE, results='asis', message=FALSE}
+```{r item_overview}
 overview = data.frame(x$item_level$item_stats, x$item_level$missing)
 names(overview) = c("Difficulty", "PBiS", "Corrected PBiS", "Missing (N)", "Missing (p)")
 
@@ -73,7 +77,7 @@ ggplot(overview, aes(x = Difficulty)) +
 
 ## Item details
 
-```{r itemloop_prep, echo = FALSE, message = FALSE, results='asis'}
+```{r itemloop_prep}
 if(!hasKey(x$test)) {
   cat("Raw test was not provided, so distractor analysis is not available.\n")
 } else {
