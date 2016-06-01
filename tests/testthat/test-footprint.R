@@ -24,11 +24,6 @@ test_that("analyze output for 'math' dataset is the same as reference", {
   
 })
 
-test_that("tercile output same as reference", {
-  expect_equal_to_reference(QME:::getTerciles(oz),
-                            "tests/testthat/math-terciles.rds")
-})
-
 test_that("report simple html is the same as reference", {
   expect_equal_to_reference(report(oz, simple_html = TRUE),
                             "tests/testthat/math-report.rds")
@@ -37,7 +32,7 @@ test_that("report simple html is the same as reference", {
 })
 
 
-# Checks in response to bugs ----------------------------------------------
+# QMEtest import ----------------------------------------------
 context("data import to QMEtest")
 
 test_that("QMEtest changes id name in dataset to 'id'", {
@@ -127,7 +122,12 @@ test_that("'simple key' detected as valid", {
 })
 
 
-# Test terciles ----------------------------------------------------------
+# Analyze -----------------------------------------------------------------
+
+context("analyze")
+
+
+# Terciles ----------------------------------------------------------
 
 ## the following dfs will not produce 3 tercile values for item 7 if using the
 ## default type 7 quantile algorithm
@@ -165,10 +165,8 @@ test_that("When not 3 terciles, produces warning", {
 })
 
 
-two_cols = data.frame(id = 1:3, item1 = c(TRUE, FALSE, FALSE),
-                      item2 = c(FALSE, TRUE, FALSE))
-two_cols_key = c(TRUE, TRUE)
-
-test_that("deleted alpha intelligently handles small datasets", {
-  expect_silent(analyze(two_cols, two_cols_key))
+test_that("tercile output same as reference", {
+  expect_equal_to_reference(getTerciles(oz),
+                            "tests/testthat/math-terciles.rds")
 })
+
