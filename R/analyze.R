@@ -35,7 +35,7 @@ analyze = function(test, key = NULL, id = TRUE, d = 2, use = "pairwise.complete.
 
   # Get output of middle manager functions
 	test_level = list(
-    descriptives = summary(q1, d = d),
+    descriptives = test_summary_list(q1),
     reliability = reliability(q1)
 	)
   item_level = list(
