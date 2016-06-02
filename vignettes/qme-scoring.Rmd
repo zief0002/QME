@@ -1,0 +1,104 @@
+---
+title: "QME scoring"
+author: "UMN EdPsych QME"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{QME scoring}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+## Overview of the process
+
+To get the most out of the package QME, the first thing to do in the process of scoring is to import the datasets. Once the data and key are imported, the next step is to check whether the data and key are in the correct format.  Once we get both the dataset and key in the correct format, we can use the object QME::analyze() to get a summary of the data and utilize the object QME::report() to generate a full report (reliabilities, distractor analysis, plots, etc...) on the data.
+
+
+## Importing the data
+
+You can do this simply with the use of base R with read.table() or read.csv().  It's easiest with those two functions as we want a dataframe for the test data and a key that is either a dataframe with one row or a vector.  
+
+## A valid data set for the test
+
+The test data should be wide format with the first column as the ID column and the following columns be the items. If there is not an ID column, the first column should be the first item and an arbitrary ID will be created within the package.  There should not be any columns that are not items or the ID. Each row should be a different individual (if this is an educational test). The responses can be the actual responses of the individuals or the test can be a keyed test, where each cell contains a "1" for correct and "0" for incorrect.  If the response is the latter, the package will not be able to do a distractor analysis because certain information will be lacking.  The dataset must have the actual response with a valid key for distractor analysis.  An example of a dataset and key is shown in the QME library.
+
+
+```{r}
+library(QME)
+data(math)
+math
+data(math_key)
+```
+
+
+To get the most out of the package, both the raw response dataset of the test and the key of the test should be used.  This will enable distactor analysis, but if there is only a dataset which has been converted into right or wrong for each cell (with 1s and 0s), there will only be simple summary statistics (reliability, means, sds, etc...) without the distractor analysis.
+
+
+## A valid key for use in the package
+
+A key refers to the correct answers for the test that will be analyzed.  The assumption is that the format of the key will be either a vector or a data frame with one row, where the first column is the answer for the first item, the second column is the answer for the second item, and so on...
+
+The package requires a key with this format if you can provide a key.  An example of this is with the key, "math_key" from the library QME.  This is a simple key.  One way to test to see if the simple key works is to use the tool QME::is_valid_simple_key().
+
+```{r}
+
+data(math_key)
+math_key
+is_valid_simple_key(math_key)
+
+```
+
+QME allows for a full key.  The above is a simple key which gets converted to the full key format when using the tool QME::QMEtest().  We can check whether it's a full key with the tool QME::is_valid_full_key().
+
+```{r}
+
+data("math_full_key")
+is_valid_simple_key(math_full_key)
+is_valid_full_key(math_full_key)
+
+```
+
+The converted key is no longer a simple key but a full key now.
+
+The full key is in wide format with the first column as each possible response option for the test.  The following columns are the items and the cells designate the amount given for correct and incorrect options.  The user can modify this full key format to give partial credit, NA if the response option is not an option, or even give negative credit if that is what the user wants to do. See the object "goodkey" and "badkey" below.
+
+```{r}
+
+goodkey = data.frame(response = c("A","B","C"),
+                           Q1 = c(1,0,0),
+                           Q2 = c(-1,NA,1),
+                           Q3 = c(0, .5, 1));goodkey
+badkey = data.frame(response = c("A","B","C"),
+                      Q1 = c(1,0,"bum"),
+                      Q2 = c(0,NA,1),
+                      Q3 = c(0, .5, 1));badkey
+is_valid_full_key(goodkey)
+is_valid_full_key(badkey)
+
+```
+
+The object "goodkey" is a usable full key because it includes values for the response function and NA represents the lack of a response option for that particular item.  The object "badkey," however, is not a usable full key because "bum" does not represent any sort of value for choosing that particular response option for that item. 
+
+
+## analysis
+
+Once the dataset and key are both usable in the package, proceed with the item analysis. The tool QME::analyze() will be used to get some item descriptive statistics. When using the tool QME::analyze(), save it onto an object. Analyze uses both the dataset and key. See help(analyze) for more options. The object will give multiple descriptives of the items ranging from the reliability estimates, the item difficulties, the point biserial correlations, as well as the full key and keyed test.  
+
+
+```{r}
+
+oz <- analyze(math, math_key)
+oz
+
+```
+
+From here, a report can be generated to create a document, either in HTLM, word, or pdf, for more user friendly viewing.  This uses the tool QME::report().
+
+```{r}
+
+report(oz, report_filename = "QME_report", output_format =  "word_document")
+
+```
+
+
