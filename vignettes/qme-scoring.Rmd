@@ -25,10 +25,7 @@ The test data should be wide format with the first column as the ID column and t
 
 
 ```{r}
-library(QME)
-data(math)
 math
-data(math_key)
 ```
 
 
@@ -42,8 +39,6 @@ A key refers to the correct answers for the test that will be analyzed.  The ass
 The package requires a key with this format if you can provide a key.  An example of this is with the key, "math_key" from the library QME.  This is a simple key.  One way to test to see if the simple key works is to use the tool QME::is_valid_simple_key().
 
 ```{r}
-
-data(math_key)
 math_key
 is_valid_simple_key(math_key)
 
@@ -52,8 +47,6 @@ is_valid_simple_key(math_key)
 QME allows for a full key.  The above is a simple key which gets converted to the full key format when using the tool QME::QMEtest().  We can check whether it's a full key with the tool QME::is_valid_full_key().
 
 ```{r}
-
-data("math_full_key")
 is_valid_simple_key(math_full_key)
 is_valid_full_key(math_full_key)
 
@@ -87,18 +80,14 @@ Once the dataset and key are both usable in the package, proceed with the item a
 
 
 ```{r}
-
 oz <- analyze(math, math_key)
 oz
-
 ```
 
 From here, a report can be generated to create a document, either in HTLM, word, or pdf, for more user friendly viewing.  This uses the tool QME::report().
 
-```{r}
-
+```{r eval = FALSE}
 report(oz, report_filename = "QME_report", output_format =  "word_document")
-
 ```
 
 

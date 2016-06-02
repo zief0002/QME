@@ -1,9 +1,6 @@
 require(testthat)
 require(QME)
 
-data(math)
-data(math_key)
-
 math_qt = QMEtest(math, math_key)
 oz = analyze(math, math_key)
 
@@ -72,8 +69,7 @@ test_that("Integers (not factored) as response options work the same as characte
   math_int = math
   math_int[-1] = apply(math[-1], 2, function(x) match(as.character(x), LETTERS))
   
-  math_key_int = math_key
-  math_key_int = apply(math_key, 2, function(x) match(as.character(x), LETTERS))
+  math_key_int = match(math_key, LETTERS)
   
   oz_int = analyze(math_int, math_key_int)
   pr_int = report(oz_int, simple_html = TRUE)
@@ -82,8 +78,7 @@ test_that("Integers (not factored) as response options work the same as characte
   math_intchar = math
   math_intchar[-1] = apply(math[-1], 2, function(x) as.character(match(as.character(x), LETTERS)))
   
-  math_key_intchar = math_key
-  math_key_intchar = apply(math_key, 2, function(x) as.character(match(as.character(x), LETTERS)))
+  math_key_intchar = as.character(match(math_key, LETTERS))
   
   oz_intchar = analyze(math_intchar, math_key_intchar)
   pr_intchar = report(oz_intchar, simple_html = TRUE)

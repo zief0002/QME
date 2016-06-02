@@ -20,6 +20,7 @@ Suggests:
     psych
 Description: Ability to key and score test file and provide psychometric
     information.
+LazyData: true
 License: GPL (>= 2)
 URL: https://github.com/zief0002/QME
 Repository: github
