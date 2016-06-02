@@ -1,24 +1,24 @@
 ## Utility functions for analyze objects
-#' @param x An \code{analyze} object
+## @param x An \code{analyze} object
 
 ## Get the QMETest method for an analyze object
 getQMEtest = function(x) 
   x$test
 
 
-#' Get the reliability from an \code{analyze} object
-#' 
+## Get the reliability from an \code{analyze} object
+## 
 getReliability = function(x) 
   x$test_level$reliability
 
-#' Get the deleted alphas from an \code{analyze} object
+## Get the deleted alphas from an \code{analyze} object
 getDelAlpha = function(x) {
   dalph = data.frame(x$item_level$del_alphas)
   names(dalph) = "Alpha (if Item Deleted)" 
   dalph
 }
 
-#' Get the item overview for a \code{analyze} object
+## Get the item overview for a \code{analyze} object
 getItemOverview = function(x) {
   
   overview = data.frame(x$item_level$item_stats, x$item_level$missing)
@@ -26,7 +26,7 @@ getItemOverview = function(x) {
   overview
 }
 
-#' Plot of item overview
+## Plot of item overview
 plotItemOverview = function(overview) {
   ggplot(overview, aes(x = Difficulty)) + 
     geom_dotplot() + 

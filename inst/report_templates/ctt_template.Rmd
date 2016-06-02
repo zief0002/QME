@@ -31,47 +31,19 @@ test_info_out(x)
 ## Reliability
 
 ```{r reliability}
-reliability_out = function(x) {
-  ## Outputs for basic reliability
-   
-  rels = x$test_level$reliability
-  
-  ## This comes out clumsily as a list and should really be some 
-  ## kind of table object in the original structure!
-  ## Otherwise wouldn't need this code.
-    
-  rels2 = matrix(simplify2array(rels),
-                 nrow = nrow(rels),
-                 ncol = ncol(rels))
-  attributes(rels2) = attributes (rels)  
-  
-  rels2
-}
+knitr::kable(getReliability(x), digits = 2)
 
-myrels = reliability_out(x)
-knitr::kable(myrels, digits = 2)
-
-dalph = data.frame(x$item_level$del_alphas)
-names(dalph) = "Alpha (if Item Deleted)"
-knitr::kable(dalph, digits = 2)
+knitr::kable(getDelAlpha(x), digits = 2)
 ```
 
 ## Item overview
 
 ```{r item_overview}
-overview = data.frame(x$item_level$item_stats, x$item_level$missing)
-names(overview) = c("Difficulty", "PBiS", "Corrected PBiS", "Missing (N)", "Missing (p)")
+overview = getItemOverview(x)
 
 knitr::kable(overview, digits = 2)
 
-
-ggplot(overview, aes(x = Difficulty)) + 
-  geom_dotplot() + 
-  scale_y_continuous(name = "", breaks = NULL) +
-  scale_x_continuous("Difficulty", lim = c(0,1)) +
-  theme_bw() +
-  ggtitle("Item Difficulties")
-
+plotItemOverview(overview)
 ```
 
 
