@@ -10,7 +10,8 @@ reliability(x, ...)
 \item{x}{a \code{QMEtest} object}
 }
 \value{
-A list with a bunch of tasty reliabilities
+A data frame with coefficent alpha, Guttman's L2 and L4,
+  Feldt-Gilmer, and Feldt-Brennan reliabilities, CI limits and SEM
 }
 \description{
 Calculates reliability functions for QMEtest objects

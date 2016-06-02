@@ -31,7 +31,7 @@ feldt_brennan = function(x, ...){
 	# Compute standard error measurement
 	sem = sqrt(tot_var * (1 - fb))
 
-	return(list(fb = fb, ll = lower_limit, ul = upper_limit, sem = sem))
+	return(c(fb = fb, ll = lower_limit, ul = upper_limit, sem = sem))
 }
 
 # library(QME)

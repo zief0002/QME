@@ -31,7 +31,7 @@ guttman_l4 = function(x, oddEven = TRUE, ...){
     # Compute standard error measurement
     sem = sqrt(tot_var * (1 - l4))
 
-    return(list(l4 = l4, ll = lower_limit, ul = upper_limit, sem = sem))
+    return(c(l4 = l4, ll = lower_limit, ul = upper_limit, sem = sem))
 }
 
 

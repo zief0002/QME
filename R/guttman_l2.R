@@ -53,7 +53,7 @@ guttman_l2 = function(x, ...){
 
   sem = sqrt(tot_var * (1 - l2))
 
-  return(list(l2 = l2, ll = lower_limit, ul = upper_limit, sem = sem))
+  return(c(l2 = l2, ll = lower_limit, ul = upper_limit, sem = sem))
 
 }
 

@@ -5,7 +5,7 @@ delete_alpha<-function(x)
   deleted_alpha<-c()
   for (j in 1:ncol(x))
   {
-    deleted_alpha[j]<-coef_alpha(x[,-j])$alpha
+    deleted_alpha[j]<-coef_alpha(x[,-j])[["alpha"]]
   }
   names(deleted_alpha) = names(x)
   deleted_alpha
