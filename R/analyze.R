@@ -35,7 +35,7 @@ analyze = function(test, key = NULL, id = TRUE, d = 2, use = "pairwise.complete.
 
   # Get output of middle manager functions
 	test_level = list(
-    descriptives = test_summary_list(q1),
+    descriptives = summary(q1),
     reliability = reliability(q1)
 	)
   item_level = list(
@@ -51,9 +51,14 @@ analyze = function(test, key = NULL, id = TRUE, d = 2, use = "pairwise.complete.
   else
     item_level$distractor_analysis = distractor_analysis(q1)
 
+  scores = getTotalScores(q1)
+
   # Gather it all up in a list
 	oz = list(
     test_name = deparse(substitute(test)),
+    number_items = ncol(keyed_test_no_id),
+    number_examinees = nrow(keyed_test_no_id),
+    total_scores = scores,
 		test_level = test_level,
 		item_level = item_level,
     test = q1

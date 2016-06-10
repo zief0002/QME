@@ -15,9 +15,9 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, results = "asis")
 ```
 
 
-**Number of items:** `r x$test_level$descriptives$number_items`
+**Number of items:** `r x$number_items`
 
-**Number of examinees:** `r x$test_level$descriptives$number_examinees`
+**Number of examinees:** `r x$number_examinees`
 
 
 ## Total score information

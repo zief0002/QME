@@ -6,27 +6,16 @@ print.analyze = function(x, ...) {
 }
 
 pretty_output = function(x, ...){
-	oz2 = matrix(c(
-		x$test_level$descriptives$number_items, 
-		x$test_level$descriptives$number_examinees,
-		x$test_level$descriptives$min_score,
-		x$test_level$descriptives$max_score,
-		x$test_level$descriptives$mean_score,
-		x$test_level$descriptives$median_score,
-		x$test_level$descriptives$sd_score,
-		x$test_level$descriptives$iqr_score,
-		x$test_level$descriptives$skew_score,
-		x$test_level$descriptives$kurtosis_score
-		))
-	rownames(oz2) = c("Number of Items:", "Number of Examinees:", "Minimum Score:", 
-		"Maximum Score:", "Mean Score:", "Median Score:", "Standard Deviation:", "IQR:",
-		"Skewness (G1):", "Kurtosis (G2):")
-	colnames(oz2) = ""
+  
+	added = as.matrix(c(`Number of Items` = x$number_items, 
+	          `Number of Examinees` = x$number_examinees),
+	          ncol = 1)
+	out = rbind(added, x$test_level$descriptives)
 
 	# Print the output to the screen
 	
 	cat("-------------------------------")
-	print(oz2, digits = 2, print.gap = 1L)
+	print(out, digits = 2, print.gap = 1L)
 	cat("-------------------------------")
 	
 }

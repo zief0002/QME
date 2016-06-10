@@ -26,7 +26,7 @@ test_info_out = function(x, plot = TRUE) {
   if(plot)
     plot(getQMEtest(x))
   
-  knitr::kable(test_summary_matrix(x$test_level$descriptives), digits = 2, align = "c")
+  knitr::kable(x$test_level$descriptives, digits = 2, align = "c")
 }
 
 

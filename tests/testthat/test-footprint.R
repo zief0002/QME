@@ -1,3 +1,4 @@
+# initial setup -----------------------------------------------------------
 require(testthat)
 require(QME)
 

@@ -8,7 +8,7 @@ getTerciles = function(x) {
   raw = getRawTestNoID(x$test)
   rownames(raw) = NULL
   
-  scores = data.frame(scores = x$test_level$descriptives$scores, check.names = FALSE)
+  scores = data.frame(scores = getTotalScoresAnalyze(x), check.names = FALSE)
   
   delscores = scores$scores - keyed
   

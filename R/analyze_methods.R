@@ -36,3 +36,6 @@ plotItemOverview = function(overview) {
     ggtitle("Item Difficulties")
   
 }
+
+getTotalScoresAnalyze = function(x)
+  x$total_scores

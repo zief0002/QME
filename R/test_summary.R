@@ -1,6 +1,6 @@
 # This function computes total scores for the respondents and then computes summary measures
 
-test_summary_list = function(QMEtest) {
+test_descriptives = function(QMEtest) {
   responses = getKeyedTestNoID(QMEtest)
   
   # Get the total scores for each student (row) summary
@@ -39,8 +39,6 @@ test_summary_list = function(QMEtest) {
   
   # Compute summary measure for total scores
   summary_scores = list(
-    number_items = ncol(responses),
-    number_examinees = nrow(responses),
     scores = scores,
     mean_score = mean(scores),
     median_score = median(scores),
@@ -77,7 +75,7 @@ test_summary_matrix = function(summary_list) {
 
 #' @export
 summary.QMEtest = function(QMEtest, ...) {
-  test_summary_matrix(test_summary_list(QMEtest))
+  test_summary_matrix(test_descriptives(QMEtest))
 
 }
 
