@@ -157,7 +157,8 @@ test_that("tercile does not produce warning for not all 3 levels using type 1 al
 tercile_test = data.frame(id = 1:3, item1 = c(TRUE, FALSE, FALSE),
                           item2 = c(FALSE, TRUE, FALSE),
                           item3 = TRUE)
-tercile_key = c(TRUE, TRUE, TRUE)
+tercile_key = data.frame(response = c("TRUE", "FALSE"), item1 = c(1, 0), 
+                         item2 = c(1, 0), item3 = c(1, 0))
 
 tercile_oz = analyze(tercile_test, tercile_key)
 

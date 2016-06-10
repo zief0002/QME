@@ -6,6 +6,9 @@ getKeyedTest = function(x)
 hasKey = function(x)
   !is.null(x$key)
 
+getKey = function(x)
+  x$key
+
 getRawTest = function(x)
   x$raw_test
 

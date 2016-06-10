@@ -28,16 +28,7 @@ distractor_report = function(x) {
       
       cat("\n\n")
       
-      choices = rownames(x$item_level$distractor_analysis[[1]][[i]])
-      keys = x$test$key[match(choices, x$test$key$response), 1 + i]
-      
-      tbOut = data.frame(Choice = choices,
-                         Key = keys,
-                         Proportions = as.numeric(x$item_level$distractor_analysis[[1]][[i]]),
-                         `Response Discrimination` = as.numeric(x$item_level$distractor_analysis[[2]][[i]]),
-                         check.names = FALSE
-      )
-      print(knitr::kable(tbOut, digits = 2))
+      print(knitr::kable(x$item_level$distractor_analysis[[i]], digits = 2))
       
       cat("\n\n")
       

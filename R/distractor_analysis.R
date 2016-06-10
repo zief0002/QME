@@ -2,7 +2,7 @@
 #' 
 #' Calculates distractor analysis for QMEtest objects
 #' 
-#' @param x a \code{QMEtest} object
+#' @param testQME a \code{QMEtest} object
 #' @return A list with various aspects of the distractor analysis
 
 distractor_analysis = function(testQME, ...) {
@@ -10,17 +10,21 @@ distractor_analysis = function(testQME, ...) {
   num_items = ncol(raw_test)
 
   keyed = getKeyedTestNoID(testQME)
+  
+  key = getKey(testQME)
 
 	## persons by items matrix of corrected scores
   scores = rowSums(keyed)
   delscores = scores - keyed
   
-  distractors_difficulty = vector("list", length = num_items)
-  distractors_discrim = vector("list", length = num_items)
-
-  for(i in 1:num_items){
+  
+  distractor = lapply(1:num_items, function(i) { 
+  ## Calculate distractor analysis table
     
-    distractors_difficulty[[i]] = prop.table(table(raw_test[i]))
+    difficulty = prop.table(table(raw_test[i]))
+    choices = rownames(difficulty)
+    keys = key[match(choices, key$response), 1 + i]
+    names(keys) = choices
 
     ## data frame of responses to item i, item-deleted total score
 		new = data.frame(response = raw_test[ , i], 
@@ -30,36 +34,49 @@ distractor_analysis = function(testQME, ...) {
 
 		## Calculate 0-1 indicators for each distractor Other distractors (e.g. key =
 		## 0) are considered MISSING and EXCLUDED (Attali, 2000)
-		unique_responses = unique(as.character(new$response))
-		if(length(unique_responses) > 1)
+		if(length(choices) > 1) {
 		  indicators = model.matrix(corrected_score ~ 0 + response, data = new)
-		else {
-		  indicators = data.frame(rep(1, nrow(new)))
-		  names(indicators) = paste0("response", unique_responses)
-		}
+		  ## rm "response" prefix 
+		  colnames(indicators) = sub("response", "", colnames(indicators))
 		  
-		to_exclude = apply(indicators, 2, function(x) {
-		  ## Check if column is distractor
-		  ## THIS IS INEFFICIENT, SHOULD CHECK KEY INSTEAD
-		  if(any(x[new$keyed == 0] == 1))
-		    ## return TRUE if not this distractor AND is incorrect
-		    x == 0 & new$keyed == 0
-		  else
-		    rep(FALSE, length(x))
-		})
+		  indicators = data.frame(indicators, check.names = FALSE)
+		} else {
+		  ## model.matrix fails when there is no variability
+		  indicators = data.frame(rep(1, nrow(new)))
+		  names(indicators) = choices
+		}
 		
-		indicators[to_exclude] = NA
-
+		stopifnot(choices == names(indicators))
+		
+		distractors = names(keys)[keys == 0]
+		
+		## Exclude other incorrect distractors from calculation
+		if(length(distractors) > 0) {
+  		to_exclude = apply(indicators[, distractors, drop = FALSE], 2, function(x) {
+  		    ## return TRUE if not this distractor AND is incorrect
+  		    x == 0 & new$keyed == 0
+  		})
+  		
+  		indicators[, distractors][to_exclude] = NA
+		}
 		
 		## Calculate correlations of indicators with corrected score
-		distractors_discrim[[i]] = cor(new$corrected_score, 
+		distractors_discrim = cor(new$corrected_score, 
 	                                 indicators,
 		                               use = "pairwise.complete.obs")[1,]
-
-
-  }
-  names(distractors_difficulty) = sprintf("Dist_diff of Item%i",1:num_items)
-  names(distractors_discrim) = sprintf("Dist_disc of Item%i",1:num_items)
+		
+		out = data.frame(Choice = choices,
+		                 Key = keys,
+		                 Proportions = as.numeric(difficulty),
+		                 `Response Discrimination` = as.numeric(distractors_discrim),
+		                 check.names = FALSE)
+		
+		row.names(out) = NULL
+		
+		out
+  }) 
   
-  return(list(distractors_difficulty, distractors_discrim))
+  names(distractor) = names(raw_test)
+  
+  return(distractor)
 }
