@@ -65,7 +65,7 @@ If the scoring scheme is more complex, such as a test with multiple correct answ
 
 ```
 
-## Creating a report
+# Creating a report
 
 This is done with the `report()` function.  This takes an object created by `analyze()` and generates an HTML, Word, or PDF report with comprehensive psychometrics and this is the recommended way of using this package. (Note that a PDF document relies on the computer having working LaTeX software.)
 
@@ -77,6 +77,6 @@ You can view the package's example report, using the `an` object we created abov
 
 The first argument is the name of your `analyze` object; `report_filename` is the file name of the report (not including the file extension); `output_format` is one of `"html_document"`, `"word_document"`, or `"pdf_document"`.
 
-## Future directions
+# Future directions
 
 We plan to include more support for comparing groups and greater support for survey and ordinal data.  Even further in the future we hope to provide interfaces to Generalizabilty Theory and IRT.
