@@ -13,8 +13,8 @@ report(x, report_filename = "QME_report", output_format = "html_document",
 
 \item{report_filename}{The file name of the report (not including file extension, which is determined automatically)}
 
-\item{output_format}{One of \code{'html_document'}, \code{'word_document'},
-or \code{'pdf_document'}.  Note that \code{'pdf_document'} requires a
+\item{output_format}{One of \code{"html_document"}, \code{"word_document"},
+or \code{"pdf_document"}.  Note that \code{'pdf_document'} requires a
 working LaTeX implementation.}
 
 \item{output_dir}{The path to the directory that the report will be written to.  If NULL, written to current working directory.}

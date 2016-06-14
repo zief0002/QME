@@ -15,15 +15,17 @@
 ##'   responses scored 0).  If the scoring scheme is more complex, a \emph{full 
 ##'   key} can be provided; this must be provided as a \code{data.frame} where 
 ##'   the first column, \code{response}, contains all the possible responses to 
-##'   any item, and the columns contain the needed item.  See 
-##'   \code{vignette("scoring")} for more help on setting up the key.
+##'   any item, and the subsequent columns correspond to each item with each
+##'   value in that column representing that item's score for that row's
+##'   response.  See \code{vignette("scoring")} for more help on setting up the
+##'   key.
 ##' @param id Is there an id column provided for the test? If \code{FALSE} an id
 ##'   column is automatically created and added.
 ##' @param d Number of digits for summary outputs
 ##' @param use Not currently implemented
 ##'   
-##' @return Returns an \code{analyze} object with various psychometrics
-##'   calculated.  Primarily to be used with the \code{\link{report}} function
+##' @return Returns an \code{analyze} object with various psychometrics 
+##'   calculated.  Primarily to be used with the \code{\link{report}} function 
 ##'   for viewing detailed output.
 ##' @export
 analyze = function(test, key = NULL, id = TRUE, d = 2, use = "pairwise.complete.obs"){

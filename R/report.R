@@ -13,8 +13,8 @@
 #' 
 #' @param x An \code{analyze} object
 #' @param report_filename The file name of the report (not including file extension, which is determined automatically)
-#' @param output_format One of \code{'html_document'}, \code{'word_document'},
-#'   or \code{'pdf_document'}.  Note that \code{'pdf_document'} requires a
+#' @param output_format One of \code{"html_document"}, \code{"word_document"},
+#'   or \code{"pdf_document"}.  Note that \code{'pdf_document'} requires a
 #'   working LaTeX implementation.
 #' @param output_dir The path to the directory that the report will be written to.  If NULL, written to current working directory.
 #' @param simple_html If \code{TRUE}, overrides \code{output_format} and outputs a character object containing a simple (R Markdown v1) html report, useful for embedding in Shiny apps.
