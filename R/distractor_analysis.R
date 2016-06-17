@@ -42,7 +42,7 @@ distractor_analysis = function(testQME, ...) {
 		  indicators = data.frame(indicators, check.names = FALSE)
 		} else {
 		  ## model.matrix fails when there is no variability
-		  indicators = data.frame(rep(1, nrow(new)))
+		  indicators = data.frame(rep(NA, nrow(new)))
 		  names(indicators) = choices
 		}
 		
