@@ -14,7 +14,7 @@ print.analyze = function(x, ...) {
   
   print(descriptives, digits = 2, print.gap = 1L)
 
-  cat("\n\nReliabilities\n")
+  cat("\nReliabilities\n")
   cat("-------------------------------\n")
   print(getReliability(x), digits = 2, print.gap = 1L)
 

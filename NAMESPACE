@@ -3,6 +3,7 @@
 S3method(plot,QMEtest)
 S3method(print,analyze)
 S3method(summary,QMEtest)
+S3method(summary,analyze)
 export(QMEtest)
 export(analyze)
 export(distractor_report)
