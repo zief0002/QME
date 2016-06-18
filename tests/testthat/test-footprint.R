@@ -25,9 +25,12 @@ test_that("analyze output for 'math' dataset is the same as reference", {
 test_that("report simple html is the same as reference", {
   expect_equal_to_reference(report(oz, simple_html = TRUE),
                             "tests/testthat/math-report.rds")
-  
-  
 })
+
+## This test shouldn't be moved, depends on previous test
+test_that("simple html doesn't leave files in working directory",
+          expect_length(dir(pattern = "QME_report"), 0))
+          
 
 # Code for comparing
 

@@ -42,6 +42,7 @@ report = function(x, report_filename = "QME_report", output_format = "html_docum
   if(simple_html) {
     html_output = knitr::knit2html(input_file, quiet = TRUE, force_v1 = TRUE)
     output = readr::read_file(html_output)
+    unlink(paste0(report_filename, c(".md", ".html")))
   } else {
     
     output = rmarkdown::render(input_file, output_format = output_format, output_dir = output_dir, ...)
