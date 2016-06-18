@@ -26,10 +26,15 @@ QMEtest = function(test, key = NULL, id = TRUE) {
   if(is_valid_simple_key(key)) {
     n_items_key = length(key)
     key_simple = TRUE
+    key_full = FALSE
   } else if(is_valid_full_key(key)) {
     n_items_key = ncol(key) - 1
     key_simple = FALSE
-  } else 
+    key_full = TRUE
+  } else if(is.null(key)) {
+    key_simple = FALSE
+    key_full = FALSE
+  } else
     stop("Key not valid.  See `vignette('scoring')`.")
   
   ## Check column length of test
@@ -41,7 +46,7 @@ QMEtest = function(test, key = NULL, id = TRUE) {
   else
     stop("`id` argument must be TRUE or FALSE")
   
-  if(n_items_test != n_items_key)
+  if(!is.null(key) && n_items_test != n_items_key)
     stop("Number of items in test, ", n_items_test,
          " must match number of items in key, ", n_items_key,
          ".", ifelse(id, " If test is missing id column, use `id = FALSE`.", ""))
@@ -85,6 +90,18 @@ QMEtest = function(test, key = NULL, id = TRUE) {
     }
     
   }
+  
+  ## Is test dichotomous?
+  if(key_simple) {
+    output$dichotomous = TRUE
+  } else if(key_full) {
+    # dichotomous iff all key cols only have 0 and 1
+    output$dichotomous = all(apply(key[, -1], 2, function(x) x %in% 0:1))
+  } else if(is.null(key))
+    # dichotomous iff all raw responses (no key) only 0 and 1
+    output$dichotomous = all(apply(test_with_id[, -1], 2, function(x) x %in% 0:1))
+    
+  
   class(output) = "QMEtest"
   
   return(output)  

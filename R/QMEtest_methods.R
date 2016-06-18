@@ -21,4 +21,7 @@ getRawTestNoID = function(x)
   
 getTotalScores = function(x) 
   rowSums(getKeyedTestNoID(x), na.rm = TRUE)
+
+getDichotomous = function(x)
+  x$dichotomous
     
