@@ -15,7 +15,8 @@ Imports:
     ggplot2,
     knitr,
     rmarkdown,
-    readr
+    readr,
+    shiny
 Suggests:
     psych
 Description: Ability to key and score test file and provide psychometric
