@@ -6,6 +6,7 @@ The `QME` package was created to provide a relatively easy-to-use tool for perfo
 - compute item- and test-level statistics (`analyze()`)
 - perform distractor analysis (`analyze()`)
 - quickly generate a comprehensive psychometric report (`report()`)
+- Do all of the above in one step using a GUI interface (`QME_shiny()`)
 
 
 Installing the QME package
@@ -76,6 +77,7 @@ You can view the package's example report, using the `an` object we created abov
 ```
 
 The first argument is the name of your `analyze` object; `report_filename` is the file name of the report (not including the file extension); `output_format` is one of `"html_document"`, `"word_document"`, or `"pdf_document"`.
+
 
 # Future directions
 
