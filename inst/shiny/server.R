@@ -9,6 +9,7 @@ library(shiny)
 library(QME)
 library(readr)
 
+
 shinyServer(function(input, output) {
   originalFileInput <- reactive({
     in.file <- input$file1
@@ -17,20 +18,25 @@ shinyServer(function(input, output) {
       return(NULL)
     
     if (input$rownames) {
-      read.table(in.file$datapath, header=TRUE, sep=",", row.names=1)
+      read.table(in.file$datapath, header=T, sep=",", row.names=1)
     } else {
-      read.table(in.file$datapath, header=TRUE, sep=",")
+      read.table(in.file$datapath, header=T, sep=",")
     }
   })
-
+  
   
   keyFileInput <- reactive({
     key.file <- input$file2
     
     if (is.null(key.file))
       return(NULL)
+    
+    # if (input$rownames1) {
+    #   read.table(key.file$datapath, header=input$header1, sep=input$sep1,
+    #              quote=input$quote1, row.names=input$rownames1)
+    # } 
     else {
-      read.table(key.file$datapath, header=TRUE, sep=",")
+      read.table(key.file$datapath, header=T, sep=",")
     }
   })
   
@@ -43,7 +49,7 @@ shinyServer(function(input, output) {
     if (input$rownames) {
       analyze(test=test, key=key, id=FALSE)
     }  else {analyze(test = test,key = key)
-      }
+    }
   })
   
   output$datafile <- renderTable({
@@ -55,12 +61,12 @@ shinyServer(function(input, output) {
   })
   
   output$knit_doc <- renderPrint({
-
-      capture.output(
+    
+    capture.output(
       md <- isolate(tryCatch(
         suppressMessages(
           suppressWarnings(
-           report(analysis1(), quiet = TRUE, simple_html = TRUE))),
+            report(analysis1(), quiet = TRUE, simple_html = TRUE))),
         error = function(e) {FALSE}))
     )
     if(exists("md")) {
@@ -75,7 +81,6 @@ shinyServer(function(input, output) {
     return(out)
   })
   
-
+  
   
 })
-
