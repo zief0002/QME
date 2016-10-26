@@ -60,7 +60,7 @@ shinyServer(function(input, output) {
       md <- isolate(tryCatch(
         suppressMessages(
           suppressWarnings(
-           psycho_report(analysis1(), quiet = TRUE, simple_html = TRUE))),
+           report(analysis1(), quiet = TRUE, simple_html = TRUE))),
         error = function(e) {FALSE}))
     )
     if(exists("md")) {
