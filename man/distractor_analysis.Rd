@@ -7,7 +7,7 @@
 distractor_analysis(testQME, ...)
 }
 \arguments{
-\item{x}{a \code{QMEtest} object}
+\item{testQME}{a \code{QMEtest} object}
 }
 \value{
 A list with various aspects of the distractor analysis

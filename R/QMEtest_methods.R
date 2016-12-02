@@ -1,21 +1,27 @@
 ## Internal functions for QMEtest objects
 
-getKeyedTest = function(QMEtest)
-  QMEtest$keyed_test
+getKeyedTest = function(x)
+  x$keyed_test
 
-hasKey = function(QMEtest)
-  !is.null(QMEtest$key)
+hasKey = function(x)
+  !is.null(x$key)
 
-getRawTest = function(QMEtest)
-  QMEtest$raw_test
+getKey = function(x)
+  x$key
 
-getKeyedTestNoID = function(QMEtest)
-  QMEtest$keyed_test[, -1]
+getRawTest = function(x)
+  x$raw_test
 
-getRawTestNoID = function(QMEtest)
-  QMEtest$raw_test[, -1]
+getKeyedTestNoID = function(x)
+  x$keyed_test[, -1]
+
+getRawTestNoID = function(x)
+  x$raw_test[, -1]
   
   
-getTotalScores = function(QMEtest) 
-  rowSums(getKeyedTestNoID(QMEtest), na.rm = TRUE)
+getTotalScores = function(x) 
+  rowSums(getKeyedTestNoID(x), na.rm = TRUE)
+
+getDichotomous = function(x)
+  x$dichotomous
     

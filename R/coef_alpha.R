@@ -42,7 +42,7 @@ coef_alpha = function(x, ...){
   tot_var = sum(cov_matrix)
   sem = sqrt(tot_var * (1 - alpha))
 
-  return(list(alpha = alpha, ll = lower_limit, ul = upper_limit, sem = sem))
+  return(c(alpha = alpha, ll = lower_limit, ul = upper_limit, sem = sem))
 }
 
 

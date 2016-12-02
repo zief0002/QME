@@ -6,7 +6,7 @@ refine_key = function(row_key, test_with_id){
     # drop unused factor levels
     row_key = droplevels(row_key)
     
-    row_key = vapply(row_key, levels, "A")
+    row_key = vapply(row_key, as.character, "A")
     
   }
     

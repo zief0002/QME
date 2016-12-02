@@ -17,6 +17,10 @@ right_wrong = function(test_with_id, key) {
     score_column(test_no_id[[colname]], colname, key)
   }, FUN.VALUE = rep(0, nrow(test_no_id)))
   
-  data.frame(id = test_with_id$id, scored_matrix)
+  keyed_test = data.frame(id = test_with_id$id, scored_matrix, check.names = FALSE)
 
+  if(all(names(keyed_test) != names(test_with_id)))
+    stop("Column names of keyed test do not equal names of original test")
+  
+  keyed_test
 }

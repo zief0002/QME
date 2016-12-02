@@ -3,7 +3,8 @@
 #' Calculates reliability functions for QMEtest objects
 #' 
 #' @param x a \code{QMEtest} object
-#' @return A list with a bunch of tasty reliabilities
+#' @return A data frame with coefficent alpha, Guttman's L2 and L4,
+#'   Feldt-Gilmer, and Feldt-Brennan reliabilities, CI limits and SEM
 
 reliability = function(x, ...) {
   
@@ -22,7 +23,7 @@ reliability = function(x, ...) {
   dimnames(out)[[2]] = c("Estimate", "95% LL", "95% UL", "SEM")
   dimnames(out)[[1]] = c("Coefficient Alpha", "Guttman's L2", "Guttman's L4", "Feldt-Gilmer", "Feldt-Brennan")
 
-  return(out)
+  return(as.data.frame(out))
   
 }
 

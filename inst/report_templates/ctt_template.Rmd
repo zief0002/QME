@@ -9,16 +9,20 @@ output:
 date: "Generated `r date()`"
 ---
 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, results = "asis")
+
+```
 
 
-**Number of items:** `r x$test_level$descriptives$number_items`
+**Number of items:** `r x$number_items`
 
-**Number of examinees:** `r x$test_level$descriptives$number_examinees`
+**Number of examinees:** `r x$number_examinees`
 
 
 ## Total score information
 
-```{r totalscores, echo = FALSE, message=FALSE,results='asis'}
+```{r totalscores}
 test_info_out(x)
 
 ```
@@ -26,87 +30,27 @@ test_info_out(x)
 
 ## Reliability
 
-```{r reliability, echo = FALSE,results='asis'}
-reliability_out = function(x) {
-  ## Outputs for basic reliability
-   
-  rels = x$test_level$reliability
-  
-  ## This comes out clumsily as a list and should really be some 
-  ## kind of table object in the original structure!
-  ## Otherwise wouldn't need this code.
-    
-  rels2 = matrix(simplify2array(rels),
-                 nrow = nrow(rels),
-                 ncol = ncol(rels))
-  attributes(rels2) = attributes (rels)  
-  
-  rels2
-}
+```{r reliability}
+knitr::kable(getReliability(x), digits = 2)
 
-myrels = reliability_out(x)
-knitr::kable(myrels, digits = 2)
-
-dalph = data.frame(x$item_level$del_alphas)
-names(dalph) = "Alpha (if Item Deleted)"
-knitr::kable(dalph, digits = 2)
+knitr::kable(getDelAlpha(x), digits = 2)
 ```
 
 ## Item overview
 
-```{r item_overview, echo = FALSE, results='asis', message=FALSE}
-overview = data.frame(x$item_level$item_stats, x$item_level$missing)
-names(overview) = c("Difficulty", "PBiS", "Corrected PBiS", "Missing (N)", "Missing (p)")
+```{r item_overview}
+overview = getItemOverview(x)
 
 knitr::kable(overview, digits = 2)
 
-
-ggplot(overview, aes(x = Difficulty)) + 
-  geom_dotplot() + 
-  scale_y_continuous(name = "", breaks = NULL) +
-  scale_x_continuous("Difficulty", lim = c(0,1)) +
-  theme_bw() +
-  ggtitle("Item Difficulties")
-
+plotItemOverview(overview)
 ```
 
 
 ## Item details
 
-```{r itemloop_prep, echo = FALSE, message = FALSE, results='asis'}
-if(!hasKey(x$test)) {
-  cat("Raw test was not provided, so distractor analysis is not available.\n")
-} else {
-  for(i in 1:length(item_names(x))) {
-  
-    cat("### Details for `", item_names(x)[i])
-    cat("`\n\n")
-  
-    
-     cat("\n\n\n")
-  
-   
-    print(itemreport_loop(x, i))
-   
-   
-     cat("\n\n")
-  
-        choices = rownames(x$item_level$distractor_analysis[[1]][[i]])
-    keys = as.numeric(choices %in% as.character(x$test$key[,i]))
-    
-    tbOut = data.frame(Choice = rownames(x$item_level$distractor_analysis[[1]][[i]]),
-               Key = keys,
-               Proportions = as.numeric(x$item_level$distractor_analysis[[1]][[i]]),
-               `Response Discrimination` = as.numeric(x$item_level$distractor_analysis[[2]][[i]]),
-               check.names = FALSE
-              )
-       print(knitr::kable(tbOut, digits = 2))
-    
-      cat("\n\n")
-    
-  }
-}
-
+```{r distractor_report}
+distractor_report(x)
 ```
 
 
