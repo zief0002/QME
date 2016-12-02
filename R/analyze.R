@@ -12,8 +12,7 @@ analyze = function(test, key = NULL, id = TRUE, d = 2, plot = TRUE, use = "pairw
 	)
   item_level = list(
     item_stats = item_level(q1),
-    missing = miss(getRawTestNoID(q1)),
-    del_alphas = delete_alpha(keyed_test_no_id)
+    missing = miss(getRawTestNoID(q1))
   )
   
   ## Add distractor analysis only if test is unkeyed
