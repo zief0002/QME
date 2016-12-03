@@ -33,7 +33,6 @@ test_info_out(x)
 ```{r reliability}
 knitr::kable(getReliability(x), digits = 2)
 
-knitr::kable(getDelAlpha(x), digits = 2)
 ```
 
 ## Item overview
