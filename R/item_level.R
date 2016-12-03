@@ -10,6 +10,6 @@ item_level = function(testQME, ...) {
   difficulty = colMeans(keyed_test)
   point_bi = point_biserial(keyed_test)
   il = cbind(point_bi, difficulty)
-  il = il[ ,c(4,2,3)]
+  il = il[ ,c(3,2)]
   return(il)
 }
