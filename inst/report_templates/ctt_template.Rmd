@@ -35,6 +35,8 @@ knitr::kable(getReliability(x), digits = 2)
 
 ```
 
+*Note:* Although Coefficient Alpha is a popular measure of reliability, it relies on model assumptions that are rarely met practice which leads to a biased estimate of reliability (see Dunn, T. J., Baguley, T., & Brunsden, V., 2014 for a summary if the issues with Alpha). Therefore, we suggest using one of the other reliability measures which rely on assumptions much more commenly met in practice.
+
 ## Item overview
 
 ```{r item_overview}
