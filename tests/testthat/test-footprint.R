@@ -126,6 +126,9 @@ test_that("'simple key' detected as valid", {
 })
 
 
+
+
+
 # Analyze -----------------------------------------------------------------
 
 context("analyze")
@@ -174,4 +177,29 @@ test_that("tercile output same as reference", {
   expect_equal_to_reference(getTerciles(oz),
                             "tests/testthat/math-terciles.rds")
 })
+
+
+# Scored test -------------------------------------------------------------
+test_that("Pre-scored test is analyzed correctly")
+
+comparable_scored = function(x) {
+  # create oz object comparable between scored and unscored tests
+  out = x
+  out$test_name = NULL
+  out$test$raw_test = NULL # test object is not comparable
+  out$test$key = NULL
+  out$item_level$distractor_analysis = NULL  
+  out$test_level$reliability = 
+    out$test_level$reliability[order(rownames(out$test_level$reliability)),] # for some reason the order gets mixed up
+
+  out
+}
+
+prescored_math = math_qt$keyed_test
+prescored_math[is.na(math)] = NA # add NAs back, removed by right_wrong
+
+scored_qt = QMEtest(prescored_math)
+scored_oz = analyze(prescored_math)
+
+expect_equal(comparable_scored(oz), comparable_scored(scored_oz))
 
