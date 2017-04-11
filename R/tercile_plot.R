@@ -5,6 +5,9 @@ getTerciles = function(x) {
   keyed = getKeyedTestNoID(x$test)
   rownames(keyed) = NULL
   
+  if(anyNA(keyed))
+    message("Terciles calculated with missing values removed")
+  
   raw = getRawTestNoID(x$test)
   rownames(raw) = NULL
   
@@ -15,7 +18,7 @@ getTerciles = function(x) {
   ## Calculate deleted terciles
   terciles = vapply(delscores, function(x) {
     out = findInterval(x, 
-                 quantile(x, probs = c(0, 1/3, 2/3, 1), type = 1),
+                 quantile(x, probs = c(0, 1/3, 2/3, 1), type = 1, na.rm = TRUE),
                  all.inside = TRUE)
     if(!all(1:3 %in% out))
       warning("Some columns do not have values for all 3 terciles.")

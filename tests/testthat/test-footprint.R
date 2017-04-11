@@ -228,4 +228,10 @@ expect_equal(apply(dum_qt$raw_test, 2, as.numeric),
 
 expect_false(dum_qt$dichotomous)
 
+## 
+
+# Report with missing values ----------------------------------------------
+getTerciles(scored_na_oz)
+
+report(scored_na_oz)
 
