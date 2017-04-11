@@ -4,7 +4,8 @@
 \alias{QMEtest}
 \title{Create QMEtest objects}
 \usage{
-QMEtest(test, key = NULL, id = TRUE, na_to_0 = TRUE)
+QMEtest(test, key = NULL, id = TRUE, na_to_0 = TRUE,
+  create_key = create_key)
 }
 \arguments{
 \item{test}{A \code{data.frame} containing the test responses.  If \code{key} 
@@ -19,6 +20,10 @@ responses (i.e. the correct answers for cognitive tests).}
 \item{id}{Whether an ID column has been provided.  If \code{id = FALSE}, an id
 will be created in the output object.
  @param na_to_0 When scoring, assume that NAs are scored as 0? Default is TRUE}
+
+\item{create_key}{For SCORED data only, creates a dummy key mapping input to
+output values.  This allows the distractor analysis to be used for scored
+data}
 }
 \value{
 A \code{QMEtest} object. This is a list with the following elements: 

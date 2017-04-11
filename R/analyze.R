@@ -15,23 +15,29 @@
 ##'   responses scored 0).  If the scoring scheme is more complex, a \emph{full 
 ##'   key} can be provided; this must be provided as a \code{data.frame} where 
 ##'   the first column, \code{response}, contains all the possible responses to 
-##'   any item, and the subsequent columns correspond to each item with each
-##'   value in that column representing that item's score for that row's
-##'   response.  See \code{vignette("scoring")} for more help on setting up the
+##'   any item, and the subsequent columns correspond to each item with each 
+##'   value in that column representing that item's score for that row's 
+##'   response.  See \code{vignette("scoring")} for more help on setting up the 
 ##'   key.
+##' @param create_key For SCORED data only, creates a dummy key mapping input to
+##'   output values.  This allows the distractor analysis to be used for scored
+##'   data
 ##' @param id Is there an id column provided for the test? If \code{FALSE} an id
 ##'   column is automatically created and added.
 ##' @param d Number of digits for summary outputs
-##' @param use Which observations to use (e.g. with or without missing values) for calculating difficulty and covariance-based measures?  See \code{use} argument in \code{\link{cov}}
-##'   @param na_to_0 When scoring, assume that NAs are scored as 0? Default is TRUE
+##' @param use Which observations to use (e.g. with or without missing values)
+##'   for calculating difficulty and covariance-based measures?  See \code{use}
+##'   argument in \code{\link{cov}}
+##' @param na_to_0 When scoring, assume that NAs are scored as 0? Default is
+##'   TRUE
 ##' @return Returns an \code{analyze} object with various psychometrics 
 ##'   calculated.  Primarily to be used with the \code{\link{report}} function 
 ##'   for viewing detailed output.
 ##' @export
-analyze = function(test, key = NULL, id = TRUE, d = 2, use = "pairwise.complete.obs", na_to_0 = TRUE){
+analyze = function(test, key = NULL, create_key = FALSE, id = TRUE, d = 2, use = "pairwise.complete.obs", na_to_0 = TRUE){
   
   # Preliminaries: score & get keyed test
-  q1 = QMEtest(test, key = key, id = id, na_to_0 = na_to_0)
+  q1 = QMEtest(test, key = key, id = id, na_to_0 = na_to_0, create_key = create_key)
   keyed_test = getKeyedTest(q1)
   keyed_test_no_id = getKeyedTestNoID(q1)
 

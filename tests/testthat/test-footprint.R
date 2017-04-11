@@ -207,6 +207,8 @@ expect_equal(comparable_scored(no_na_oz), comparable_scored(scored_oz))
 ## Item values greater than 1
 
 pres_math_2 = (prescored_math + 1)*3
+
+
 math2_oz = analyze(pres_math_2)
 math2_over = QME:::getItemOverview(math2_oz)
 QME:::plotItemOverview(math2_over)
@@ -216,3 +218,10 @@ math_na_qt = QMEtest(math, math_key, na_to_0 = FALSE)
 math_na_oz = analyze(math, math_key, na_to_0 = FALSE)
 scored_na_oz = analyze(math_na_qt$keyed_test, na_to_0 = FALSE)
 expect_equal(comparable_scored(math_na_oz), comparable_scored(scored_na_oz))
+
+## test dummy key
+dum = pres_math_2[-1]
+dum[3, 6] = 7
+dum_qt = QMEtest(dum, create_key = TRUE)
+expect_equal(apply(dum_qt$raw_test, 2, as.numeric), 
+             apply(dum_qt$keyed_test, 2, as.numeric))

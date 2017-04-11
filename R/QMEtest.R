@@ -9,6 +9,9 @@
 #'  default, the first column is assumed to be the id.
 #'@param key A vector or single-row \code{data.frame} indicating the keyed 
 #'  responses (i.e. the correct answers for cognitive tests).
+#' @param create_key For SCORED data only, creates a dummy key mapping input to
+#'   output values.  This allows the distractor analysis to be used for scored
+#'   data
 #'@param id Whether an ID column has been provided.  If \code{id = FALSE}, an id
 #'  will be created in the output object.
 #'   @param na_to_0 When scoring, assume that NAs are scored as 0? Default is TRUE
@@ -20,7 +23,7 @@
 #'  
 #'@export
 #'  
-QMEtest = function(test, key = NULL, id = TRUE, na_to_0 = TRUE) {
+QMEtest = function(test, key = NULL, id = TRUE, na_to_0 = TRUE, create_key = create_key) {
   
   ## Check keys
   if(is_valid_simple_key(key)) {
@@ -65,7 +68,9 @@ QMEtest = function(test, key = NULL, id = TRUE, na_to_0 = TRUE) {
   # Check if key is in "old" form and put into new data frame format
   if(key_simple)
     key = refine_key(key, test_with_id)
-  
+  # Create dummy key for scored data, if requested
+  if(create_key)
+    key = create_key(test_with_id)
 
   
   # If unscored, convert key and response to character
