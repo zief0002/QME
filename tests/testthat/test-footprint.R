@@ -231,7 +231,6 @@ expect_false(dum_qt$dichotomous)
 ## 
 
 # Report with missing values ----------------------------------------------
-getTerciles(scored_na_oz)
-
-report(scored_na_oz)
+scored_na_oz2 = analyze(math_na_qt$keyed_test, na_to_0 = FALSE, create_key = TRUE)
+report(scored_na_oz2)
 

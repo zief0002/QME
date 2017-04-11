@@ -53,7 +53,7 @@ analyze = function(test, key = NULL, create_key = FALSE, id = TRUE, d = 2, use =
   
   ## Add distractor analysis only if test is unkeyed
   
-  if(is.null(key))
+  if(is.null(key) & !create_key)
     item_level$distractor_analysis = NULL
   else
     item_level$distractor_analysis = distractor_analysis(q1)
