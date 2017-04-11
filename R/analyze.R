@@ -22,7 +22,7 @@
 ##' @param id Is there an id column provided for the test? If \code{FALSE} an id
 ##'   column is automatically created and added.
 ##' @param d Number of digits for summary outputs
-##' @param use Not currently implemented
+##' @param use Which observations to use?  See \code{use} argument in \code{\link{cov}}
 ##'   
 ##' @return Returns an \code{analyze} object with various psychometrics 
 ##'   calculated.  Primarily to be used with the \code{\link{report}} function 
@@ -38,10 +38,10 @@ analyze = function(test, key = NULL, id = TRUE, d = 2, use = "pairwise.complete.
   # Get output of middle manager functions
 	test_level = list(
     descriptives = summary(q1),
-    reliability = reliability(q1)
+    reliability = reliability(q1, use = use)
 	)
   item_level = list(
-    item_stats = item_level(q1),
+    item_stats = item_level(q1, use = use),
     missing = miss(getRawTestNoID(q1))
   )
   

@@ -19,7 +19,7 @@
 coef_alpha = function(x, ...){
   
   # create covariance matrix of the data frame
-  cov_matrix = cov(x, use = "pairwise.complete.obs")
+  cov_matrix = cov(x, ...)
   
 
   # collect the number of rows from the covariance matrix

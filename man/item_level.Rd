@@ -4,7 +4,7 @@
 \alias{item_level}
 \title{Perform item level analysis for QMEtest object}
 \usage{
-item_level(testQME, ...)
+item_level(testQME, use)
 }
 \arguments{
 \item{x}{a \code{QMEtest} object}

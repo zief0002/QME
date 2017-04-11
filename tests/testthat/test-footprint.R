@@ -195,11 +195,12 @@ comparable_scored = function(x) {
   out
 }
 
-prescored_math = math_qt$keyed_test
-prescored_math[is.na(math)] = NA # add NAs back, removed by right_wrong
+math_no_na = na.omit(math)
+math_no_na_qt = QMEtest(math_no_na, math_key)
+prescored_math = math_no_na_qt$keyed_test
 
 scored_qt = QMEtest(prescored_math)
 scored_oz = analyze(prescored_math)
-
-expect_equal(comparable_scored(oz), comparable_scored(scored_oz))
+no_na_oz = analyze(math_no_na, math_key)
+expect_equal(comparable_scored(no_na_oz), comparable_scored(scored_oz))
 

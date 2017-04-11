@@ -29,7 +29,7 @@ column is automatically created and added.}
 
 \item{d}{Number of digits for summary outputs}
 
-\item{use}{Not currently implemented}
+\item{use}{Which observations to use?  See \code{use} argument in \code{\link{cov}}}
 }
 \value{
 Returns an \code{analyze} object with various psychometrics 

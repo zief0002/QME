@@ -5,7 +5,7 @@
 feldt_gilmer = function(x, ...){
   
   # create covariance matrix of the data frame
-  cov_matrix = cov(x, use = "pairwise.complete.obs")
+  cov_matrix = cov(x, ...)
   
   # Get the variances
   variances = diag(cov_matrix)

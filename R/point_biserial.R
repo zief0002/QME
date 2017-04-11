@@ -1,9 +1,18 @@
 ######################################################################################
 ## Another way to get the point-biserial and the corrected point-biserial correlation:
 
-point_biserial = function(x, ...) {
+point_biserial = function(x, use) {
   
-  total_score = rowSums(x)
+
+  
+  if(use == "complete.obs") {
+    x = na.omit(x)
+    total_score = rowSums(x, na.rm = FALSE)
+  } else if(use == "pairwise.complete.obs")
+    total_score = rowSums(x, na.rm = TRUE)
+  else
+    total_score = rowSums(x, na.rm = FALSE)
+  
   delscores = total_score - x
   
   ## Only calculate corrected pbis when sd > 0
@@ -21,7 +30,8 @@ point_biserial = function(x, ...) {
   
   pbis_report$corrected_pbis[positive_sd] = mapply(cor,
                                                    delscores[, positive_sd],
-                                                   x[, positive_sd])
+                                                   x[, positive_sd],
+                                                   MoreArgs = list(use = use))
   
 
   return(pbis_report)

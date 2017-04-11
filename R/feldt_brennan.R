@@ -5,7 +5,7 @@
 feldt_brennan = function(x, ...){
   
 	# create covariance matrix of the data frame
-	cov_matrix = cov(x, use = "pairwise.complete.obs")
+	cov_matrix = cov(x, ...)
   
 	# Get the variance for the scores
 	tot_var = sum(cov_matrix)
