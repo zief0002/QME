@@ -204,3 +204,10 @@ scored_oz = analyze(prescored_math)
 no_na_oz = analyze(math_no_na, math_key)
 expect_equal(comparable_scored(no_na_oz), comparable_scored(scored_oz))
 
+## Item values greater than 1
+
+pres_math_2 = (prescored_math + 1)*3
+math2_oz = analyze(pres_math_2)
+math2_over = QME:::getItemOverview(math2_oz)
+QME:::plotItemOverview(math2_over)
+
