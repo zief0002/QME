@@ -45,7 +45,7 @@ getTerciles = function(x) {
     df$response =  addNA(df$response, ifany = TRUE)
     levels(df$response)[is.na(levels(df$response))] = "Missing"
     
-    df
+    df[!is.na(df$tercile), ] # do not show the "NA" tercile
     
     },
     terciles, 
