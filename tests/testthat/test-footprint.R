@@ -225,3 +225,5 @@ dum[3, 6] = 7
 dum_qt = QMEtest(dum, create_key = TRUE)
 expect_equal(apply(dum_qt$raw_test, 2, as.numeric), 
              apply(dum_qt$keyed_test, 2, as.numeric))
+
+

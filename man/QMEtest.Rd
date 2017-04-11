@@ -4,8 +4,7 @@
 \alias{QMEtest}
 \title{Create QMEtest objects}
 \usage{
-QMEtest(test, key = NULL, id = TRUE, na_to_0 = TRUE,
-  create_key = create_key)
+QMEtest(test, key = NULL, id = TRUE, na_to_0 = TRUE, create_key = FALSE)
 }
 \arguments{
 \item{test}{A \code{data.frame} containing the test responses.  If \code{key} 

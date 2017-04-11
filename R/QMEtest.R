@@ -23,7 +23,7 @@
 #'  
 #'@export
 #'  
-QMEtest = function(test, key = NULL, id = TRUE, na_to_0 = TRUE, create_key = create_key) {
+QMEtest = function(test, key = NULL, id = TRUE, na_to_0 = TRUE, create_key = FALSE) {
   
   ## Check keys
   if(is_valid_simple_key(key)) {
