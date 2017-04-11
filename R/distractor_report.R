@@ -28,7 +28,7 @@ distractor_report = function(x) {
       
       cat("\n\n")
       
-      print(knitr::kable(x$item_level$distractor_analysis[[i]], digits = 2))
+      cat(knitr::kable(x$item_level$distractor_analysis[[i]], digits = 2))
       
       cat("\n\n")
       
