@@ -5,7 +5,7 @@
 \title{Generate basic psychometrics from data and key}
 \usage{
 analyze(test, key = NULL, id = TRUE, d = 2,
-  use = "pairwise.complete.obs")
+  use = "pairwise.complete.obs", na_to_0 = TRUE)
 }
 \arguments{
 \item{test}{A \code{data.frame} containing subjects as rows and items as 
@@ -29,7 +29,8 @@ column is automatically created and added.}
 
 \item{d}{Number of digits for summary outputs}
 
-\item{use}{Which observations to use?  See \code{use} argument in \code{\link{cov}}}
+\item{use}{Which observations to use (e.g. with or without missing values) for calculating difficulty and covariance-based measures?  See \code{use} argument in \code{\link{cov}}
+@param na_to_0 When scoring, assume that NAs are scored as 0? Default is TRUE}
 }
 \value{
 Returns an \code{analyze} object with various psychometrics 

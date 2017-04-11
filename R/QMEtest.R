@@ -11,7 +11,7 @@
 #'  responses (i.e. the correct answers for cognitive tests).
 #'@param id Whether an ID column has been provided.  If \code{id = FALSE}, an id
 #'  will be created in the output object.
-#'  
+#'   @param na_to_0 When scoring, assume that NAs are scored as 0? Default is TRUE
 #'@return A \code{QMEtest} object. This is a list with the following elements: 
 #'  \describe{ \item{\code{raw_test}}{The raw test responses (\code{NULL} if the test is already scored).} 
 #'  \item{\code{key}}{The key}
@@ -20,7 +20,7 @@
 #'  
 #'@export
 #'  
-QMEtest = function(test, key = NULL, id = TRUE) {
+QMEtest = function(test, key = NULL, id = TRUE, na_to_0 = TRUE) {
   
   ## Check keys
   if(is_valid_simple_key(key)) {
@@ -82,7 +82,9 @@ QMEtest = function(test, key = NULL, id = TRUE) {
   if(!is.null(key)){
     output = list(raw_test = test_with_id,
                   key = key,
-                  keyed_test = right_wrong(test_with_id, key = key)) 
+                  keyed_test = right_wrong(test_with_id,
+                                           key = key,
+                                           na_to_0 = na_to_0)) 
   } else {
     # If first column of data (skipping id) are not numeric and there is no key, output an error message
     if(is.numeric(test_with_id[ , 2]) == FALSE){
@@ -104,7 +106,9 @@ QMEtest = function(test, key = NULL, id = TRUE) {
     output$dichotomous = all(apply(key[, -1], 2, function(x) x %in% 0:1))
   } else if(is.null(key))
     # dichotomous iff all raw responses (no key) only 0 and 1
-    output$dichotomous = all(apply(test_with_id[, -1], 2, function(x) x %in% 0:1))
+    output$dichotomous = all(apply(test_with_id[, -1], 
+                                   2, 
+                                   function(x) x %in% c(0:1, NA)))
     
   
   class(output) = "QMEtest"

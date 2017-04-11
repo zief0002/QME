@@ -4,7 +4,7 @@
 \alias{QMEtest}
 \title{Create QMEtest objects}
 \usage{
-QMEtest(test, key = NULL, id = TRUE)
+QMEtest(test, key = NULL, id = TRUE, na_to_0 = TRUE)
 }
 \arguments{
 \item{test}{A \code{data.frame} containing the test responses.  If \code{key} 
@@ -17,7 +17,8 @@ default, the first column is assumed to be the id.}
 responses (i.e. the correct answers for cognitive tests).}
 
 \item{id}{Whether an ID column has been provided.  If \code{id = FALSE}, an id
-will be created in the output object.}
+will be created in the output object.
+ @param na_to_0 When scoring, assume that NAs are scored as 0? Default is TRUE}
 }
 \value{
 A \code{QMEtest} object. This is a list with the following elements: 

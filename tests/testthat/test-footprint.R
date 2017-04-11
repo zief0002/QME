@@ -211,3 +211,8 @@ math2_oz = analyze(pres_math_2)
 math2_over = QME:::getItemOverview(math2_oz)
 QME:::plotItemOverview(math2_over)
 
+## New functionality to NOT map NA to 0
+math_na_qt = QMEtest(math, math_key, na_to_0 = FALSE)
+math_na_oz = analyze(math, math_key, na_to_0 = FALSE)
+scored_na_oz = analyze(math_na_qt$keyed_test, na_to_0 = FALSE)
+expect_equal(comparable_scored(math_na_oz), comparable_scored(scored_na_oz))

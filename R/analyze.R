@@ -22,16 +22,16 @@
 ##' @param id Is there an id column provided for the test? If \code{FALSE} an id
 ##'   column is automatically created and added.
 ##' @param d Number of digits for summary outputs
-##' @param use Which observations to use?  See \code{use} argument in \code{\link{cov}}
-##'   
+##' @param use Which observations to use (e.g. with or without missing values) for calculating difficulty and covariance-based measures?  See \code{use} argument in \code{\link{cov}}
+##'   @param na_to_0 When scoring, assume that NAs are scored as 0? Default is TRUE
 ##' @return Returns an \code{analyze} object with various psychometrics 
 ##'   calculated.  Primarily to be used with the \code{\link{report}} function 
 ##'   for viewing detailed output.
 ##' @export
-analyze = function(test, key = NULL, id = TRUE, d = 2, use = "pairwise.complete.obs"){
+analyze = function(test, key = NULL, id = TRUE, d = 2, use = "pairwise.complete.obs", na_to_0 = TRUE){
   
   # Preliminaries: score & get keyed test
-  q1 = QMEtest(test, key = key, id = id)
+  q1 = QMEtest(test, key = key, id = id, na_to_0 = na_to_0)
   keyed_test = getKeyedTest(q1)
   keyed_test_no_id = getKeyedTestNoID(q1)
 
