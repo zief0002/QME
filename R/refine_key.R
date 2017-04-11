@@ -44,7 +44,7 @@ refine_key = function(row_key, test_with_id){
 # refine_key(math_key)
 # key = c("GB", "ND", "WI", "MN", "ND", "ND", "WI", "GB")
 
-create_key = function(test_with_id) {
+create_key_fn = function(test_with_id) {
   x = test_with_id[,-1]
   unique_vals = unique(as.numeric(as.matrix(x)))
   created_key = as.data.frame(sapply(c("response", names(x)), 

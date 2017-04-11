@@ -70,7 +70,7 @@ QMEtest = function(test, key = NULL, id = TRUE, na_to_0 = TRUE, create_key = FAL
     key = refine_key(key, test_with_id)
   # Create dummy key for scored data, if requested
   if(create_key)
-    key = create_key(test_with_id)
+    key = create_key_fn(test_with_id)
 
   
   # If unscored, convert key and response to character
@@ -106,7 +106,7 @@ QMEtest = function(test, key = NULL, id = TRUE, na_to_0 = TRUE, create_key = FAL
   ## Is test dichotomous?
   if(key_simple) {
     output$dichotomous = TRUE
-  } else if(key_full) {
+  } else if(key_full | create_key) {
     # dichotomous iff all key cols only have 0 and 1
     output$dichotomous = all(apply(key[, -1], 2, function(x) x %in% 0:1))
   } else if(is.null(key))
