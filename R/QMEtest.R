@@ -92,7 +92,7 @@ QMEtest = function(test, key = NULL, id = TRUE, na_to_0 = TRUE, create_key = FAL
                                            na_to_0 = na_to_0)) 
   } else {
     # If first column of data (skipping id) are not numeric and there is no key, output an error message
-    if(is.numeric(test_with_id[ , 2]) == FALSE){
+    if(is.numeric(test_with_id[[2]]) == FALSE){
       stop("Your data have not been keyed. Please input an answer key using the key= argument.")
     } else{
       # If numeric, then the "keyed test" is simply the test and there is no key
