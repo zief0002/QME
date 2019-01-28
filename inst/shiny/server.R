@@ -61,7 +61,7 @@ shinyServer(function(input, output) {
     )
     if(exists("md")) {
       if(md == FALSE)
-        out = "Rendering..."
+        out = "Rendering.."
       else
         out = HTML(md)
     }
