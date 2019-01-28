@@ -66,7 +66,7 @@ shinyServer(function(input, output) {
         out = HTML(md)
     }
     else
-      out = "Rendering..."
+      out = "Rendering...."
     
     return(out)
   })
